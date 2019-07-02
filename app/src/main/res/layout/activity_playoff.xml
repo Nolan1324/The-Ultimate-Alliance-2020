@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".playoffs.PlayoffActivity">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ToolBar"
+            tools:targetApi="lollipop" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?android:attr/actionBarSize">
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Save"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView72"
+                app:layout_constraintStart_toEndOf="@+id/textView19"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RadioGroup
+                    android:id="@+id/starting_item_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/textView74"
+                    app:layout_constraintStart_toStartOf="@+id/textView74"
+                    app:layout_constraintTop_toBottomOf="@+id/textView74">
+
+                    <RadioButton
+                        android:id="@+id/preload_none"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="None"
+                        android:textSize="@dimen/list_text"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="44dp" />
+
+                    <RadioButton
+                        android:id="@+id/preload_hatch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Hatch"
+                        android:textSize="@dimen/list_text"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="44dp" />
+
+                    <RadioButton
+                        android:id="@+id/preload_cargo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Cargo"
+                        android:textSize="@dimen/list_text"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="44dp" />
+                </RadioGroup>
+
+                <RadioGroup
+                    android:id="@+id/starting_level_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/textView75"
+                    app:layout_constraintStart_toStartOf="@+id/textView75"
+                    app:layout_constraintTop_toBottomOf="@+id/textView75">
+
+                    <RadioButton
+                        android:id="@+id/starting_level_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Level 1"
+                        android:textSize="@dimen/list_text"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="44dp" />
+
+                    <RadioButton
+                        android:id="@+id/starting_level_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Level 2"
+                        android:textSize="@dimen/list_text"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="44dp" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/textView74"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Starting Item"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/title_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView75"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Starting Level"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/title_text"
+                    app:layout_constraintEnd_toEndOf="@+id/starting_item_group"
+                    app:layout_constraintStart_toStartOf="@+id/starting_item_group"
+                    app:layout_constraintTop_toBottomOf="@+id/starting_item_group" />
+
+                <TextView
+                    android:id="@+id/textView76"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Ending Level"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/title_text"
+                    app:layout_constraintEnd_toEndOf="@+id/starting_level_group"
+                    app:layout_constraintStart_toStartOf="@+id/starting_level_group"
+                    app:layout_constraintTop_toBottomOf="@+id/starting_level_group" />
+
+                <RadioGroup
+                    android:id="@+id/ending_level_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/textView76"
+                    app:layout_constraintStart_toStartOf="@+id/textView76"
+                    app:layout_constraintTop_toBottomOf="@+id/textView76">
+
+                    <RadioButton
+                        android:id="@+id/ending_level_none"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="None"
+                        android:textSize="@dimen/list_text"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="44dp" />
+
+                    <RadioButton
+                        android:id="@+id/ending_level_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Level 1"
+                        android:textSize="@dimen/list_text"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="44dp" />
+
+                    <RadioButton
+                        android:id="@+id/ending_level_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Level 2"
+                        android:textSize="@dimen/list_text"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="44dp" />
+
+                    <RadioButton
+                        android:id="@+id/ending_level_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Level 3"
+                        android:textSize="@dimen/list_text"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="44dp" />
+                </RadioGroup>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/cargo_f"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/textView71"
+                app:layout_constraintStart_toStartOf="@+id/textView71"
+                app:layout_constraintTop_toBottomOf="@+id/textView71"
+                app:state_fail="true" />
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/cargo_s"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/textView70"
+                app:layout_constraintStart_toStartOf="@+id/textView70"
+                app:layout_constraintTop_toBottomOf="@+id/textView70"
+                app:state_success="true" />
+
+            <TextView
+                android:id="@+id/textView70"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Success"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintEnd_toEndOf="@+id/textView72"
+                app:layout_constraintStart_toStartOf="@+id/textView72"
+                app:layout_constraintTop_toBottomOf="@+id/textView72" />
+
+            <TextView
+                android:id="@+id/textView71"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Fail"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintEnd_toEndOf="@+id/cargo_s"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/cargo_s"
+                app:layout_constraintTop_toBottomOf="@+id/cargo_s" />
+
+            <TextView
+                android:id="@+id/textView72"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:text="Cargo"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/title_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView19" />
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/hatch_f"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/textView24"
+                app:layout_constraintStart_toStartOf="@+id/textView24"
+                app:layout_constraintTop_toBottomOf="@+id/textView24"
+                app:state_fail="true" />
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/hatch_s"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/textView18"
+                app:layout_constraintStart_toStartOf="@+id/textView18"
+                app:layout_constraintTop_toBottomOf="@+id/textView18"
+                app:state_success="true" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Success"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintEnd_toEndOf="@+id/textView19"
+                app:layout_constraintStart_toStartOf="@+id/textView19"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Fail"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintEnd_toEndOf="@+id/hatch_s"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/hatch_s"
+                app:layout_constraintTop_toBottomOf="@+id/hatch_s" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="90dp"
+                android:text="Hatch"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/title_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/drawer_view" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+</android.support.v4.widget.DrawerLayout>

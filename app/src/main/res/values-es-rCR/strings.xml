@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">The Ultimate Alliance</string>
+    <string name="settings">Configuración</string>
+    <string name="date">Fecha</string>
+    <string name="time">Tiempo</string>
+    <string name="event_name">Nombre del Acontecimiento</string>
+    <string name="password">Contraseña</string>
+    <string name="lock_admin">"Bloquear/desbloquear funciones de administración "</string>
+    <string name="personal_preferences">preferencias personales</string>
+</resources>

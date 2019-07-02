@@ -1,0 +1,828 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 27,
+    "identityHash": "35175731dd79cdb9cbbe7d3a58df7333",
+    "entities": [
+      {
+        "tableName": "matches",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`key` TEXT NOT NULL, `matchNumber` INTEGER NOT NULL, `time` INTEGER NOT NULL, `red1` TEXT, `red2` TEXT, `red3` TEXT, `blue1` TEXT, `blue2` TEXT, `blue3` TEXT, `scouted` INTEGER NOT NULL, PRIMARY KEY(`key`))",
+        "fields": [
+          {
+            "fieldPath": "key",
+            "columnName": "key",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "matchNumber",
+            "columnName": "matchNumber",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "time",
+            "columnName": "time",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "red1",
+            "columnName": "red1",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "red2",
+            "columnName": "red2",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "red3",
+            "columnName": "red3",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "blue1",
+            "columnName": "blue1",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "blue2",
+            "columnName": "blue2",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "blue3",
+            "columnName": "blue3",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "scouted",
+            "columnName": "scouted",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "key"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "students",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`primaryKey` TEXT NOT NULL, `lastName` TEXT, `firstName` TEXT, `grade` INTEGER NOT NULL, PRIMARY KEY(`primaryKey`))",
+        "fields": [
+          {
+            "fieldPath": "primaryKey",
+            "columnName": "primaryKey",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastName",
+            "columnName": "lastName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "firstName",
+            "columnName": "firstName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "grade",
+            "columnName": "grade",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "primaryKey"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "assignments",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT NOT NULL, `role` INTEGER NOT NULL, `student` TEXT, PRIMARY KEY(`name`))",
+        "fields": [
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "role",
+            "columnName": "role",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "student",
+            "columnName": "student",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "name"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "teams",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`key` TEXT NOT NULL, `nickname` TEXT, `teamNumber` INTEGER NOT NULL, `city` TEXT, PRIMARY KEY(`key`))",
+        "fields": [
+          {
+            "fieldPath": "key",
+            "columnName": "key",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nickname",
+            "columnName": "nickname",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "teamNumber",
+            "columnName": "teamNumber",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "city",
+            "columnName": "city",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "key"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "settings",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`key` INTEGER NOT NULL, `eventKey` TEXT, `allowStudentsToChangeName` INTEGER NOT NULL, `showAll` INTEGER NOT NULL, `fieldReverse` INTEGER NOT NULL, `passwordHash` BLOB, `passwordSalt` BLOB, PRIMARY KEY(`key`))",
+        "fields": [
+          {
+            "fieldPath": "key",
+            "columnName": "key",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "eventKey",
+            "columnName": "eventKey",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "allowStudentsToChangeName",
+            "columnName": "allowStudentsToChangeName",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "showAll",
+            "columnName": "showAll",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fieldReverse",
+            "columnName": "fieldReverse",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "passwordHash",
+            "columnName": "passwordHash",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "passwordSalt",
+            "columnName": "passwordSalt",
+            "affinity": "BLOB",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "key"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "gamedata",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`matchKey` TEXT NOT NULL, `matchNumber` INTEGER NOT NULL, `alliance` INTEGER NOT NULL, `driverStation` INTEGER NOT NULL, `teamNumber` INTEGER NOT NULL, `scouter` TEXT, `startPosition` INTEGER, `startLevel` INTEGER, `preload` INTEGER, `droveOff` INTEGER, `autoHatchLoading` INTEGER, `autoHatchFloor` INTEGER, `autoCargoDepot` INTEGER, `autoCargoLoading` INTEGER, `autoCargoFloor` INTEGER, `autoHatchCloseRocket3S` INTEGER, `autoHatchCloseRocket2S` INTEGER, `autoHatchCloseRocket1S` INTEGER, `autoHatchCloseRocket3F` INTEGER, `autoHatchCloseRocket2F` INTEGER, `autoHatchCloseRocket1F` INTEGER, `autoHatchFarRocket3S` INTEGER, `autoHatchFarRocket2S` INTEGER, `autoHatchFarRocket1S` INTEGER, `autoHatchFarRocket3F` INTEGER, `autoHatchFarRocket2F` INTEGER, `autoHatchFarRocket1F` INTEGER, `autoCargoRocket3S` INTEGER, `autoCargoRocket2S` INTEGER, `autoCargoRocket1S` INTEGER, `autoCargoRocket3F` INTEGER, `autoCargoRocket2F` INTEGER, `autoCargoRocket1F` INTEGER, `autoHatchFumble` INTEGER, `autoCargoFumble` INTEGER, `hatchLoading` INTEGER, `hatchFloor` INTEGER, `cargoDepot` INTEGER, `cargoLoading` INTEGER, `cargoFloor` INTEGER, `hatchCloseRocket3S` INTEGER, `hatchCloseRocket2S` INTEGER, `hatchCloseRocket1S` INTEGER, `hatchCloseRocket3F` INTEGER, `hatchCloseRocket2F` INTEGER, `hatchCloseRocket1F` INTEGER, `hatchFarRocket3S` INTEGER, `hatchFarRocket2S` INTEGER, `hatchFarRocket1S` INTEGER, `hatchFarRocket3F` INTEGER, `hatchFarRocket2F` INTEGER, `hatchFarRocket1F` INTEGER, `cargoRocket3S` INTEGER, `cargoRocket2S` INTEGER, `cargoRocket1S` INTEGER, `cargoRocket3F` INTEGER, `cargoRocket2F` INTEGER, `cargoRocket1F` INTEGER, `hatchFumble` INTEGER, `cargoFumble` INTEGER, `endLevel1S` INTEGER, `endLevel1F` INTEGER, `endLevel2S` INTEGER, `endLevel2F` INTEGER, `endLevel2Assisted` INTEGER, `endLevel2WasAssisted` INTEGER, `endLevel3S` INTEGER, `endLevel3F` INTEGER, `endLevel3Assisted` INTEGER, `endLevel3WasAssisted` INTEGER, `endLevel3FromLevel2` INTEGER, `endLevel3SharedPlatform` INTEGER, `endNoHabAttempt` INTEGER, `climbTime` REAL, `totallyWorking` INTEGER, `partiallyWorking` INTEGER, `noShow` INTEGER, `beatToDeath` INTEGER, `selfDied` INTEGER, `fellOver` INTEGER, `pushedOver` INTEGER, `comments` TEXT, PRIMARY KEY(`matchKey`, `alliance`, `driverStation`))",
+        "fields": [
+          {
+            "fieldPath": "matchKey",
+            "columnName": "matchKey",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "matchNumber",
+            "columnName": "matchNumber",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "alliance",
+            "columnName": "alliance",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "driverStation",
+            "columnName": "driverStation",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "teamNumber",
+            "columnName": "teamNumber",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "scouter",
+            "columnName": "scouter",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.startPosition",
+            "columnName": "startPosition",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.startLevel",
+            "columnName": "startLevel",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.preload",
+            "columnName": "preload",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.droveOff",
+            "columnName": "droveOff",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoHatchLoading",
+            "columnName": "autoHatchLoading",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoHatchFloor",
+            "columnName": "autoHatchFloor",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoCargoDepot",
+            "columnName": "autoCargoDepot",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoCargoLoading",
+            "columnName": "autoCargoLoading",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoCargoFloor",
+            "columnName": "autoCargoFloor",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoHatchCloseRocket3S",
+            "columnName": "autoHatchCloseRocket3S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoHatchCloseRocket2S",
+            "columnName": "autoHatchCloseRocket2S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoHatchCloseRocket1S",
+            "columnName": "autoHatchCloseRocket1S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoHatchCloseRocket3F",
+            "columnName": "autoHatchCloseRocket3F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoHatchCloseRocket2F",
+            "columnName": "autoHatchCloseRocket2F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoHatchCloseRocket1F",
+            "columnName": "autoHatchCloseRocket1F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoHatchFarRocket3S",
+            "columnName": "autoHatchFarRocket3S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoHatchFarRocket2S",
+            "columnName": "autoHatchFarRocket2S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoHatchFarRocket1S",
+            "columnName": "autoHatchFarRocket1S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoHatchFarRocket3F",
+            "columnName": "autoHatchFarRocket3F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoHatchFarRocket2F",
+            "columnName": "autoHatchFarRocket2F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoHatchFarRocket1F",
+            "columnName": "autoHatchFarRocket1F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoCargoRocket3S",
+            "columnName": "autoCargoRocket3S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoCargoRocket2S",
+            "columnName": "autoCargoRocket2S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoCargoRocket1S",
+            "columnName": "autoCargoRocket1S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoCargoRocket3F",
+            "columnName": "autoCargoRocket3F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoCargoRocket2F",
+            "columnName": "autoCargoRocket2F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoCargoRocket1F",
+            "columnName": "autoCargoRocket1F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoHatchFumble",
+            "columnName": "autoHatchFumble",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.autoCargoFumble",
+            "columnName": "autoCargoFumble",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.hatchLoading",
+            "columnName": "hatchLoading",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.hatchFloor",
+            "columnName": "hatchFloor",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.cargoDepot",
+            "columnName": "cargoDepot",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.cargoLoading",
+            "columnName": "cargoLoading",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.cargoFloor",
+            "columnName": "cargoFloor",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.hatchCloseRocket3S",
+            "columnName": "hatchCloseRocket3S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.hatchCloseRocket2S",
+            "columnName": "hatchCloseRocket2S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.hatchCloseRocket1S",
+            "columnName": "hatchCloseRocket1S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.hatchCloseRocket3F",
+            "columnName": "hatchCloseRocket3F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.hatchCloseRocket2F",
+            "columnName": "hatchCloseRocket2F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.hatchCloseRocket1F",
+            "columnName": "hatchCloseRocket1F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.hatchFarRocket3S",
+            "columnName": "hatchFarRocket3S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.hatchFarRocket2S",
+            "columnName": "hatchFarRocket2S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.hatchFarRocket1S",
+            "columnName": "hatchFarRocket1S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.hatchFarRocket3F",
+            "columnName": "hatchFarRocket3F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.hatchFarRocket2F",
+            "columnName": "hatchFarRocket2F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.hatchFarRocket1F",
+            "columnName": "hatchFarRocket1F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.cargoRocket3S",
+            "columnName": "cargoRocket3S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.cargoRocket2S",
+            "columnName": "cargoRocket2S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.cargoRocket1S",
+            "columnName": "cargoRocket1S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.cargoRocket3F",
+            "columnName": "cargoRocket3F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.cargoRocket2F",
+            "columnName": "cargoRocket2F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.cargoRocket1F",
+            "columnName": "cargoRocket1F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.hatchFumble",
+            "columnName": "hatchFumble",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.cargoFumble",
+            "columnName": "cargoFumble",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.endLevel1S",
+            "columnName": "endLevel1S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.endLevel1F",
+            "columnName": "endLevel1F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.endLevel2S",
+            "columnName": "endLevel2S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.endLevel2F",
+            "columnName": "endLevel2F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.endLevel2Assisted",
+            "columnName": "endLevel2Assisted",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.endLevel2WasAssisted",
+            "columnName": "endLevel2WasAssisted",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.endLevel3S",
+            "columnName": "endLevel3S",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.endLevel3F",
+            "columnName": "endLevel3F",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.endLevel3Assisted",
+            "columnName": "endLevel3Assisted",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.endLevel3WasAssisted",
+            "columnName": "endLevel3WasAssisted",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.endLevel3FromLevel2",
+            "columnName": "endLevel3FromLevel2",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.endLevel3SharedPlatform",
+            "columnName": "endLevel3SharedPlatform",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.endNoHabAttempt",
+            "columnName": "endNoHabAttempt",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.climbTime",
+            "columnName": "climbTime",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.totallyWorking",
+            "columnName": "totallyWorking",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.partiallyWorking",
+            "columnName": "partiallyWorking",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.noShow",
+            "columnName": "noShow",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.beatToDeath",
+            "columnName": "beatToDeath",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.selfDied",
+            "columnName": "selfDied",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.fellOver",
+            "columnName": "fellOver",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.pushedOver",
+            "columnName": "pushedOver",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.comments",
+            "columnName": "comments",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "matchKey",
+            "alliance",
+            "driverStation"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "pitdata",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`eventKey` TEXT NOT NULL, `teamNumber` INTEGER NOT NULL, `teamName` TEXT, `scouter` TEXT, `scouted` INTEGER NOT NULL, `testInt` INTEGER, `testBoolean` INTEGER, `testString` TEXT, `testFloat` REAL, PRIMARY KEY(`eventKey`, `teamNumber`))",
+        "fields": [
+          {
+            "fieldPath": "eventKey",
+            "columnName": "eventKey",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "teamNumber",
+            "columnName": "teamNumber",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "teamName",
+            "columnName": "teamName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "scouter",
+            "columnName": "scouter",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "scouted",
+            "columnName": "scouted",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "data.testInt",
+            "columnName": "testInt",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.testBoolean",
+            "columnName": "testBoolean",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.testString",
+            "columnName": "testString",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "data.testFloat",
+            "columnName": "testFloat",
+            "affinity": "REAL",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "eventKey",
+            "teamNumber"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"35175731dd79cdb9cbbe7d3a58df7333\")"
+    ]
+  }
+}

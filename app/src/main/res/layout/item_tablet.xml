@@ -1,0 +1,5 @@
+<ToggleButton xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/data_button"
+    android:layout_height="@dimen/data_button"
+    style="@style/tabletButton"
+    android:checked="true" />

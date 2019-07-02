@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/add_student_button"
+        android:icon="@drawable/ic_person_add"
+        android:iconTint="?iconTint"
+        android:title="@string/add_student"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/from_csv_button"
+        android:icon="@drawable/ic_download"
+        android:iconTint="?iconTint"
+        android:title="@string/from_csv"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/lock_button"
+        android:icon="@drawable/ic_lock_closed"
+        android:iconTint="?iconTint"
+        android:title="@string/lock_admin"
+        app:showAsAction="always" />
+</menu>

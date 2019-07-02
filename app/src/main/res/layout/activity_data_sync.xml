@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".datasync.DataSyncActivity">
+    <data>
+        <variable name="handler" type="com.nolankuza.theultimatealliance.datasync.DataSyncActivity.Handler"/>
+    </data>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:theme="@style/AppTheme">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:elevation="4dp"
+                android:theme="@style/ToolBar"
+                tools:targetApi="lollipop" />
+
+            <LinearLayout android:id="@+id/data_sync_master_pane"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <LinearLayout android:id="@+id/data_sync_pane"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="?android:attr/actionBarSize"
+                        app:layout_anchorGravity="bottom"
+                        android:paddingStart="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/list_text"
+                            android:text="Event Information" />
+
+                        <LinearLayout android:id="@+id/group_event_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ToggleButton android:id="@+id/toggle_sync_event"
+                                style="@style/tabletButton"
+                                android:layout_width="@dimen/data_button"
+                                android:layout_height="@dimen/data_button"
+                                android:layout_gravity="center"
+                                android:checked="false"
+                                android:drawableBottom="@drawable/ic_event"
+                                android:textOff="Match Schedule"
+                                android:textOn="Match Schedule"
+                                android:autoSizeTextType="uniform" />
+
+                            <ToggleButton android:id="@+id/toggle_sync_teams"
+                                android:layout_width="@dimen/data_button"
+                                android:layout_height="@dimen/data_button"
+                                android:layout_gravity="center"
+                                style="@style/tabletButton"
+                                android:checked="false"
+                                android:drawableBottom="@drawable/ic_sync_team_33"
+                                android:textOn="Teams"
+                                android:textOff="Teams"
+                                android:autoSizeTextType="uniform"/>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/list_text"
+                            android:text="Scouting Data" />
+
+                        <LinearLayout android:id="@+id/group_scouting_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ToggleButton android:id="@+id/toggle_sync_pits"
+                                android:layout_width="@dimen/data_button"
+                                android:layout_height="@dimen/data_button"
+                                android:layout_gravity="center"
+                                android:textOn="Scouted Pits"
+                                android:textOff="Scouted Pits"
+                                android:autoSizeTextType="uniform"
+                                style="@style/tabletButton"
+                                android:checked="false"
+                                android:onClick="@{handler::onDataClicked}"
+                                android:drawableBottom="@drawable/ic_sync_pit"/>
+
+                            <ToggleButton android:id="@+id/toggle_sync_game"
+                                android:layout_width="@dimen/data_button"
+                                android:layout_height="@dimen/data_button"
+                                android:layout_gravity="center"
+                                android:textOn="Scouted Matches"
+                                android:textOff="Scouted Matches"
+                                android:autoSizeTextType="uniform"
+                                style="@style/tabletButton"
+                                android:checked="false"
+                                android:onClick="@{handler::onDataClicked}"
+                                android:drawableBottom="@drawable/ic_sync_game" />
+
+                            <ToggleButton android:id="@+id/toggle_sync_playoffs"
+                                android:layout_width="@dimen/data_button"
+                                android:layout_height="@dimen/data_button"
+                                android:layout_gravity="center"
+                                android:textOn="Scouted Playoffs"
+                                android:textOff="Scouted Playoffs"
+                                android:autoSizeTextType="uniform"
+                                style="@style/tabletButton"
+                                android:checked="false"
+                                android:onClick="@{handler::onDataClicked}"
+                                android:drawableBottom="@drawable/ic_trophy" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/list_text"
+                            android:text="Settings / Other" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ToggleButton android:id="@+id/toggle_sync_assignments"
+                                android:layout_width="@dimen/data_button"
+                                android:layout_height="@dimen/data_button"
+                                android:layout_gravity="center"
+                                android:textOn="Assignments"
+                                android:textOff="Assignments"
+                                android:autoSizeTextType="uniform"
+                                style="@style/tabletButton"
+                                android:checked="false"
+                                android:drawableBottom="@drawable/ic_tablet_android" />
+
+                            <ToggleButton android:id="@+id/toggle_sync_students"
+                                android:layout_width="@dimen/data_button"
+                                android:layout_height="@dimen/data_button"
+                                android:layout_gravity="center"
+                                android:textOn="Students"
+                                android:textOff="Students"
+                                android:autoSizeTextType="uniform"
+                                style="@style/tabletButton"
+                                android:checked="false"
+                                android:drawableBottom="@drawable/ic_person" />
+
+                            <ToggleButton android:id="@+id/toggle_sync_settings"
+                                android:layout_width="@dimen/data_button"
+                                android:layout_height="@dimen/data_button"
+                                android:layout_gravity="center"
+                                android:textOn="Settings"
+                                android:textOff="Settings"
+                                android:autoSizeTextType="uniform"
+                                style="@style/tabletButton"
+                                android:checked="false"
+                                android:drawableBottom="@drawable/ic_settings" />
+                        </LinearLayout>
+
+                        <com.nolankuza.theultimatealliance.datasync.GroupToggle
+                            android:id="@+id/devices_to_sync"
+                            app:toggle_buttons="@id/tablet_recycler"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/list_text"
+                            android:text="@string/devices_to_sync" />
+
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/tablet_recycler"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+                    </LinearLayout>
+                </ScrollView>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray"/>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="?android:attr/actionBarSize"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
+                    <LinearLayout android:id="@+id/data_sync_log"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_anchorGravity="bottom">
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:menu="@menu/drawer_view"
+            app:headerLayout="@layout/nav_header" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"/>
+    </android.support.v4.widget.DrawerLayout>
+</layout>

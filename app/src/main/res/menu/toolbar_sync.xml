@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/sync_button"
+        android:icon="@drawable/ic_bluetooth_wave"
+        android:iconTint="?iconTint"
+        android:title="@string/launch_data_sync"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/export_button"
+        android:icon="@drawable/ic_file_upload"
+        android:iconTint="?iconTint"
+        android:title="@string/export_data_to_csv"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/delete_data_button"
+        android:icon="@drawable/ic_delete"
+        android:iconTint="?iconTint"
+        android:title="Delete Data"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/lock_button"
+        android:icon="@drawable/ic_lock_closed"
+        android:iconTint="?iconTint"
+        android:title="@string/lock_admin"
+        app:showAsAction="always"/>
+</menu>

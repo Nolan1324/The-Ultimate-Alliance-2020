@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="driverStations">
+        <item>Red 1</item>
+        <item>Red 2</item>
+        <item>Red 3</item>
+        <item>Blue 1</item>
+        <item>Blue 2</item>
+        <item>Blue 3</item>
+        <item>Pit Scouter</item>
+        <item>Analysis</item>
+    </string-array>
+
+    <string-array name="driverStationsValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <!-- TODO Merge with driverStations -->
+    <string-array name="roles">
+        <item>Red 1</item>
+        <item>Red 2</item>
+        <item>Red 3</item>
+        <item>Blue 1</item>
+        <item>Blue 2</item>
+        <item>Blue 3</item>
+        <item>Pit Scouter</item>
+        <item>Analysis</item>
+    </string-array>
+
+    <string-array name="language">
+        <item>Java</item>
+        <item>LabVIEW</item>
+        <item>C++</item>
+    </string-array>
+
+    <string-array name="numWheels">
+        <item>0</item>
+        <item>2</item>
+        <item>4</item>
+        <item>6</item>
+        <item>8</item>
+    </string-array>
+
+    <string-array name="wheelType">
+        <item>None</item>
+        <item>Traction</item>
+        <item>AndyMark</item>
+        <item>BaneBot</item>
+        <item>Omni</item>
+        <item>Mecanum</item>
+        <item>Tank Tread</item>
+        <item>Colson</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="driveTrainType">
+        <item>Tank</item>
+        <item>West Coast</item>
+        <item>H-Drive</item>
+        <item>Swerve</item>
+        <item>X-Drive</item>
+        <item>Butterfly</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="driveMotorType">
+        <item>CIM</item>
+        <item>Mini-CIM</item>
+        <item>775</item>
+        <item>Neo</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="numDriveMotors">
+        <item>2</item>
+        <item>4</item>
+        <item>6</item>
+        <item>8</item>
+    </string-array>
+
+    <string-array name="startingLevel">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="startingPosition">
+        <item>L</item>
+        <item>C</item>
+        <item>R</item>
+    </string-array>
+
+    <string-array name="yn">
+        <item>Y</item>
+        <item>N</item>
+    </string-array>
+
+    <string-array name="assist">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="sandstormScoringLocation">
+        <item>Left cargo ship</item>
+        <item>Right cargo ship</item>
+        <item>Either cargo ship</item>
+    </string-array>
+
+    <string-array name="defense">
+        <item>None</item>
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+</resources>

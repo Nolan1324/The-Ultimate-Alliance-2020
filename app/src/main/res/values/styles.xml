@@ -1,0 +1,66 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <item name="colorAccent">@android:color/holo_blue_light</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="iconTint">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:textColorSecondary">@android:color/black</item>
+        <item name="android:textColor">?tabIndicatorColor</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="android:buttonTint" tools:targetApi="lollipop">@android:color/darker_gray</item>
+    </style>
+
+    <style name="ToolBar" parent="Widget.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">?attr/actionMenuTextColor</item>
+        <item name="android:textColorSecondary">?attr/actionMenuTextColor</item>
+    </style>
+
+    <style name="SButtonInit" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">#777777</item>
+        <item name="android:alpha">0.6</item>
+    </style>
+
+    <style name="SButtonRed" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">#777777</item>
+        <item name="android:alpha">0.6</item>
+    </style>
+
+    <style name="SButtonBlue" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">#777777</item>
+        <item name="android:alpha">0.6</item>
+    </style>
+
+    <style name="TabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/list_text</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!--<style name="toggleButton" parent="Theme.AppCompat.Light">
+        <item name="android:textOn"></item>
+        <item name="android:textOff"></item>
+        <item name="android:foregroundTint" tools:targetApi="lollipop">@color/toggle_color</item>
+        <item name="android:foregroundGravity">center|fill</item>
+    </style>-->
+
+    <style name="tabletButton" parent="Theme.AppCompat.Light">
+        <item name="android:textColor">@color/toggle_color</item>
+        <item name="android:drawableTint" tools:targetApi="m">@color/toggle_color</item>
+    </style>
+
+    <style name="listSpinner" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/list_text</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="pitSpinner" parent="@android:style/Widget.Holo.Light.Spinner">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+</resources>

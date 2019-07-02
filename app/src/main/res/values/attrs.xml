@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GroupToggle">
+                                        <!--is that a JoJo-->
+        <attr name="toggle_buttons" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="Counter">
+        <attr name="value" format="integer"/>
+        <attr name="min" format="integer"/>
+        <attr name="max" format="integer"/>
+        <attr name="step" format="integer"/>
+        <attr name="state_normal" format="boolean"/>
+        <attr name="state_hatch" format="boolean"/>
+        <attr name="state_cargo" format="boolean"/>
+        <attr name="state_level_1" format="boolean"/>
+        <attr name="state_level_2" format="boolean"/>
+        <attr name="state_level_3" format="boolean"/>
+        <attr name="state_success" format="boolean"/>
+        <attr name="state_fail" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="ActionView">
+        <attr name="state_wait" format="boolean" />
+        <attr name="state_warn" format="boolean" />
+        <attr name="state_done" format="boolean" />
+    </declare-styleable>
+</resources>

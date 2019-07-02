@@ -1,0 +1,36 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <group android:id="@+id/event_group" android:checkableBehavior="single">
+        <item
+            android:id="@+id/event_import_option"
+            android:icon="@drawable/ic_event"
+            android:title="@string/event_import" />
+    </group>
+    <group android:id="@+id/student_group" android:checkableBehavior="single">
+        <item
+            android:id="@+id/student_option"
+            android:icon="@drawable/ic_group_add"
+            android:title="@string/edit_students" />
+        <item
+            android:id="@+id/assignment_option"
+            android:icon="@drawable/ic_tablet_android"
+            android:title="Device Assignment" />
+    </group>
+    <group android:id="@+id/data_group" android:checkableBehavior="single">
+        <item
+            android:id="@+id/data_sync_option"
+            android:icon="@drawable/ic_bluetooth_wave"
+            android:title="@string/sync_data" />
+    </group>
+    <group android:id="@+id/settings_group" android:checkableBehavior="single">
+        <!--
+        <item
+            android:id="@+id/personal_settings_option"
+            android:icon="@drawable/ic_personal_settings"
+            android:title="@string/personal_preferences" />
+        -->
+        <item
+            android:id="@+id/settings_option"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/settings" />
+    </group>
+</menu>

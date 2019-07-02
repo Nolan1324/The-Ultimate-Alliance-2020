@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Master Configuration">
+
+        <SwitchPreference
+            android:key="is_master_pref"
+            android:title="Is Master Tablet">
+
+        </SwitchPreference>
+
+        <EditTextPreference
+            android:key="team_pref"
+            android:title="Team Number"
+            android:inputType="numberDecimal"
+            android:digits="0123456789"
+            android:maxLength="6"/>
+
+        <EditTextPreference
+            android:key="year_pref"
+            android:title="Year"
+            android:inputType="numberDecimal"
+            android:digits="0123456789"
+            android:maxLength="4"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Syncable (Slave) Configuration">
+
+        <PreferenceScreen
+            android:id="@+id/set_password_button"
+            android:key="password_pref"
+            android:title="Set Password"/>
+
+        <SwitchPreference
+            android:key="allow_pref"
+            android:title="Allow students to choose their name" />
+
+        <SwitchPreference
+            android:key="show_all_pref"
+            android:title="Show Scouted Teams/Matches" />
+
+        <PreferenceScreen
+            android:title="Field"
+            android:key="field_reverse_pref" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Local (Slave-Only) Configuration">
+        <ListPreference
+            android:key="driver_pref"
+            android:title="Driver Station"
+            android:entries="@array/driverStations"
+            android:entryValues="@array/driverStationsValues" />
+
+        <EditTextPreference
+            android:key="student_pref"
+            android:title="Student Name" />
+
+        <SwitchPreference
+            android:key="playoffs_pref"
+            android:title="Playoffs" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
