@@ -1,6 +1,5 @@
 package com.nolankuza.theultimatealliance.room;
 
-import android.arch.persistence.room.Room;
 import android.content.Context;
 
 import com.nolankuza.theultimatealliance.ApplicationState;

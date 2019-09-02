@@ -7,7 +7,6 @@ import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 import com.nolankuza.theultimatealliance.R;
 

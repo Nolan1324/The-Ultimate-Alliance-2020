@@ -4,9 +4,6 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 
-import com.nolankuza.theultimatealliance.structure.Student;
-import com.nolankuza.theultimatealliance.students.StudentAddTask;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

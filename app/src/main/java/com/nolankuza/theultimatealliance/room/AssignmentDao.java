@@ -7,7 +7,6 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
 import com.nolankuza.theultimatealliance.structure.Assignment;
-import com.nolankuza.theultimatealliance.structure.Student;
 
 import java.util.List;
 

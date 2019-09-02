@@ -22,13 +22,12 @@ import com.nolankuza.theultimatealliance.dialogs.NewPasswordDialogFragment;
 import com.nolankuza.theultimatealliance.dialogs.PasswordDialogFragment;
 import com.nolankuza.theultimatealliance.eventimport.EventImportActivity;
 import com.nolankuza.theultimatealliance.main.MainActivity;
-import com.nolankuza.theultimatealliance.personalsettings.PersonalSettingsActivity;
 import com.nolankuza.theultimatealliance.settings.SettingsActivity;
 import com.nolankuza.theultimatealliance.structure.Settings;
 import com.nolankuza.theultimatealliance.students.StudentsActivity;
 import com.nolankuza.theultimatealliance.tasks.SettingsQueryTask;
 
-import static com.nolankuza.theultimatealliance.ApplicationState.*;
+import static com.nolankuza.theultimatealliance.ApplicationState.locked;
 import static com.nolankuza.theultimatealliance.util.Constants.lockedItems;
 import static com.nolankuza.theultimatealliance.util.Constants.masterItems;
 

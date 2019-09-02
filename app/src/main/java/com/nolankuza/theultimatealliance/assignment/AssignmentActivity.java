@@ -1,7 +1,6 @@
 package com.nolankuza.theultimatealliance.assignment;
 
 import android.bluetooth.BluetoothAdapter;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,17 +8,12 @@ import android.support.v7.widget.RecyclerView;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.datasync.TabletListAdapter;
-import com.nolankuza.theultimatealliance.room.AppDatabase;
 import com.nolankuza.theultimatealliance.room.AssignmentDao;
-import com.nolankuza.theultimatealliance.room.Database;
 import com.nolankuza.theultimatealliance.room.StudentDao;
 import com.nolankuza.theultimatealliance.structure.Assignment;
 import com.nolankuza.theultimatealliance.structure.DeviceInfo;
-import com.nolankuza.theultimatealliance.structure.Student;
 import com.nolankuza.theultimatealliance.util.Sync;
 
-import java.util.HashMap;
 import java.util.List;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;

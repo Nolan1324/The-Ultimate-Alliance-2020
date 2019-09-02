@@ -2,7 +2,6 @@ package com.nolankuza.theultimatealliance.util;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;

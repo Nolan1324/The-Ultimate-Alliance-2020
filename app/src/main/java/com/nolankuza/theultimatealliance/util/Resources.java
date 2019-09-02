@@ -3,8 +3,6 @@ package com.nolankuza.theultimatealliance.util;
 import android.app.Activity;
 import android.content.Context;
 
-import com.nolankuza.theultimatealliance.R;
-
 public class Resources {
 
     public static int getDimen(Context context, int resourceId) {

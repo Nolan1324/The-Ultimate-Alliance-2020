@@ -1,6 +1,8 @@
 package com.nolankuza.theultimatealliance.util;
 
-import java.security.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 public class Sha256 {
     public static byte[] hash256(String data, byte[] salt) {
         try {

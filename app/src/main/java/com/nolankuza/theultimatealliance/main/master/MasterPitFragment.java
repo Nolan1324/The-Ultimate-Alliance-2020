@@ -1,6 +1,5 @@
 package com.nolankuza.theultimatealliance.main.master;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.assignment.AssignmentActivity;
 import com.nolankuza.theultimatealliance.datasync.DataSyncActivity;
 import com.nolankuza.theultimatealliance.eventimport.EventImportActivity;
-import com.nolankuza.theultimatealliance.settings.SettingsActivity;
 import com.nolankuza.theultimatealliance.util.Constants;
 
 import java.util.Locale;

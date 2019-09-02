@@ -1,13 +1,9 @@
 package com.nolankuza.theultimatealliance.students;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
-import com.nolankuza.theultimatealliance.room.Database;
 import com.nolankuza.theultimatealliance.room.StudentDao;
 import com.nolankuza.theultimatealliance.structure.Student;
-
-import java.lang.ref.WeakReference;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
 

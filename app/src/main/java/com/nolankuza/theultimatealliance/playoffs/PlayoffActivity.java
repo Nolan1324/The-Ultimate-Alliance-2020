@@ -1,23 +1,14 @@
 package com.nolankuza.theultimatealliance.playoffs;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.provider.MediaStore;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.pit.SavePitDataThread;
 import com.nolankuza.theultimatealliance.scout.Counter;
 import com.nolankuza.theultimatealliance.structure.Alliance;
-import com.nolankuza.theultimatealliance.structure.PitData;
 import com.nolankuza.theultimatealliance.structure.PlayoffData;
-import com.nolankuza.theultimatealliance.util.DataUtil;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 

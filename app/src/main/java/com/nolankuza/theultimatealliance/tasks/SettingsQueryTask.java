@@ -1,13 +1,8 @@
 package com.nolankuza.theultimatealliance.tasks;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
-import com.nolankuza.theultimatealliance.room.Database;
-import com.nolankuza.theultimatealliance.room.SettingsDao;
 import com.nolankuza.theultimatealliance.structure.Settings;
-
-import java.lang.ref.WeakReference;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
 

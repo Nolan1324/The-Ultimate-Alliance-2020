@@ -1,7 +1,5 @@
 package com.nolankuza.theultimatealliance.playoffs;
 
-import com.nolankuza.theultimatealliance.structure.GameData;
-import com.nolankuza.theultimatealliance.structure.Match;
 import com.nolankuza.theultimatealliance.structure.PlayoffData;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;

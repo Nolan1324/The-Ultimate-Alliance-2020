@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import com.nolankuza.theultimatealliance.http.TheBlueAllianceClient;
 import com.nolankuza.theultimatealliance.structure.Event;
 
-import java.util.Calendar;
 import java.util.List;
 
 public class EventsTask extends AsyncTask<Void, Void, List<Event>> {

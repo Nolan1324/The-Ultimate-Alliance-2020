@@ -5,8 +5,6 @@ import android.database.Cursor;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 
-import com.nolankuza.theultimatealliance.datasync.SyncOptions;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,7 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;

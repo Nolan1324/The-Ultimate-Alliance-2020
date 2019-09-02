@@ -1,11 +1,6 @@
 package com.nolankuza.theultimatealliance.settings;
 
-import android.content.Context;
-
-import com.nolankuza.theultimatealliance.room.Database;
 import com.nolankuza.theultimatealliance.structure.Settings;
-
-import java.lang.ref.WeakReference;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
 

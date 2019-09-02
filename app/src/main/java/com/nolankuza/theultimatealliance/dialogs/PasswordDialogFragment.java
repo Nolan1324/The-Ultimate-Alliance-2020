@@ -9,7 +9,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -21,8 +20,6 @@ import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.util.Sha256;
 
 import java.util.Arrays;
-
-import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 
 public class PasswordDialogFragment extends DialogFragment {
 

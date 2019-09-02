@@ -1,13 +1,10 @@
 package com.nolankuza.theultimatealliance.eventimport.teamimport;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
-import com.nolankuza.theultimatealliance.room.Database;
 import com.nolankuza.theultimatealliance.room.MatchDao;
 import com.nolankuza.theultimatealliance.structure.Match;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;

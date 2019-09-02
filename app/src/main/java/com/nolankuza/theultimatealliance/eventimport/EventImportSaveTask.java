@@ -1,9 +1,7 @@
 package com.nolankuza.theultimatealliance.eventimport;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
-import com.nolankuza.theultimatealliance.room.Database;
 import com.nolankuza.theultimatealliance.room.GameDataDao;
 import com.nolankuza.theultimatealliance.room.MatchDao;
 import com.nolankuza.theultimatealliance.room.SettingsDao;
@@ -15,7 +13,6 @@ import com.nolankuza.theultimatealliance.structure.Match;
 import com.nolankuza.theultimatealliance.structure.Settings;
 import com.nolankuza.theultimatealliance.structure.Team;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;

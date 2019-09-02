@@ -1,19 +1,12 @@
 package com.nolankuza.theultimatealliance.tasks;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.preference.PreferenceManager;
 
-import com.nolankuza.theultimatealliance.room.Database;
 import com.nolankuza.theultimatealliance.room.PitDataDao;
-import com.nolankuza.theultimatealliance.room.SettingsDao;
 import com.nolankuza.theultimatealliance.structure.PitData;
-import com.nolankuza.theultimatealliance.structure.Settings;
 import com.nolankuza.theultimatealliance.structure.Team;
 import com.nolankuza.theultimatealliance.util.DataUtil;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 

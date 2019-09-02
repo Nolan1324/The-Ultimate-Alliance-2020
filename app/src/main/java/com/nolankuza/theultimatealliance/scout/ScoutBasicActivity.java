@@ -1,18 +1,14 @@
 package com.nolankuza.theultimatealliance.scout;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.structure.Alliance;
 import com.nolankuza.theultimatealliance.structure.GameData;
 import com.nolankuza.theultimatealliance.structure.Match;
 import com.nolankuza.theultimatealliance.util.Constants;

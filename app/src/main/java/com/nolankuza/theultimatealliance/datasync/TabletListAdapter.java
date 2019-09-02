@@ -1,6 +1,5 @@
 package com.nolankuza.theultimatealliance.datasync;
 
-import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,14 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.structure.DeviceInfo;
-import com.nolankuza.theultimatealliance.structure.Event;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TabletListAdapter extends RecyclerView.Adapter<TabletListAdapter.ViewHolder> {

@@ -2,12 +2,9 @@ package com.nolankuza.theultimatealliance.structure;
 
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
-
-import com.nolankuza.theultimatealliance.structure.gamedata.Data;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 

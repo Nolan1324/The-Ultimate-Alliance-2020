@@ -1,33 +1,16 @@
 package com.nolankuza.theultimatealliance.settings;
 
-import android.app.DialogFragment;
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.FragmentActivity;
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.dialogs.NewPasswordDialogFragment;
-import com.nolankuza.theultimatealliance.dialogs.PasswordDialogFragment;
 import com.nolankuza.theultimatealliance.structure.Settings;
-import com.nolankuza.theultimatealliance.structure.Student;
-import com.nolankuza.theultimatealliance.tasks.SettingsQueryTask;
-import com.nolankuza.theultimatealliance.util.Sha256;
-
-import java.lang.ref.WeakReference;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
