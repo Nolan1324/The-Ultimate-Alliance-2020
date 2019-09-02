@@ -17,13 +17,7 @@ public class StudentQueryTask extends AsyncTask<Void, Void, List<Student>> {
     }
 
     public interface Listener {
-        void onTaskInit();
         void onTaskCompleted(List<Student> students);
-    }
-
-    @Override
-    protected void onPreExecute() {
-        listener.onTaskInit();
     }
 
     @Override

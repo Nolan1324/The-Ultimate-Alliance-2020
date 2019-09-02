@@ -130,11 +130,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Password
                 if(locked) {
                     new SettingsQueryTask(new SettingsQueryTask.Listener() {
                         @Override
-                        public void onTaskInit() {
-
-                        }
-
-                        @Override
                         public void onTaskCompleted(Settings settings) {
                             if(settings.passwordHash != null) {
                                 Bundle bundle = new Bundle();

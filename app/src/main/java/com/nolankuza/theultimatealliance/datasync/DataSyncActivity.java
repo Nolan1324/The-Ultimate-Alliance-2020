@@ -102,12 +102,8 @@ public class DataSyncActivity extends BaseActivity implements MessageLogger {
                         return true;
                     }
 
+                    syncingState = 1;
                     task = new BluetoothClientTask(this, bAdapter, options, tabletListAdapter.getDeviceInfos(),this, new BluetoothClientTask.Listener() {
-                        @Override
-                        public void onTaskInit() {
-                            syncingState = 1;
-                        }
-
                         @Override
                         public void onTaskCompleted(Boolean allSynced) {
                             //TODO Does this change if options changed while the task is running?

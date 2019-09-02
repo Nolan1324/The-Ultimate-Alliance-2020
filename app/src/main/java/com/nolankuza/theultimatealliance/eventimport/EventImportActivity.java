@@ -72,7 +72,6 @@ public class EventImportActivity extends BaseActivity {
             alertDialog.show();
         }
 
-        final ProgressBar progressBar = findViewById(R.id.progressBar);
         showProgressBar();
         new EventsTask(Integer.parseInt(prefs.getString("team_pref", "33")), Integer.parseInt(prefs.getString("year_pref", Integer.toString(Calendar.getInstance().get(Calendar.YEAR)))), new EventsTask.Listener() {
             @Override

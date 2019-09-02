@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.structure.Event;
 import com.nolankuza.theultimatealliance.structure.Match;
@@ -45,12 +46,8 @@ public class MatchImportFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(
-                R.layout.fragment_match_import, container, false);
-
-        return rootView;
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return (ViewGroup) inflater.inflate(R.layout.fragment_match_import, container, false);
     }
 
     @Override
@@ -65,17 +62,14 @@ public class MatchImportFragment extends Fragment {
         } else {
             matches = null;
         }
-        final ProgressBar progressBar = getActivity().findViewById(R.id.progressBar);
+
+        final BaseActivity baseActivity = (BaseActivity) getActivity();
         if(matches == null) {
+            if (baseActivity != null) baseActivity.showProgressBar();
             new MatchImportTask(event.key, new MatchImportTask.Listener() {
                 @Override
-                public void onTaskInit() {
-                    progressBar.setVisibility(View.VISIBLE);
-                }
-
-                @Override
                 public void onTaskCompleted(List<Match> matches) {
-                    progressBar.setVisibility(View.GONE);
+                    if (baseActivity != null) baseActivity.hideProgressBar();
                     setupRecycler(matches, view);
                 }
             }).execute();

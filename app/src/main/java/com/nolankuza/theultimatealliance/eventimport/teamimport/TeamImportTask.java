@@ -17,13 +17,7 @@ public class TeamImportTask extends AsyncTask<Void, Void, List<Team>> {
     }
 
     public interface Listener {
-        void onTaskInit();
         void onTaskCompleted(List<Team> teams);
-    }
-
-    @Override
-    protected void onPreExecute() {
-        listener.onTaskInit();
     }
 
     @Override

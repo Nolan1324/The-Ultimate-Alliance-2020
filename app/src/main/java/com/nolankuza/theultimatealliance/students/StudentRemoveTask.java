@@ -17,13 +17,7 @@ public class StudentRemoveTask extends AsyncTask<Void, Void, Integer> {
     }
 
     public interface Listener {
-        void onTaskInit();
         void onTaskCompleted(Integer status);
-    }
-
-    @Override
-    protected void onPreExecute() {
-        listener.onTaskInit();
     }
 
     @Override

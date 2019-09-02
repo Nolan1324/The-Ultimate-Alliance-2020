@@ -54,13 +54,7 @@ public class BluetoothClientTask extends AsyncTask<Void, Void, Boolean> {
     }
 
     public interface Listener {
-        void onTaskInit();
         void onTaskCompleted(Boolean allSynced);
-    }
-
-    @Override
-    protected void onPreExecute() {
-        listener.onTaskInit();
     }
 
     @Override

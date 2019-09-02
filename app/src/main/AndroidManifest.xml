@@ -25,7 +25,6 @@
         </activity>
         <activity android:name=".personalsettings.PersonalSettingsActivity" />
         <activity android:name=".eventimport.EventImportActivity" />
-        <activity android:name=".eventimport.matchimport.MatchImportActivity" />
         <activity android:name=".students.StudentsActivity" />
         <activity
             android:name=".scout.ScoutActivity"

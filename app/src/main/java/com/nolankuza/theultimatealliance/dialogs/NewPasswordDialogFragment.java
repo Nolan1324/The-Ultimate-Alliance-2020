@@ -47,15 +47,9 @@ public class NewPasswordDialogFragment extends DialogFragment {
                             if(!password.getText().toString().equals("")) {
                                 new SettingsQueryTask(new SettingsQueryTask.Listener() {
                                     @Override
-                                    public void onTaskInit() {
-
-                                    }
-
-                                    @Override
                                     public void onTaskCompleted(Settings settings) {
                                         settings.passwordSalt = Sha256.generateSalt(8);
                                         settings.passwordHash = Sha256.hash256(password.getText().toString(), settings.passwordSalt);
-                                        Log.d("HEY", Sha256.bytesToHex(settings.passwordHash) + " " + Sha256.bytesToHex(settings.passwordSalt));
                                         new SaveSettingsThread(settings, new SaveSettingsThread.Listener() {
                                             @Override
                                             public void onTaskCompleted() {

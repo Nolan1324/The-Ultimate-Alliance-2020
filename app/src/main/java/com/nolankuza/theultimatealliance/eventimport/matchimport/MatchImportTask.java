@@ -17,13 +17,7 @@ public class MatchImportTask extends AsyncTask<Void, Void, List<Match>> {
     }
 
     public interface Listener {
-        void onTaskInit();
         void onTaskCompleted(List<Match> events);
-    }
-
-    @Override
-    protected void onPreExecute() {
-        listener.onTaskInit();
     }
 
     @Override

@@ -14,13 +14,7 @@ public class SettingsQueryTask extends AsyncTask<Void, Void, Settings> {
     }
 
     public interface Listener {
-        void onTaskInit();
         void onTaskCompleted(Settings settings);
-    }
-
-    @Override
-    protected void onPreExecute() {
-        listener.onTaskInit();
     }
 
     @Override

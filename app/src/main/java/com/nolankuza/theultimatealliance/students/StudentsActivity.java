@@ -22,8 +22,6 @@ import static com.nolankuza.theultimatealliance.util.Constants.CHOOSE_STUDENTS_F
 
 public class StudentsActivity extends BaseActivity implements AddStudentDialogFragment.Listener {
 
-    ProgressBar progressBar;
-
     StudentAdapter studentAdapter;
 
     @Override
@@ -34,16 +32,11 @@ public class StudentsActivity extends BaseActivity implements AddStudentDialogFr
 
         actionBar.setSubtitle("Edit Students");
 
-        progressBar = findViewById(R.id.progressBar);
+        showProgressBar();
         new StudentQueryTask(new StudentQueryTask.Listener() {
             @Override
-            public void onTaskInit() {
-                progressBar.setVisibility(View.VISIBLE);
-            }
-
-            @Override
             public void onTaskCompleted(List<Student> students) {
-                progressBar.setVisibility(View.GONE);
+                hideProgressBar();
                 RecyclerView eventRecycler = findViewById(R.id.student_recycler);
                 eventRecycler.setLayoutManager(new LinearLayoutManager(StudentsActivity.this));
                 eventRecycler.addItemDecoration(new DividerItemDecoration(StudentsActivity.this, DividerItemDecoration.VERTICAL));
@@ -51,15 +44,11 @@ public class StudentsActivity extends BaseActivity implements AddStudentDialogFr
                 studentAdapter.setClickListener(new StudentAdapter.ItemClickListener() {
                     @Override
                     public void onRemoveClick(View view, final int position) {
+                        showProgressBar();
                         new StudentRemoveTask(studentAdapter.getItem(position), new StudentRemoveTask.Listener() {
                             @Override
-                            public void onTaskInit() {
-                                progressBar.setVisibility(View.VISIBLE);
-                            }
-
-                            @Override
                             public void onTaskCompleted(Integer status) {
-                                progressBar.setVisibility(View.GONE);
+                                hideProgressBar();
                                 studentAdapter.removeItem(position);
                             }
                         }).execute();
@@ -88,15 +77,11 @@ public class StudentsActivity extends BaseActivity implements AddStudentDialogFr
 
     @Override
     public void onAddAccepted(DialogFragment dialog, final Student student) {
+        showProgressBar();
         new StudentAddTask(student, new StudentAddTask.Listener() {
             @Override
-            public void onTaskInit() {
-                progressBar.setVisibility(View.VISIBLE);
-            }
-
-            @Override
             public void onTaskCompleted(Integer status) {
-                progressBar.setVisibility(View.GONE);
+                hideProgressBar();
                 studentAdapter.addItem(student);
             }
         }).execute();
@@ -111,11 +96,6 @@ public class StudentsActivity extends BaseActivity implements AddStudentDialogFr
                     public void onReadLine(String[] data) {
                         final Student student = new Student(data[0], data[1], Integer.parseInt(data[2]));
                         new StudentAddTask(student, new StudentAddTask.Listener() {
-                            @Override
-                            public void onTaskInit() {
-
-                            }
-
                             @Override
                             public void onTaskCompleted(Integer status) {
                                 studentAdapter.addItem(student);

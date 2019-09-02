@@ -26,8 +26,6 @@ import java.util.List;
 
 public class EventContentImportActivity extends BaseActivity {
 
-    private ProgressBar progressBar;
-
     private Event event = new Event();
 
     private MatchImportFragment matchImportFragment;
@@ -55,7 +53,6 @@ public class EventContentImportActivity extends BaseActivity {
         }
 
         actionBar.setSubtitle(event.name);
-        progressBar = findViewById(R.id.progressBar);
 
         ViewPager pager = findViewById(R.id.pager);
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
@@ -102,15 +99,11 @@ public class EventContentImportActivity extends BaseActivity {
             case R.id.save_button:
                 final List<Match> matches = matchImportFragment.getMatches();
                 final List<Team> teams = teamImportFragment.getTeams();
+                showProgressBar();
                 new EventImportSaveTask(event, matches, teams, new EventImportSaveTask.Listener() {
                     @Override
-                    public void onTaskInit() {
-                        progressBar.setVisibility(View.VISIBLE);
-                    }
-
-                    @Override
                     public void onTaskCompleted(Integer status) {
-                        progressBar.setVisibility(View.GONE);
+                        hideProgressBar();
                         AlertDialog.Builder builder = new AlertDialog.Builder(EventContentImportActivity.this);
                         builder.setTitle("Success");
                         builder.setMessage(matches.size() + " matches and " + teams.size() + " teams saved");
