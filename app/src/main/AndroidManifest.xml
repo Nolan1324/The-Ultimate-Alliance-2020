@@ -26,9 +26,6 @@
         <activity android:name=".personalsettings.PersonalSettingsActivity" />
         <activity android:name=".eventimport.EventImportActivity" />
         <activity android:name=".students.StudentsActivity" />
-        <activity
-            android:name=".scout.ScoutActivity"
-            android:screenOrientation="landscape" />
         <activity android:name=".eventimport.EventContentImportActivity" />
         <activity android:name=".datasync.DataSyncActivity" />
         <activity android:name=".settings.SettingsActivity" />

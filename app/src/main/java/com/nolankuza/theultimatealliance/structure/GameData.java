@@ -103,34 +103,6 @@ public class GameData implements Parcelable {
         scouted = in.readInt();
         synced = in.readByte() == 1;
         data.readFromParcel(in);
-
-        /*
-        data.testInt = in.readInt();
-        data.testBoolean = in.readByte() == 1;
-        data.testString = in.readString();
-        data.testFloat = in.readFloat();
-        */
-
-        /*
-        for(Field f : Data.class.getFields()) {
-            if(!fieldIsMeta(f.getName())) {
-                try {
-                    Class type = f.getType();
-                    if (type.equals(int.class)) {
-                        f.setInt(data, in.readByte());
-                    } else if (type.equals(boolean.class)) {
-                        f.setBoolean(data, in.readByte() == 1);
-                    } else if (type.equals(String.class)) {
-                        f.set(data, in.readString());
-                    } else if (type.equals(float.class)) {
-                        f.setFloat(data, in.readFloat());
-                    }
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        */
     }
 
     @Override
@@ -149,34 +121,6 @@ public class GameData implements Parcelable {
         parcel.writeInt(scouted);
         parcel.writeByte(synced ? (byte) 1 : 0);
         data.writeToParcel(parcel, flags);
-
-        /*
-        parcel.writeInt(data.testInt);
-        parcel.writeByte(data.testBoolean ? (byte) 1 : 0);
-        parcel.writeString(data.testString);
-        parcel.writeFloat(data.testFloat);
-        */
-
-        /*
-        for(Field f : Data.class.getFields()) {
-            if(!fieldIsMeta(f.getName())) {
-                try {
-                    Class type = f.getType();
-                    if (type.equals(int.class)) {
-                        parcel.writeByte((byte) f.getInt(data));
-                    } else if (type.equals(boolean.class)) {
-                        parcel.writeByte(f.getBoolean(data) ? (byte) 1 : (byte) 0);
-                    } else if (type.equals(String.class)) {
-                        parcel.writeString((String) f.get(data));
-                    } else if (type.equals(float.class)) {
-                        parcel.writeFloat(f.getFloat(data));
-                    }
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        */
     }
     //endregion
 }
