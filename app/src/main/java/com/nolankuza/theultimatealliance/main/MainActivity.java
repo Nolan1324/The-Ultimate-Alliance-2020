@@ -1,33 +1,20 @@
 package com.nolankuza.theultimatealliance.main;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
-import android.widget.Switch;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.main.master.MasterFragment;
 import com.nolankuza.theultimatealliance.room.SettingsDao;
-import com.nolankuza.theultimatealliance.scout.ScoutBasicActivity;
-import com.nolankuza.theultimatealliance.structure.Match;
-import com.nolankuza.theultimatealliance.structure.PitData;
 import com.nolankuza.theultimatealliance.structure.Settings;
 import com.nolankuza.theultimatealliance.tasks.BluetoothServerThread;
-import com.nolankuza.theultimatealliance.tasks.MatchQueryTask;
-import com.nolankuza.theultimatealliance.tasks.PitQueryTask;
-import com.nolankuza.theultimatealliance.util.Constants;
-
-import java.util.List;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
-import static com.nolankuza.theultimatealliance.ApplicationState.locked;
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 
 public class MainActivity extends BaseActivity {
@@ -51,32 +38,21 @@ public class MainActivity extends BaseActivity {
         }.start();
 
         new BluetoothServerThread(getApplicationContext(), new BluetoothServerThread.Listener() {
-            @Override
-            public void onTaskInit() { }
 
+            //region Slave devices
             @Override
             public void onMatchesSynced() {
                 //TODO Bind getAll to a control
 
-                if(fragment.getClass() == SlaveFragment.class) {
-                    ((SlaveFragment) fragment).updateMatches();
+                if(fragment.getClass() == ScoutFragment.class) {
+                    ((ScoutFragment) fragment).updateData();
                 }
             }
 
             @Override
             public void onTeamsSynced() {
                 if(fragment.getClass() == PitFragment.class) {
-                    ((PitFragment) fragment).updatePits();
-                }
-            }
-
-            @Override
-            public void onPlayoffsSynced() {
-                if(fragment.getClass() == AnalysisFragment.class) {
-                    View view = fragment.getView();
-                    if(view != null) {
-                        ((AnalysisFragment) fragment).update(view);
-                    }
+                    ((PitFragment) fragment).updateData();
                 }
             }
 
@@ -87,13 +63,13 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onStudentsSynced() {
-                if(fragment.getClass() == SlaveFragment.class) {
+                if(fragment.getClass() == ScoutFragment.class) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             View view = fragment.getView();
                             if(view != null) {
-                                ((SlaveFragment) fragment).updateSettings(view, true, false);
+                                ((ScoutFragment) fragment).updateSettings(view, true, false);
                             }
                         }
                     });
@@ -122,13 +98,13 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onSettingsSynced(final boolean allowStudentsToChangeNameChanged, final boolean showAllChanged) {
-                if(fragment.getClass() == SlaveFragment.class) {
+                if(fragment.getClass() == ScoutFragment.class) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             View view = fragment.getView();
                             if(view != null) {
-                                ((SlaveFragment) fragment).updateSettings(view, allowStudentsToChangeNameChanged, showAllChanged);
+                                ((ScoutFragment) fragment).updateSettings(view, allowStudentsToChangeNameChanged, showAllChanged);
                             }
                         }
                     });
@@ -154,6 +130,19 @@ public class MainActivity extends BaseActivity {
                     });
                 }
             }
+            //endregion
+
+            //region Analysis devices
+            @Override
+            public void onPlayoffsSynced() {
+                if(fragment.getClass() == AnalysisFragment.class) {
+                    View view = fragment.getView();
+                    if(view != null) {
+                        ((AnalysisFragment) fragment).update(view);
+                    }
+                }
+            }
+            //endregion
         }).start();
 
         //final ProgressBar progressBar = findViewById(R.id.progressBar);
@@ -198,7 +187,7 @@ public class MainActivity extends BaseActivity {
             } else if(prefs.getBoolean("playoffs_pref", false)) {
                 fragment = new PlayoffFragment();
             } else {
-                fragment = new SlaveFragment();
+                fragment = new ScoutFragment();
             }
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, fragment).commit();
@@ -206,7 +195,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onMenuLockChanged(boolean locked) {
-        if(fragment.getClass() == SlaveFragment.class) {
+        if(fragment.getClass() == ScoutFragment.class) {
             View view = fragment.getView();
             if(view != null) {
                 //view.findViewById(R.id.show_all).setEnabled(!locked);

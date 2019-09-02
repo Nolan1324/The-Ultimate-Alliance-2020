@@ -24,13 +24,7 @@ public class MatchQueryTask extends AsyncTask<Void, Void, List<Match>> {
     }
 
     public interface Listener {
-        void onTaskInit();
         void onTaskCompleted(List<Match> matches);
-    }
-
-    @Override
-    protected void onPreExecute() {
-        listener.onTaskInit();
     }
 
     @Override

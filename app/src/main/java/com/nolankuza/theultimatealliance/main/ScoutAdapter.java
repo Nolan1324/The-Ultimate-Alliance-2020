@@ -4,12 +4,10 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nolankuza.theultimatealliance.R;
@@ -18,7 +16,7 @@ import com.nolankuza.theultimatealliance.structure.Match;
 import java.util.List;
 import java.util.Locale;
 
-public class SlaveAdapter extends RecyclerView.Adapter<SlaveAdapter.ViewHolder> {
+public class ScoutAdapter extends RecyclerView.Adapter<ScoutAdapter.ViewHolder> {
 
     private List<Match> matches;
     public boolean showAll;
@@ -27,7 +25,7 @@ public class SlaveAdapter extends RecyclerView.Adapter<SlaveAdapter.ViewHolder> 
     private LayoutInflater inflater;
     private ItemClickListener clickListener;
 
-    public SlaveAdapter(Context context, List<Match> matches, boolean showAll) {
+    public ScoutAdapter(Context context, List<Match> matches, boolean showAll) {
         this.inflater = LayoutInflater.from(context);
         this.cancelDrawable = context.getResources().getDrawable(R.drawable.ic_cancel);
         this.checkDrawable = context.getResources().getDrawable(R.drawable.ic_check);

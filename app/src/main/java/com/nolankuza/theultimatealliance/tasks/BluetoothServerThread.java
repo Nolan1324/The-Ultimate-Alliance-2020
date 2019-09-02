@@ -50,7 +50,6 @@ public class BluetoothServerThread extends Thread {
     }
 
     public interface Listener {
-        void onTaskInit();
         void onMatchesSynced();
         void onTeamsSynced();
         void onAssignmentSynced();
