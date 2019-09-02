@@ -12,25 +12,18 @@ public class EventsTask extends AsyncTask<Void, Void, List<Event>> {
     private int year;
     private Listener listener;
 
-    public EventsTask(int teamNumber, int year, Listener listener) {
+    EventsTask(int teamNumber, int year, Listener listener) {
         this.teamNumber = teamNumber;
         this.year = year;
         this.listener = listener;
     }
 
     public interface Listener{
-        void onTaskInit();
         void onTaskCompleted(List<Event> events);
     }
 
     @Override
-    protected void onPreExecute() {
-        listener.onTaskInit();
-    }
-
-    @Override
     public List<Event> doInBackground(Void... voids) {
-
         TheBlueAllianceClient client = new TheBlueAllianceClient();
         return client.getEvents(teamNumber, year);
     }

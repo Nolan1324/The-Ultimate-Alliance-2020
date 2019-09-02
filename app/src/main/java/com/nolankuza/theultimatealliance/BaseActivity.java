@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.nolankuza.theultimatealliance.assignment.AssignmentActivity;
 import com.nolankuza.theultimatealliance.datasync.DataSyncActivity;
@@ -32,11 +34,13 @@ import static com.nolankuza.theultimatealliance.util.Constants.lockedItems;
 import static com.nolankuza.theultimatealliance.util.Constants.masterItems;
 
 @SuppressLint("Registered")
-public class BaseActivity extends AppCompatActivity implements PasswordDialogFragment.Listener {
+public abstract class BaseActivity extends AppCompatActivity implements PasswordDialogFragment.Listener {
 
     private DrawerLayout drawerLayout;
     private MenuItem lockItem;
     public ActionBar actionBar;
+
+    private ProgressBar progressBar;
 
     private int toolBarMenu = R.menu.toolbar_default;
 
@@ -45,6 +49,7 @@ public class BaseActivity extends AppCompatActivity implements PasswordDialogFra
         super.onCreate(savedInstanceState);
 
         //Set references
+        try { progressBar = findViewById(R.id.progressBar); } catch (Exception ignored) {};
         drawerLayout = findViewById(R.id.drawer_layout);
 
         //Toolbar init
@@ -101,13 +106,13 @@ public class BaseActivity extends AppCompatActivity implements PasswordDialogFra
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public final boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(toolBarMenu, menu);
         return true;
     }
 
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
+    public final boolean onPrepareOptionsMenu(Menu menu) {
         lockItem = menu.findItem(R.id.lock_button);
         updateMenuLock(lockItem, locked);
         updateIsMaster();
@@ -155,7 +160,7 @@ public class BaseActivity extends AppCompatActivity implements PasswordDialogFra
     }
 
     @Override
-    public void onPasswordCorrect(DialogFragment dialog) {
+    public final void onPasswordCorrect(DialogFragment dialog) {
         updateMenuLock(lockItem, false);
     }
 
@@ -191,7 +196,7 @@ public class BaseActivity extends AppCompatActivity implements PasswordDialogFra
         onMenuLockChanged(locked);
     }
 
-    public void updateIsMaster() {
+    public final void updateIsMaster() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         for (int itemId : masterItems) {
             MenuItem item = navigationView.getMenu().findItem(itemId);
@@ -204,7 +209,15 @@ public class BaseActivity extends AppCompatActivity implements PasswordDialogFra
 
     }
 
-    public void setToolBarMenu(int id) {
+    public final void setToolBarMenu(int id) {
         toolBarMenu = id;
+    }
+
+    public final void showProgressBar() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    public final void hideProgressBar() {
+        progressBar.setVisibility(View.GONE);
     }
 }

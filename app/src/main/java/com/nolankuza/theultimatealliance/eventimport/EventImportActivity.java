@@ -73,15 +73,11 @@ public class EventImportActivity extends BaseActivity {
         }
 
         final ProgressBar progressBar = findViewById(R.id.progressBar);
+        showProgressBar();
         new EventsTask(Integer.parseInt(prefs.getString("team_pref", "33")), Integer.parseInt(prefs.getString("year_pref", Integer.toString(Calendar.getInstance().get(Calendar.YEAR)))), new EventsTask.Listener() {
             @Override
-            public void onTaskInit() {
-                progressBar.setVisibility(View.VISIBLE);
-            }
-
-            @Override
             public void onTaskCompleted(List<Event> events) {
-                progressBar.setVisibility(View.GONE);
+                hideProgressBar();
                 RecyclerView eventRecycler = findViewById(R.id.event_recycler);
                 eventRecycler.setLayoutManager(new LinearLayoutManager(EventImportActivity.this));
                 eventRecycler.addItemDecoration(new DividerItemDecoration(EventImportActivity.this, DividerItemDecoration.VERTICAL));
