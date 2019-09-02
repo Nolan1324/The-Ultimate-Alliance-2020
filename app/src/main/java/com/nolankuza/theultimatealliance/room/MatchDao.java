@@ -31,7 +31,7 @@ public interface MatchDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Match match);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void addAll(List<Match> matches);
 
     @Query("UPDATE matches SET scouted=0")
