@@ -3,7 +3,7 @@ package com.nolankuza.theultimatealliance.eventimport;
 import android.os.AsyncTask;
 
 import com.nolankuza.theultimatealliance.http.TheBlueAllianceClient;
-import com.nolankuza.theultimatealliance.structure.Event;
+import com.nolankuza.theultimatealliance.model.Event;
 
 import java.util.List;
 

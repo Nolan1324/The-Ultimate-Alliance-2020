@@ -4,14 +4,14 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
 
-import com.nolankuza.theultimatealliance.structure.Assignment;
-import com.nolankuza.theultimatealliance.structure.GameData;
-import com.nolankuza.theultimatealliance.structure.Match;
-import com.nolankuza.theultimatealliance.structure.PitData;
-import com.nolankuza.theultimatealliance.structure.PlayoffData;
-import com.nolankuza.theultimatealliance.structure.Settings;
-import com.nolankuza.theultimatealliance.structure.Student;
-import com.nolankuza.theultimatealliance.structure.Team;
+import com.nolankuza.theultimatealliance.model.Assignment;
+import com.nolankuza.theultimatealliance.model.GameData;
+import com.nolankuza.theultimatealliance.model.Match;
+import com.nolankuza.theultimatealliance.model.PitData;
+import com.nolankuza.theultimatealliance.model.PlayoffData;
+import com.nolankuza.theultimatealliance.model.Settings;
+import com.nolankuza.theultimatealliance.model.Student;
+import com.nolankuza.theultimatealliance.model.Team;
 
 @Database(entities = {Match.class, Student.class, Assignment.class, Team.class, Settings.class, GameData.class, PitData.class, PlayoffData.class}, version = 37, exportSchema = true)
 @TypeConverters({Converters.class})

@@ -11,8 +11,8 @@ import android.view.View;
 
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.scout.ScoutBasicActivity;
-import com.nolankuza.theultimatealliance.structure.GameData;
-import com.nolankuza.theultimatealliance.structure.Match;
+import com.nolankuza.theultimatealliance.model.GameData;
+import com.nolankuza.theultimatealliance.model.Match;
 import com.nolankuza.theultimatealliance.tasks.MatchQueryTask;
 
 import java.util.List;

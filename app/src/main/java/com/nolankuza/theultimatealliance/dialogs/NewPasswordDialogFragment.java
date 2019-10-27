@@ -6,7 +6,6 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +13,7 @@ import android.widget.EditText;
 
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.settings.SaveSettingsThread;
-import com.nolankuza.theultimatealliance.structure.Settings;
+import com.nolankuza.theultimatealliance.model.Settings;
 import com.nolankuza.theultimatealliance.tasks.SettingsQueryTask;
 import com.nolankuza.theultimatealliance.util.Sha256;
 

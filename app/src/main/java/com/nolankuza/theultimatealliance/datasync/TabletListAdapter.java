@@ -11,7 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.structure.DeviceInfo;
+import com.nolankuza.theultimatealliance.model.DeviceInfo;
 
 import java.util.List;
 

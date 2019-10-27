@@ -1,6 +1,6 @@
 package com.nolankuza.theultimatealliance.settings;
 
-import com.nolankuza.theultimatealliance.structure.Settings;
+import com.nolankuza.theultimatealliance.model.Settings;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
 

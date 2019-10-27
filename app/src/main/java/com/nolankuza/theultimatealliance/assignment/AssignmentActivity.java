@@ -10,8 +10,8 @@ import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.room.AssignmentDao;
 import com.nolankuza.theultimatealliance.room.StudentDao;
-import com.nolankuza.theultimatealliance.structure.Assignment;
-import com.nolankuza.theultimatealliance.structure.DeviceInfo;
+import com.nolankuza.theultimatealliance.model.Assignment;
+import com.nolankuza.theultimatealliance.model.DeviceInfo;
 import com.nolankuza.theultimatealliance.util.Sync;
 
 import java.util.List;

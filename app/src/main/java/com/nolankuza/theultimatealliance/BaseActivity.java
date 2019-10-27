@@ -25,7 +25,7 @@ import com.nolankuza.theultimatealliance.dialogs.PasswordDialogFragment;
 import com.nolankuza.theultimatealliance.eventimport.EventImportActivity;
 import com.nolankuza.theultimatealliance.main.MainActivity;
 import com.nolankuza.theultimatealliance.settings.SettingsActivity;
-import com.nolankuza.theultimatealliance.structure.Settings;
+import com.nolankuza.theultimatealliance.model.Settings;
 import com.nolankuza.theultimatealliance.students.StudentsActivity;
 import com.nolankuza.theultimatealliance.tasks.SettingsQueryTask;
 

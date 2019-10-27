@@ -1,4 +1,4 @@
-package com.nolankuza.theultimatealliance.structure;
+package com.nolankuza.theultimatealliance.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -3,7 +3,7 @@ package com.nolankuza.theultimatealliance.tasks;
 import android.os.AsyncTask;
 
 import com.nolankuza.theultimatealliance.room.MatchDao;
-import com.nolankuza.theultimatealliance.structure.Match;
+import com.nolankuza.theultimatealliance.model.Match;
 
 import java.util.List;
 

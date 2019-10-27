@@ -3,7 +3,7 @@ package com.nolankuza.theultimatealliance.datasync;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.nolankuza.theultimatealliance.structure.Settings;
+import com.nolankuza.theultimatealliance.model.Settings;
 
 import java.lang.ref.WeakReference;
 

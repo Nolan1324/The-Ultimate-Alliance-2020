@@ -2,7 +2,7 @@ package com.nolankuza.theultimatealliance.room;
 
 import android.arch.persistence.room.TypeConverter;
 
-import com.nolankuza.theultimatealliance.structure.Alliance;
+import com.nolankuza.theultimatealliance.model.Alliance;
 
 public class Converters {
     @TypeConverter

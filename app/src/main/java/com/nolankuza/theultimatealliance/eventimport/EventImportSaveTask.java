@@ -6,12 +6,12 @@ import com.nolankuza.theultimatealliance.room.GameDataDao;
 import com.nolankuza.theultimatealliance.room.MatchDao;
 import com.nolankuza.theultimatealliance.room.SettingsDao;
 import com.nolankuza.theultimatealliance.room.TeamDao;
-import com.nolankuza.theultimatealliance.structure.Alliance;
-import com.nolankuza.theultimatealliance.structure.Event;
-import com.nolankuza.theultimatealliance.structure.GameData;
-import com.nolankuza.theultimatealliance.structure.Match;
-import com.nolankuza.theultimatealliance.structure.Settings;
-import com.nolankuza.theultimatealliance.structure.Team;
+import com.nolankuza.theultimatealliance.model.Alliance;
+import com.nolankuza.theultimatealliance.model.Event;
+import com.nolankuza.theultimatealliance.model.GameData;
+import com.nolankuza.theultimatealliance.model.Match;
+import com.nolankuza.theultimatealliance.model.Settings;
+import com.nolankuza.theultimatealliance.model.Team;
 
 import java.util.List;
 

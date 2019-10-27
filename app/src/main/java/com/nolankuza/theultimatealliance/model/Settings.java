@@ -1,4 +1,4 @@
-package com.nolankuza.theultimatealliance.structure;
+package com.nolankuza.theultimatealliance.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

@@ -3,7 +3,7 @@ package com.nolankuza.theultimatealliance.students;
 import android.os.AsyncTask;
 
 import com.nolankuza.theultimatealliance.room.StudentDao;
-import com.nolankuza.theultimatealliance.structure.Student;
+import com.nolankuza.theultimatealliance.model.Student;
 
 import java.util.List;
 

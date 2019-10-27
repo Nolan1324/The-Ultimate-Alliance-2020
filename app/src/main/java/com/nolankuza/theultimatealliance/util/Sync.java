@@ -3,7 +3,7 @@ package com.nolankuza.theultimatealliance.util;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 
-import com.nolankuza.theultimatealliance.structure.DeviceInfo;
+import com.nolankuza.theultimatealliance.model.DeviceInfo;
 
 import java.util.ArrayList;
 import java.util.Collections;

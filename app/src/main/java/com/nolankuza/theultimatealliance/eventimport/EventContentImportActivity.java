@@ -9,17 +9,15 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ProgressBar;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.eventimport.matchimport.MatchImportFragment;
 import com.nolankuza.theultimatealliance.eventimport.teamimport.TeamImportFragment;
 import com.nolankuza.theultimatealliance.main.MainActivity;
-import com.nolankuza.theultimatealliance.structure.Event;
-import com.nolankuza.theultimatealliance.structure.Match;
-import com.nolankuza.theultimatealliance.structure.Team;
+import com.nolankuza.theultimatealliance.model.Event;
+import com.nolankuza.theultimatealliance.model.Match;
+import com.nolankuza.theultimatealliance.model.Team;
 
 import java.util.ArrayList;
 import java.util.List;

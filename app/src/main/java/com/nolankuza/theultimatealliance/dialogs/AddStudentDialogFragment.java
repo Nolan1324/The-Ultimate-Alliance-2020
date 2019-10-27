@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.structure.Student;
+import com.nolankuza.theultimatealliance.model.Student;
 
 public class AddStudentDialogFragment extends DialogFragment {
     public interface Listener {

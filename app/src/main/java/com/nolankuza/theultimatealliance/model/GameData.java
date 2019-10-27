@@ -1,4 +1,4 @@
-package com.nolankuza.theultimatealliance.structure;
+package com.nolankuza.theultimatealliance.model;
 
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
@@ -8,13 +8,14 @@ import android.support.annotation.NonNull;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 
-@Entity(tableName = "playoffdata", primaryKeys = {"index", "alliance", "driverStation"})
-public class PlayoffData implements Parcelable {
+@Entity(tableName = "gamedata", primaryKeys = {"matchKey", "alliance", "driverStation"})
+public class GameData implements Parcelable {
 
     @NonNull
-    public int index;
+    public String matchKey;
+    public int matchNumber;
     @NonNull
-    public Alliance alliance = Alliance.Red;
+    public Alliance alliance;
     public int driverStation;
     public int teamNumber;
     public String scouter = "";
@@ -24,36 +25,27 @@ public class PlayoffData implements Parcelable {
     @Embedded
     public Data data = new Data();
 
-    public PlayoffData() {
+    public GameData() {
 
-    }
-
-    public PlayoffData(int index) {
-        this.index = index;
     }
 
     public String getKey() {
-        return index + "_" + alliance + "_" + driverStation;
+        return matchKey + "_" + alliance + "_" + driverStation;
     }
 
     public String getRole() {
         return alliance.toString() + driverStation;
     }
 
-    public static class Data {
-        public byte preload;
-        public byte startLevel;
-        public byte endLevel;
-        public int hatchS;
-        public int hatchF;
-        public int cargoS;
-        public int cargoF;
+    public static class Data extends com.nolankuza.theultimatealliance.model.gamedata.Data {
     }
 
-    public static PlayoffData fromMatch(Match match) {
-        PlayoffData gameData = new PlayoffData();
+    public static GameData fromMatch(Match match) {
+        GameData gameData = new GameData();
+        gameData.matchKey = match.key;
+        gameData.matchNumber = match.matchNumber;
         String team = "0000";
-        switch(prefs.getString("driver_pref", "Red1")) {
+        switch(prefs.getString("driver_pref", "0")) {
             case "0":
                 team = match.red1;
                 gameData.alliance = Alliance.Red;
@@ -91,33 +83,26 @@ public class PlayoffData implements Parcelable {
     }
 
     //region Parcelable
-    public static final Creator CREATOR = new Creator() {
-        public PlayoffData createFromParcel(Parcel in) {
-            return new PlayoffData(in);
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public GameData createFromParcel(Parcel in) {
+            return new GameData(in);
         }
 
-        public PlayoffData[] newArray(int size) {
-            return new PlayoffData[size];
+        public GameData[] newArray(int size) {
+            return new GameData[size];
         }
     };
 
-    public PlayoffData(Parcel in) {
-        index = in.readInt();
+    public GameData(Parcel in) {
+        matchKey = in.readString();
+        matchNumber = in.readInt();
         alliance = in.readByte() == 0 ? Alliance.Red : Alliance.Blue;
         driverStation = in.readByte();
         teamNumber = in.readInt();
         scouter = in.readString();
         scouted = in.readInt();
         synced = in.readByte() == 1;
-
-        data.preload = in.readByte();
-        data.startLevel = in.readByte();
-        data.endLevel = in.readByte();
-
-        data.hatchS = in.readInt();
-        data.hatchF = in.readInt();
-        data.cargoS = in.readInt();
-        data.cargoF = in.readInt();
+        data.readFromParcel(in);
     }
 
     @Override
@@ -127,22 +112,15 @@ public class PlayoffData implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int flags) {
-        parcel.writeInt(index);
+        parcel.writeString(matchKey);
+        parcel.writeInt(matchNumber);
         parcel.writeByte((byte) alliance.getCode());
         parcel.writeByte((byte) driverStation);
         parcel.writeInt(teamNumber);
         parcel.writeString(scouter);
         parcel.writeInt(scouted);
         parcel.writeByte(synced ? (byte) 1 : 0);
-
-        parcel.writeByte(data.preload);
-        parcel.writeByte(data.startLevel);
-        parcel.writeByte(data.endLevel);
-
-        parcel.writeInt(data.hatchS);
-        parcel.writeInt(data.hatchF);
-        parcel.writeInt(data.cargoS);
-        parcel.writeInt(data.cargoF);
+        data.writeToParcel(parcel, flags);
     }
     //endregion
 }

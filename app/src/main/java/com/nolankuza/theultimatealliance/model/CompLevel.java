@@ -1,4 +1,4 @@
-package com.nolankuza.theultimatealliance.structure;
+package com.nolankuza.theultimatealliance.model;
 
 public enum CompLevel {
     QM(0), QF(1), SF(2), F(3);

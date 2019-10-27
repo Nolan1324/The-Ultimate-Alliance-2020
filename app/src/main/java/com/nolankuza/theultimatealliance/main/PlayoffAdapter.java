@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.structure.PlayoffData;
+import com.nolankuza.theultimatealliance.model.PlayoffData;
 
 import java.util.List;
 import java.util.Locale;

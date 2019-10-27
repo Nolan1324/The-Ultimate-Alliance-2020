@@ -3,7 +3,7 @@ package com.nolankuza.theultimatealliance.eventimport.matchimport;
 import android.os.AsyncTask;
 
 import com.nolankuza.theultimatealliance.http.TheBlueAllianceClient;
-import com.nolankuza.theultimatealliance.structure.Match;
+import com.nolankuza.theultimatealliance.model.Match;
 
 import java.util.List;
 

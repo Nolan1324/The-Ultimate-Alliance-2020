@@ -27,7 +27,7 @@ public class ActionTextView extends android.support.v7.widget.AppCompatTextView 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public ActionTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        setBackground(getResources().getDrawable(R.drawable.circle, null));
+        setBackground(getResources().getDrawable(R.drawable.action_circle, null));
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ActionView, 0, 0);
         isWait = a.getBoolean(R.styleable.ActionView_state_wait, false);
         isWarn = a.getBoolean(R.styleable.ActionView_state_warn, false);

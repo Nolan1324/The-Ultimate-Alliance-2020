@@ -14,8 +14,8 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.structure.Alliance;
-import com.nolankuza.theultimatealliance.structure.PlayoffData;
+import com.nolankuza.theultimatealliance.model.Alliance;
+import com.nolankuza.theultimatealliance.model.PlayoffData;
 
 import java.util.ArrayList;
 import java.util.Arrays;

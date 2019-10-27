@@ -6,7 +6,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
-import com.nolankuza.theultimatealliance.structure.Match;
+import com.nolankuza.theultimatealliance.model.Match;
 
 import java.util.List;
 

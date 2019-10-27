@@ -1,6 +1,6 @@
 package com.nolankuza.theultimatealliance.pit;
 
-import com.nolankuza.theultimatealliance.structure.PitData;
+import com.nolankuza.theultimatealliance.model.PitData;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
 

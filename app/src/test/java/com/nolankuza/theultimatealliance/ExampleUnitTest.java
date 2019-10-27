@@ -1,16 +1,6 @@
 package com.nolankuza.theultimatealliance;
 
-import android.location.Address;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.util.Log;
-
-import com.nolankuza.theultimatealliance.http.TheBlueAllianceClient;
-import com.nolankuza.theultimatealliance.structure.Event;
-
 import org.junit.Test;
-
-import java.util.Locale;
 
 import static org.junit.Assert.*;
 

@@ -1,6 +1,6 @@
 package com.nolankuza.theultimatealliance.scout;
 
-import com.nolankuza.theultimatealliance.structure.GameData;
+import com.nolankuza.theultimatealliance.model.GameData;
 
 public interface GameDataListener {
     void onDataUpdated(GameData.Data data);

@@ -8,12 +8,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.dialogs.AddStudentDialogFragment;
-import com.nolankuza.theultimatealliance.structure.Student;
+import com.nolankuza.theultimatealliance.model.Student;
 import com.nolankuza.theultimatealliance.util.CSVReader;
 
 import java.util.List;

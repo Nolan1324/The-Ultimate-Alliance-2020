@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.structure.Student;
+import com.nolankuza.theultimatealliance.model.Student;
 
 import java.util.Collections;
 import java.util.List;

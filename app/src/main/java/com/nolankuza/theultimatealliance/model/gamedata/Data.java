@@ -1,4 +1,4 @@
-package com.nolankuza.theultimatealliance.structure.gamedata;
+package com.nolankuza.theultimatealliance.model.gamedata;
 
 import android.os.Parcel;
 

@@ -11,7 +11,7 @@ import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.main.master.MasterFragment;
 import com.nolankuza.theultimatealliance.room.SettingsDao;
-import com.nolankuza.theultimatealliance.structure.Settings;
+import com.nolankuza.theultimatealliance.model.Settings;
 import com.nolankuza.theultimatealliance.tasks.BluetoothServerThread;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;

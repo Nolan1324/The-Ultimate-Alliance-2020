@@ -2,7 +2,7 @@ package com.nolankuza.theultimatealliance.tasks;
 
 import android.os.AsyncTask;
 
-import com.nolankuza.theultimatealliance.structure.Settings;
+import com.nolankuza.theultimatealliance.model.Settings;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
 

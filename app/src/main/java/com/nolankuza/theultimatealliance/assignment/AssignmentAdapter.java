@@ -14,7 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.structure.Assignment;
+import com.nolankuza.theultimatealliance.model.Assignment;
 import com.nolankuza.theultimatealliance.util.Constants;
 
 import java.lang.ref.WeakReference;

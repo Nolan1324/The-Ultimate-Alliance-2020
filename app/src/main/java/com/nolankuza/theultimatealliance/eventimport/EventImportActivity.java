@@ -19,14 +19,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.settings.SettingsActivity;
-import com.nolankuza.theultimatealliance.structure.Event;
-import com.nolankuza.theultimatealliance.structure.Match;
-import com.nolankuza.theultimatealliance.structure.Team;
+import com.nolankuza.theultimatealliance.model.Event;
+import com.nolankuza.theultimatealliance.model.Match;
+import com.nolankuza.theultimatealliance.model.Team;
 import com.nolankuza.theultimatealliance.util.CSVReader;
 
 import java.util.ArrayList;

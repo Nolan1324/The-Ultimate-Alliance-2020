@@ -15,7 +15,7 @@ import android.widget.EditText;
 
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.playoffs.PlayoffActivity;
-import com.nolankuza.theultimatealliance.structure.PlayoffData;
+import com.nolankuza.theultimatealliance.model.PlayoffData;
 
 import java.util.List;
 

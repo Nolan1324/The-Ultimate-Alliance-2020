@@ -7,8 +7,8 @@ import android.widget.RadioGroup;
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.scout.Counter;
-import com.nolankuza.theultimatealliance.structure.Alliance;
-import com.nolankuza.theultimatealliance.structure.PlayoffData;
+import com.nolankuza.theultimatealliance.model.Alliance;
+import com.nolankuza.theultimatealliance.model.PlayoffData;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 

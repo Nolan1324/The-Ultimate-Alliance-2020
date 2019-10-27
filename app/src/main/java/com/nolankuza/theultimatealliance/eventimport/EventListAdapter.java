@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.structure.Event;
+import com.nolankuza.theultimatealliance.model.Event;
 
 import java.util.List;
 

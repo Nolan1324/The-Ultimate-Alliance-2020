@@ -22,7 +22,7 @@ import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.MessageLogger;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.databinding.ActivityDataSyncBinding;
-import com.nolankuza.theultimatealliance.structure.DeviceInfo;
+import com.nolankuza.theultimatealliance.model.DeviceInfo;
 import com.nolankuza.theultimatealliance.tasks.BluetoothClientTask;
 import com.nolankuza.theultimatealliance.util.Constants;
 import com.nolankuza.theultimatealliance.util.Resources;

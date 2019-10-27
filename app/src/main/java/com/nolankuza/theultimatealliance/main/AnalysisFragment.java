@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.room.PlayoffDataDao;
-import com.nolankuza.theultimatealliance.structure.Alliance;
-import com.nolankuza.theultimatealliance.structure.PlayoffData;
+import com.nolankuza.theultimatealliance.model.Alliance;
+import com.nolankuza.theultimatealliance.model.PlayoffData;
 
 import java.util.List;
 

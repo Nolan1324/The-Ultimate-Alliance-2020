@@ -10,7 +10,7 @@ import android.preference.PreferenceFragment;
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.dialogs.NewPasswordDialogFragment;
-import com.nolankuza.theultimatealliance.structure.Settings;
+import com.nolankuza.theultimatealliance.model.Settings;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
