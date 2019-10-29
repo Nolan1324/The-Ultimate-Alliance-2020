@@ -1,5 +1,6 @@
 package com.nolankuza.theultimatealliance.main;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
