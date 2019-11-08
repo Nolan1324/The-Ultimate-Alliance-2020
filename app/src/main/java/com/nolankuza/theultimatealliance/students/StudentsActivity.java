@@ -11,7 +11,6 @@ import android.view.View;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.dialogs.AddStudentDialogFragment;
 import com.nolankuza.theultimatealliance.model.Student;
 import com.nolankuza.theultimatealliance.util.CSVReader;
 
@@ -19,7 +18,7 @@ import java.util.List;
 
 import static com.nolankuza.theultimatealliance.util.Constants.CHOOSE_STUDENTS_FILE_CODE;
 
-public class StudentsActivity extends BaseActivity implements AddStudentDialogFragment.Listener {
+public class StudentsActivity extends BaseActivity implements StudentAddDialogFragment.Listener {
 
     StudentAdapter studentAdapter;
 
@@ -62,7 +61,7 @@ public class StudentsActivity extends BaseActivity implements AddStudentDialogFr
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_student_button:
-                new AddStudentDialogFragment().show(getFragmentManager(), "AddStudent");
+                new StudentAddDialogFragment().show(getFragmentManager(), "AddStudent");
                 return true;
             case R.id.from_csv_button:
                 Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);

@@ -1,4 +1,4 @@
-package com.nolankuza.theultimatealliance.dialogs;
+package com.nolankuza.theultimatealliance.students;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -15,13 +15,13 @@ import android.widget.EditText;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.model.Student;
 
-public class AddStudentDialogFragment extends DialogFragment {
+public class StudentAddDialogFragment extends DialogFragment {
     public interface Listener {
         void onAddAccepted(DialogFragment dialog, Student student);
     }
 
     // Use this instance of the interface to deliver action events
-    AddStudentDialogFragment.Listener listener;
+    StudentAddDialogFragment.Listener listener;
 
     // Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
     @Override
@@ -30,11 +30,11 @@ public class AddStudentDialogFragment extends DialogFragment {
         // Verify that the host activity implements the callback interface
         try {
             // Instantiate the NoticeDialogListener so we can send events to the host
-            listener = (AddStudentDialogFragment.Listener) activity;
+            listener = (StudentAddDialogFragment.Listener) activity;
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
             throw new ClassCastException(activity.toString()
-                    + " must implement AddStudentDialogFragment.Listener");
+                    + " must implement StudentAddDialogFragment.Listener");
         }
     }
 
@@ -50,7 +50,7 @@ public class AddStudentDialogFragment extends DialogFragment {
                 .setPositiveButton("Add", null)
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        AddStudentDialogFragment.this.getDialog().cancel();
+                        StudentAddDialogFragment.this.getDialog().cancel();
                     }
                 });
         final Dialog dialog = builder.create();
@@ -66,7 +66,7 @@ public class AddStudentDialogFragment extends DialogFragment {
                         final String grade = ((EditText)dialog.findViewById(R.id.grade_input)).getText().toString();
                         if(!firstName.equals("") && !lastName.equals("") && !grade.equals("")) {
                             dialog.dismiss();
-                            listener.onAddAccepted(AddStudentDialogFragment.this, new Student(firstName, lastName, Integer.parseInt(grade)));
+                            listener.onAddAccepted(StudentAddDialogFragment.this, new Student(firstName, lastName, Integer.parseInt(grade)));
                         }
                     }
                 });
