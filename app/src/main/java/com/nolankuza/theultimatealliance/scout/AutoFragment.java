@@ -21,7 +21,7 @@ import android.widget.ToggleButton;
 
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.model.Alliance;
-import com.nolankuza.theultimatealliance.model.GameData;
+import com.nolankuza.theultimatealliance.model.gamedata.GameData;
 import com.nolankuza.theultimatealliance.util.Constants;
 
 import java.util.ArrayList;

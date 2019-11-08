@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.model.PitData;
+import com.nolankuza.theultimatealliance.model.pitdata.PitData;
 
 import java.util.List;
 import java.util.Locale;

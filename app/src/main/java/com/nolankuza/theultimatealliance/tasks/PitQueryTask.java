@@ -3,7 +3,7 @@ package com.nolankuza.theultimatealliance.tasks;
 import android.os.AsyncTask;
 
 import com.nolankuza.theultimatealliance.room.PitDataDao;
-import com.nolankuza.theultimatealliance.model.PitData;
+import com.nolankuza.theultimatealliance.model.pitdata.PitData;
 import com.nolankuza.theultimatealliance.model.Team;
 import com.nolankuza.theultimatealliance.util.DataUtil;
 

@@ -6,7 +6,7 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.database.Cursor;
 
-import com.nolankuza.theultimatealliance.model.GameData;
+import com.nolankuza.theultimatealliance.model.gamedata.GameData;
 
 import java.util.List;
 

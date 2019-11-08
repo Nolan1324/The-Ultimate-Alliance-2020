@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.pit.PitActivity;
-import com.nolankuza.theultimatealliance.model.PitData;
+import com.nolankuza.theultimatealliance.model.pitdata.PitData;
 import com.nolankuza.theultimatealliance.tasks.PitQueryTask;
 
 import java.util.List;

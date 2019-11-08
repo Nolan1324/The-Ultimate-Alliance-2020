@@ -1,6 +1,6 @@
 package com.nolankuza.theultimatealliance.scout;
 
-import com.nolankuza.theultimatealliance.model.GameData;
+import com.nolankuza.theultimatealliance.model.gamedata.GameData;
 import com.nolankuza.theultimatealliance.model.Match;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;

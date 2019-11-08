@@ -6,7 +6,7 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.database.Cursor;
 
-import com.nolankuza.theultimatealliance.model.PitData;
+import com.nolankuza.theultimatealliance.model.pitdata.PitData;
 
 import java.util.List;
 

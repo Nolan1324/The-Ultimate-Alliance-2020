@@ -2,7 +2,7 @@ package com.nolankuza.theultimatealliance.model.gamedata;
 
 import android.os.Parcel;
 
-public class Data extends DataSuper {
+class Data extends DataSuper {
 
     //region Auto
     public byte startPosition;

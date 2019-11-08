@@ -9,7 +9,7 @@ import android.support.v4.view.ViewPager;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.model.GameData;
+import com.nolankuza.theultimatealliance.model.gamedata.GameData;
 import com.nolankuza.theultimatealliance.model.Match;
 import com.nolankuza.theultimatealliance.util.Constants;
 

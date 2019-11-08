@@ -10,7 +10,7 @@ import android.widget.Spinner;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.model.PitData;
+import com.nolankuza.theultimatealliance.model.pitdata.PitData;
 import com.nolankuza.theultimatealliance.util.DataUtil;
 
 public class PitActivity extends BaseActivity {

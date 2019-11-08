@@ -5,9 +5,9 @@ import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
 
 import com.nolankuza.theultimatealliance.model.Assignment;
-import com.nolankuza.theultimatealliance.model.GameData;
+import com.nolankuza.theultimatealliance.model.gamedata.GameData;
 import com.nolankuza.theultimatealliance.model.Match;
-import com.nolankuza.theultimatealliance.model.PitData;
+import com.nolankuza.theultimatealliance.model.pitdata.PitData;
 import com.nolankuza.theultimatealliance.model.PlayoffData;
 import com.nolankuza.theultimatealliance.model.Settings;
 import com.nolankuza.theultimatealliance.model.Student;

@@ -1,10 +1,13 @@
-package com.nolankuza.theultimatealliance.model;
+package com.nolankuza.theultimatealliance.model.gamedata;
 
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
+
+import com.nolankuza.theultimatealliance.model.Alliance;
+import com.nolankuza.theultimatealliance.model.Match;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 
