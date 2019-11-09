@@ -34,7 +34,7 @@ public class PitFragment extends SlaveFragment {
             public void onTaskCompleted(List<PitData> pitDataList) {
                 pitRecycler.setLayoutManager(new LinearLayoutManager(context));
                 pitRecycler.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
-                pitAdapter = new PitAdapter(context.getApplicationContext(), pitDataList)
+                pitAdapter = new PitAdapter(context.getApplicationContext(), pitDataList);
                 pitAdapter.setClickListener(new PitAdapter.ItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
