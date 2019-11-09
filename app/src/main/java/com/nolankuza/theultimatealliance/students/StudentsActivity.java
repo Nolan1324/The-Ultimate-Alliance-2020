@@ -16,7 +16,7 @@ import com.nolankuza.theultimatealliance.util.CSVReader;
 
 import java.util.List;
 
-import static com.nolankuza.theultimatealliance.util.Constants.CHOOSE_STUDENTS_FILE_CODE;
+import static com.nolankuza.theultimatealliance.Constants.CHOOSE_STUDENTS_FILE_CODE;
 
 public class StudentsActivity extends BaseActivity implements StudentAddDialogFragment.Listener {
 

@@ -27,7 +27,5 @@ public class ApplicationState extends Application {
         return database;
     }
 
-    //TODO Load matches from csv
     //TODO Google Drive API?
-    
 }

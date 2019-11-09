@@ -30,8 +30,8 @@ import com.nolankuza.theultimatealliance.students.StudentsActivity;
 import com.nolankuza.theultimatealliance.tasks.SettingsQueryTask;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.locked;
-import static com.nolankuza.theultimatealliance.util.Constants.lockedItems;
-import static com.nolankuza.theultimatealliance.util.Constants.masterItems;
+import static com.nolankuza.theultimatealliance.Constants.lockedItems;
+import static com.nolankuza.theultimatealliance.Constants.masterItems;
 
 @SuppressLint("Registered")
 public abstract class BaseActivity extends AppCompatActivity implements PasswordDialogFragment.Listener {
@@ -140,7 +140,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Password
                                 passwordDialogFragment.setArguments(bundle);
                                 passwordDialogFragment.show(getFragmentManager(), "");
                             } else {
-                                //TODO Add create password prompt
                                 NewPasswordDialogFragment newPasswordDialogFragment = new NewPasswordDialogFragment();
                                 newPasswordDialogFragment.show(getFragmentManager(), "");
                             }

@@ -32,8 +32,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import static com.nolankuza.theultimatealliance.util.Constants.CHOOSE_MATCHES_FILE_CODE;
-import static com.nolankuza.theultimatealliance.util.Constants.CHOOSE_TEAMS_FILE_CODE;
+import static com.nolankuza.theultimatealliance.Constants.CHOOSE_MATCHES_FILE_CODE;
+import static com.nolankuza.theultimatealliance.Constants.CHOOSE_TEAMS_FILE_CODE;
 
 public class EventImportActivity extends BaseActivity {
 

@@ -1,4 +1,4 @@
-package com.nolankuza.theultimatealliance.main;
+package com.nolankuza.theultimatealliance.main.scoutpit;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

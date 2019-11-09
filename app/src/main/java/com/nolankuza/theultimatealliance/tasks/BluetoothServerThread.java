@@ -33,7 +33,7 @@ import java.util.List;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
-import static com.nolankuza.theultimatealliance.util.Constants.BLUETOOTH_UUID;
+import static com.nolankuza.theultimatealliance.Constants.BLUETOOTH_UUID;
 
 public class BluetoothServerThread extends Thread {
     private final WeakReference<Context> context;
@@ -150,7 +150,6 @@ public class BluetoothServerThread extends Thread {
                                     List<Student> students = Binary.unmarshall(Binary.readBytes(is, lengthWrapped.getInt()), Student.class, Student.CREATOR);
                                     database.studentDao().deleteAll();
                                     database.studentDao().insertAll(students);
-                                    //TODO Change name
                                     listener.onStudentsSynced();
                                     break;
                                 case Sync.SETTINGS:

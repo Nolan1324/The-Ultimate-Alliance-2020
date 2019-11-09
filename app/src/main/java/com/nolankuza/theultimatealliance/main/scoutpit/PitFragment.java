@@ -1,4 +1,4 @@
-package com.nolankuza.theultimatealliance.main;
+package com.nolankuza.theultimatealliance.main.scoutpit;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.nolankuza.theultimatealliance.R;
+import com.nolankuza.theultimatealliance.main.SlaveFragment;
 import com.nolankuza.theultimatealliance.pit.PitActivity;
 import com.nolankuza.theultimatealliance.model.pitdata.PitData;
 import com.nolankuza.theultimatealliance.tasks.PitQueryTask;
@@ -33,8 +34,7 @@ public class PitFragment extends SlaveFragment {
             public void onTaskCompleted(List<PitData> pitDataList) {
                 pitRecycler.setLayoutManager(new LinearLayoutManager(context));
                 pitRecycler.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
-                pitAdapter = new PitAdapter(context.getApplicationContext(), pitDataList);
-                //TODO Finish pit main implementation
+                pitAdapter = new PitAdapter(context.getApplicationContext(), pitDataList)
                 pitAdapter.setClickListener(new PitAdapter.ItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
@@ -54,7 +54,7 @@ public class PitFragment extends SlaveFragment {
 
     @Override
     public void updateData() {
-        new PitQueryTask(showAll.isChecked(), new PitQueryTask.Listener() {
+        new PitQueryTask(isShowingAll(), new PitQueryTask.Listener() {
             @Override
             public void onTaskCompleted(List<PitData> pitDataList) {
                 if(pitAdapter != null) {

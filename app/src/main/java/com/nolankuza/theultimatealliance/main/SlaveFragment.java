@@ -22,8 +22,8 @@ import static com.nolankuza.theultimatealliance.ApplicationState.locked;
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 
 public abstract class SlaveFragment extends Fragment {
-    Spinner studentSpinner;
-    Switch showAll;
+    protected Spinner studentSpinner;
+    private Switch showAll;
 
     private int layout;
 
@@ -88,7 +88,11 @@ public abstract class SlaveFragment extends Fragment {
         }
     }
 
-    void setLayout(int layout) {
+    protected boolean isShowingAll() {
+        return showAll.isChecked();
+    }
+
+    protected void setLayout(int layout) {
         this.layout = layout;
     }
 

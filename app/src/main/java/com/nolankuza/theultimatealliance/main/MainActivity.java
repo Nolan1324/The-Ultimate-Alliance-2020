@@ -9,7 +9,11 @@ import android.view.View;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
+import com.nolankuza.theultimatealliance.main.analysisplayoff.AnalysisPlayoffFragment;
 import com.nolankuza.theultimatealliance.main.master.MasterFragment;
+import com.nolankuza.theultimatealliance.main.scoutmatch.ScoutFragment;
+import com.nolankuza.theultimatealliance.main.scoutpit.PitFragment;
+import com.nolankuza.theultimatealliance.main.scoutplayoff.PlayoffFragment;
 import com.nolankuza.theultimatealliance.room.SettingsDao;
 import com.nolankuza.theultimatealliance.model.Settings;
 import com.nolankuza.theultimatealliance.tasks.BluetoothServerThread;
@@ -135,10 +139,10 @@ public class MainActivity extends BaseActivity {
             //region Analysis devices
             @Override
             public void onPlayoffsSynced() {
-                if(fragment.getClass() == AnalysisFragment.class) {
+                if(fragment.getClass() == AnalysisPlayoffFragment.class) {
                     View view = fragment.getView();
                     if(view != null) {
-                        ((AnalysisFragment) fragment).update(view);
+                        ((AnalysisPlayoffFragment) fragment).update(view);
                     }
                 }
             }
@@ -183,7 +187,7 @@ public class MainActivity extends BaseActivity {
             if(role.equals("6")){
                 fragment = new PitFragment();
             } else if(role.equals("7"))  {
-                fragment = new AnalysisFragment();
+                fragment = new AnalysisPlayoffFragment();
             } else if(prefs.getBoolean("playoffs_pref", false)) {
                 fragment = new PlayoffFragment();
             } else {

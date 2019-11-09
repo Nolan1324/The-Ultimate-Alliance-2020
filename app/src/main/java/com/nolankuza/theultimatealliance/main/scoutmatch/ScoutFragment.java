@@ -1,4 +1,4 @@
-package com.nolankuza.theultimatealliance.main;
+package com.nolankuza.theultimatealliance.main.scoutmatch;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.nolankuza.theultimatealliance.R;
+import com.nolankuza.theultimatealliance.main.SlaveFragment;
+import com.nolankuza.theultimatealliance.main.scoutmatch.ScoutAdapter;
 import com.nolankuza.theultimatealliance.scout.ScoutBasicActivity;
 import com.nolankuza.theultimatealliance.model.gamedata.GameData;
 import com.nolankuza.theultimatealliance.model.Match;
@@ -29,13 +31,13 @@ public class ScoutFragment extends SlaveFragment {
     @Override
     public void loadData(final Context context, final View view) {
         final RecyclerView matchImportRecycler = view.findViewById(R.id.match_import_recycler);
-        new MatchQueryTask(showAll.isChecked(), new MatchQueryTask.Listener() {
+        new MatchQueryTask(isShowingAll(), new MatchQueryTask.Listener() {
             @Override
             public void onTaskCompleted(List<Match> matches) {
                 //progressBar.setVisibility(View.GONE);
                 matchImportRecycler.setLayoutManager(new LinearLayoutManager(context));
                 matchImportRecycler.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
-                matchImportAdapter = new ScoutAdapter(context.getApplicationContext(), matches, showAll.isChecked());
+                matchImportAdapter = new ScoutAdapter(context.getApplicationContext(), matches, isShowingAll());
                 matchImportAdapter.setClickListener(new ScoutAdapter.ItemClickListener() {
                     @Override
                     public void onItemClick(View view, Match match) {
@@ -99,11 +101,11 @@ public class ScoutFragment extends SlaveFragment {
 
     @Override
     public void updateData() {
-        new MatchQueryTask(showAll.isChecked(), new MatchQueryTask.Listener() {
+        new MatchQueryTask(isShowingAll(), new MatchQueryTask.Listener() {
             @Override
             public void onTaskCompleted(List<Match> matches) {
                 if(matchImportAdapter != null) {
-                    matchImportAdapter.showAll = showAll.isChecked();
+                    matchImportAdapter.showAll = isShowingAll();
                     matchImportAdapter.setData(matches);
                 }
             }

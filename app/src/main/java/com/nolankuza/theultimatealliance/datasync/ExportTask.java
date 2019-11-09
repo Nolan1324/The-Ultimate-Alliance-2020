@@ -96,7 +96,6 @@ public class ExportTask extends AsyncTask<Void, Void, String> {
         if(cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
                 StringBuilder builder = new StringBuilder();
-                //TODO Make scouted index dynamic
                 for(int i = 0; i < scoutedIndex + 1; i++) {
                     builder.append(cursor.getString(i)).append(",");
                 }

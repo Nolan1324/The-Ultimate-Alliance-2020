@@ -4,7 +4,7 @@ import com.google.gson.GsonBuilder;
 import com.nolankuza.theultimatealliance.model.Event;
 import com.nolankuza.theultimatealliance.model.Match;
 import com.nolankuza.theultimatealliance.model.Team;
-import com.nolankuza.theultimatealliance.util.Constants;
+import com.nolankuza.theultimatealliance.Constants;
 
 import java.io.IOException;
 import java.io.InputStreamReader;

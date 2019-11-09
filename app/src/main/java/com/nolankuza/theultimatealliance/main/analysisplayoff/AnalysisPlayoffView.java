@@ -1,4 +1,4 @@
-package com.nolankuza.theultimatealliance.main;
+package com.nolankuza.theultimatealliance.main.analysisplayoff;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -22,7 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-public class AnalysisView extends CoordinatorLayout {
+public class AnalysisPlayoffView extends CoordinatorLayout {
     private TextView title;
     private BarChart graph;
     private TextView preload1;
@@ -35,23 +35,23 @@ public class AnalysisView extends CoordinatorLayout {
     private TextView start3;
     private TextView end3;
     
-    public AnalysisView(Context context) {
+    public AnalysisPlayoffView(Context context) {
         super(context);
         init();
     }
 
-    public AnalysisView(Context context, AttributeSet attrs) {
+    public AnalysisPlayoffView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public AnalysisView(Context context, AttributeSet attrs, int defStyle) {
+    public AnalysisPlayoffView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
 
     private void init() {
-        inflate(getContext(), R.layout.view_analysis, this);
+        inflate(getContext(), R.layout.view_analysis_playoff, this);
         this.title = findViewById(R.id.title);
         this.graph = findViewById(R.id.graph);
         this.preload1 = findViewById(R.id.preload_1);

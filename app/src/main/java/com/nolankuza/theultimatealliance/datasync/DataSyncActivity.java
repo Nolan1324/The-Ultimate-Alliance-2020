@@ -24,7 +24,7 @@ import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.databinding.ActivityDataSyncBinding;
 import com.nolankuza.theultimatealliance.model.DeviceInfo;
 import com.nolankuza.theultimatealliance.tasks.BluetoothClientTask;
-import com.nolankuza.theultimatealliance.util.Constants;
+import com.nolankuza.theultimatealliance.Constants;
 import com.nolankuza.theultimatealliance.util.Resources;
 import com.nolankuza.theultimatealliance.util.Sync;
 
@@ -50,8 +50,6 @@ public class DataSyncActivity extends BaseActivity implements MessageLogger {
         ActivityDataSyncBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_data_sync);
         super.onCreate(savedInstanceState);
         binding.setHandler(new Handler());
-
-        //TODO Add support for older devices
 
         //Get info for bluetooth devices
         bAdapter = BluetoothAdapter.getDefaultAdapter();

@@ -1,6 +1,4 @@
-package com.nolankuza.theultimatealliance.util;
-
-import com.nolankuza.theultimatealliance.R;
+package com.nolankuza.theultimatealliance;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;

@@ -19,7 +19,7 @@ import com.nolankuza.theultimatealliance.model.PlayoffData;
 import com.nolankuza.theultimatealliance.model.Settings;
 import com.nolankuza.theultimatealliance.model.Team;
 import com.nolankuza.theultimatealliance.util.Binary;
-import com.nolankuza.theultimatealliance.util.Constants;
+import com.nolankuza.theultimatealliance.Constants;
 import com.nolankuza.theultimatealliance.util.Sync;
 
 import java.io.IOException;
@@ -32,7 +32,7 @@ import java.util.List;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
-import static com.nolankuza.theultimatealliance.util.Constants.BLUETOOTH_UUID;
+import static com.nolankuza.theultimatealliance.Constants.BLUETOOTH_UUID;
 
 public class BluetoothClientTask extends AsyncTask<Void, Void, Boolean> {
     private WeakReference<Context> context;
@@ -129,6 +129,7 @@ public class BluetoothClientTask extends AsyncTask<Void, Void, Boolean> {
                                         broadcast(String.format("Synced " + playoffDataList.size() + " playoff matches from %s.", device.getName()), Color.GREEN);
                                         break;
                                 }
+                                //TODO Make way to stop
                             }
                         }
                     }

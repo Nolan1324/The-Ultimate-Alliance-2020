@@ -64,7 +64,6 @@ public class PlayoffActivity extends BaseActivity {
         findViewById(R.id.save_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO Test
                 data.hatchS = getValue(R.id.hatch_s);
                 data.hatchF = getValue(R.id.hatch_f);
                 data.cargoS = getValue(R.id.cargo_s);

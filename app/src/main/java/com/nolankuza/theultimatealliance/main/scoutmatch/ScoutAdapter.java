@@ -1,4 +1,4 @@
-package com.nolankuza.theultimatealliance.main;
+package com.nolankuza.theultimatealliance.main.scoutmatch;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

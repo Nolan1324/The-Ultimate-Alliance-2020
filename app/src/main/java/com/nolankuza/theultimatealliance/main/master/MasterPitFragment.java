@@ -14,7 +14,7 @@ import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.assignment.AssignmentActivity;
 import com.nolankuza.theultimatealliance.datasync.DataSyncActivity;
 import com.nolankuza.theultimatealliance.eventimport.EventImportActivity;
-import com.nolankuza.theultimatealliance.util.Constants;
+import com.nolankuza.theultimatealliance.Constants;
 
 import java.util.Locale;
 import java.util.Objects;

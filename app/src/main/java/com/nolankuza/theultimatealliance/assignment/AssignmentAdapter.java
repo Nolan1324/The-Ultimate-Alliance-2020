@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.model.Assignment;
-import com.nolankuza.theultimatealliance.util.Constants;
+import com.nolankuza.theultimatealliance.Constants;
 
 import java.lang.ref.WeakReference;
 import java.util.List;

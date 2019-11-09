@@ -1,4 +1,4 @@
-package com.nolankuza.theultimatealliance.main;
+package com.nolankuza.theultimatealliance.main.scoutplayoff;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.nolankuza.theultimatealliance.R;
+import com.nolankuza.theultimatealliance.main.SlaveFragment;
 import com.nolankuza.theultimatealliance.playoffs.PlayoffActivity;
 import com.nolankuza.theultimatealliance.model.PlayoffData;
 
@@ -36,13 +37,13 @@ public class PlayoffFragment extends SlaveFragment {
     @Override
     public void loadData(final Context context, final View view) {
         final RecyclerView matchImportRecycler = view.findViewById(R.id.match_import_recycler);
-        new PlayoffQueryTask(showAll.isChecked(), new PlayoffQueryTask.Listener() {
+        new PlayoffQueryTask(isShowingAll(), new PlayoffQueryTask.Listener() {
             @Override
             public void onTaskCompleted(PlayoffDataAll playoffDataAll) {
                 //progressBar.setVisibility(View.GONE);
                 matchImportRecycler.setLayoutManager(new LinearLayoutManager(context));
                 matchImportRecycler.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
-                playoffAdapter = new PlayoffAdapter(context.getApplicationContext(), playoffDataAll.playoffDataList, playoffDataAll.nextIndex, showAll.isChecked());
+                playoffAdapter = new PlayoffAdapter(context.getApplicationContext(), playoffDataAll.playoffDataList, playoffDataAll.nextIndex, isShowingAll());
                 playoffAdapter.setClickListener(new PlayoffAdapter.ItemClickListener() {
                     @Override
                     public void onItemClick(View view, final PlayoffData playoffData) {
@@ -128,11 +129,11 @@ public class PlayoffFragment extends SlaveFragment {
 
     @Override
     public void updateData() {
-        new PlayoffQueryTask(showAll.isChecked(), new PlayoffQueryTask.Listener() {
+        new PlayoffQueryTask(isShowingAll(), new PlayoffQueryTask.Listener() {
             @Override
             public void onTaskCompleted(PlayoffDataAll playoffDataAll) {
                 if(playoffAdapter != null) {
-                    playoffAdapter.showAll = showAll.isChecked();
+                    playoffAdapter.showAll = isShowingAll();
                     playoffAdapter.setData(playoffDataAll.playoffDataList, playoffDataAll.nextIndex);
                 }
             }

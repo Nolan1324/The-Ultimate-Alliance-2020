@@ -1,6 +1,5 @@
-package com.nolankuza.theultimatealliance.main;
+package com.nolankuza.theultimatealliance.main.analysismatch;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,22 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.room.PlayoffDataDao;
-import com.nolankuza.theultimatealliance.model.Alliance;
-import com.nolankuza.theultimatealliance.model.PlayoffData;
 
-import java.util.List;
+public class AnalysisMatchFragment extends Fragment {
 
-import static com.nolankuza.theultimatealliance.ApplicationState.database;
-
-public class AnalysisFragment extends Fragment {
-
-    public AnalysisFragment() {
+    public AnalysisMatchFragment() {
 
     }
 
-    public static AnalysisFragment newInstance() {
-        AnalysisFragment fragment = new AnalysisFragment();
+    public static AnalysisMatchFragment newInstance() {
+        AnalysisMatchFragment fragment = new AnalysisMatchFragment();
         return fragment;
     }
 
@@ -38,7 +30,7 @@ public class AnalysisFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_analysis, container, false);
+        return inflater.inflate(R.layout.fragment_analysis_playoff, container, false);
     }
 
     @Override
@@ -57,7 +49,7 @@ public class AnalysisFragment extends Fragment {
         new Thread() {
             @Override
             public void run() {
-                //TODO This was all rushed. Condense as soon as possible.
+                /*
 
                 PlayoffDataDao playoffDataDao = database.playoffDataDao();
                 List<PlayoffData> playoffDataList = playoffDataDao.getAll();
@@ -82,30 +74,8 @@ public class AnalysisFragment extends Fragment {
                         }
                     });
                 }
+                */
             }
         }.start();
     }
-
-    private void generate(View view, PlayoffData[] playoffDataArray) {
-        ((AnalysisView) view.findViewById(R.id.red_analysis)).generate(Alliance.Red,
-                playoffDataArray[0],
-                playoffDataArray[1],
-                playoffDataArray[2]);
-        ((AnalysisView) view.findViewById(R.id.blue_analysis)).generate(Alliance.Blue,
-                playoffDataArray[3],
-                playoffDataArray[4],
-                playoffDataArray[5]);
-    }
-
-    /*
-    public PlayoffData tempRandom(int teamNumber) {
-        PlayoffData playoffData = new PlayoffData();
-        playoffData.teamNumber = teamNumber;
-        playoffData.data.hatchS = (int) (Math.random() * 12);
-        playoffData.data.hatchF = (int) (Math.random() * 12);
-        playoffData.data.cargoS = (int) (Math.random() * 12);
-        playoffData.data.cargoF = (int) (Math.random() * 12);
-        return playoffData;
-    }
-    */
 }

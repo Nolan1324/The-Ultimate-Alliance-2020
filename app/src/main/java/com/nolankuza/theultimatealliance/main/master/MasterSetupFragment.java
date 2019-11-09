@@ -15,7 +15,7 @@ import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.datasync.DataSyncActivity;
 import com.nolankuza.theultimatealliance.settings.SettingsActivity;
 import com.nolankuza.theultimatealliance.students.StudentsActivity;
-import com.nolankuza.theultimatealliance.util.Constants;
+import com.nolankuza.theultimatealliance.Constants;
 
 import java.util.concurrent.ExecutionException;
 
