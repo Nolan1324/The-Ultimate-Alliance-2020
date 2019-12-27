@@ -24,10 +24,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:clickable="false"
                 android:ellipsize="none"
                 android:singleLine="false"
-                android:clickable="false"
-                android:theme="@style/listSpinner"/>
+                android:theme="@style/listSpinner" />
 
             <Switch
                 android:id="@+id/show_all"
