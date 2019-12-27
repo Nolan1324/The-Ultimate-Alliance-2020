@@ -7,7 +7,10 @@ import android.content.Intent;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.main.SlaveFragment;
@@ -38,6 +41,11 @@ public class ScoutFragment extends SlaveFragment {
                 matchImportRecycler.setLayoutManager(new LinearLayoutManager(context));
                 matchImportRecycler.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
                 matchImportAdapter = new ScoutAdapter(context.getApplicationContext(), matches, isShowingAll());
+
+                //TODO Use list animation?
+                //LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_fall_down);
+                //matchImportRecycler.setLayoutAnimation(animation);
+
                 matchImportAdapter.setClickListener(new ScoutAdapter.ItemClickListener() {
                     @Override
                     public void onItemClick(View view, Match match) {
@@ -104,10 +112,10 @@ public class ScoutFragment extends SlaveFragment {
         new MatchQueryTask(isShowingAll(), new MatchQueryTask.Listener() {
             @Override
             public void onTaskCompleted(List<Match> matches) {
-                if(matchImportAdapter != null) {
-                    matchImportAdapter.showAll = isShowingAll();
-                    matchImportAdapter.setData(matches);
-                }
+            if(matchImportAdapter != null) {
+                matchImportAdapter.showAll = isShowingAll();
+                matchImportAdapter.setData(matches);
+            }
             }
         }).execute();
     }

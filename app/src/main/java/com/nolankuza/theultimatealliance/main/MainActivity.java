@@ -151,8 +151,6 @@ public class MainActivity extends BaseActivity {
             //endregion
         }).start();
 
-        Log.d("RESOURCE_LOG", Resources.getDimen(MainActivity.this, R.dimen.counter_part_width) + "");
-
         //final ProgressBar progressBar = findViewById(R.id.progressBar);
 
         /*

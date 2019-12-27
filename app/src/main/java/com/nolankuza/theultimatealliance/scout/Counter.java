@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -88,42 +89,16 @@ public class Counter extends LinearLayout {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void setUp(Context context) {
-        //TODO Swap programmatic layout for inflater
-        //LayoutInflater inflater = LayoutInflater.from(getContext());
-        //inflater.inflate(R.layout.counter, this, false);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        inflater.inflate(R.layout.counter, this, true);
 
-        setOrientation(HORIZONTAL);
-        setZ(2);
-
-        plus = new Button(context);
-        minus = new Button(context);
-
-        //setBackground(/*plus.getBackground()*/getResources().getDrawable(type == 0 ? R.drawable.rounded : (type == 1 ? R.drawable.rounded_hatch : R.drawable.rounded_cargo)));
         setBackground(getResources().getDrawable(R.drawable.rounded));
 
-        float counterPartWidth = Resources.getDimen(getContext(), R.dimen.counter_part_width);
-        plus.setText(">");
-        plus.setTextSize(counterPartWidth * 0.466f);
-        plus.setBackground(null);
-        plus.setTextColor(Color.BLACK);
-        updateTextView();
-        value.setTextSize(counterPartWidth * 0.466f);
-        value.setGravity(Gravity.CENTER);
-        value.setTextColor(Color.BLACK);
-        //value.setWidth((int) counterPartWidth);
-        minus.setText("<");
-        minus.setTextSize(counterPartWidth * 0.466f);
-        minus.setBackground(null);
-        minus.setTextColor(Color.BLACK);
+        plus = getRootView().findViewById(R.id.plus);
+        value = getRootView().findViewById(R.id.value);
+        minus = getRootView().findViewById(R.id.minus);
 
-        LinearLayout.LayoutParams valueParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
-        LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
-        valueParams.gravity = Gravity.CENTER;
-        buttonParams.gravity = Gravity.CENTER;
-        value.setLayoutParams(valueParams);
-        buttonParams.width = (int) counterPartWidth;
-        plus.setLayoutParams(buttonParams);
-        minus.setLayoutParams(buttonParams);
+        updateTextView();
 
         plus.setOnClickListener(new OnClickListener() {
             @Override
@@ -145,9 +120,6 @@ public class Counter extends LinearLayout {
             }
         });
 
-        addView(minus);
-        addView(value);
-        addView(plus);
         refreshDrawableState();
     }
 
