@@ -15,7 +15,7 @@ public interface MatchDao {
     @Query("SELECT * FROM matches ORDER by time, matchNumber")
     List<Match> getAll();
 
-    @Query("SELECT * FROM matches WHERE scouted=0 ORDER by time")
+    @Query("SELECT * FROM matches WHERE scouted=0 ORDER by time, matchNumber")
     List<Match> getNotScouted();
 
     @Query("SELECT * FROM matches WHERE `key`=:key")
