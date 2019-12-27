@@ -15,24 +15,23 @@
         <item name="android:buttonTint" tools:targetApi="lollipop">@android:color/darker_gray</item>
     </style>
 
+    <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <item name="colorAccent">@android:color/holo_blue_light</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="iconTint">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:textColor">?tabIndicatorColor</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="android:buttonTint" tools:targetApi="lollipop">@android:color/darker_gray</item>
+    </style>
+
     <style name="ToolBar" parent="Widget.AppCompat.ActionBar">
         <item name="android:textColorPrimary">?attr/actionMenuTextColor</item>
         <item name="android:textColorSecondary">?attr/actionMenuTextColor</item>
-    </style>
-
-    <style name="SButtonInit" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">#777777</item>
-        <item name="android:alpha">0.6</item>
-    </style>
-
-    <style name="SButtonRed" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">#777777</item>
-        <item name="android:alpha">0.6</item>
-    </style>
-
-    <style name="SButtonBlue" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">#777777</item>
-        <item name="android:alpha">0.6</item>
     </style>
 
     <style name="TabText" parent="TextAppearance.Design.Tab">

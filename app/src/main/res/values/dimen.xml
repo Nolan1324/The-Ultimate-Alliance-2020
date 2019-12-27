@@ -4,4 +4,5 @@
     <dimen name="data_button">110dp</dimen>
     <dimen name="action_circle">90dp</dimen>
     <dimen name="counter_part_width">75dp</dimen>
+    <dimen name="counter_part_text">34sp</dimen>
 </resources>

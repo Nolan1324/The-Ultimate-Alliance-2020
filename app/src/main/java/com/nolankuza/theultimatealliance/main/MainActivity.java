@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
@@ -17,6 +18,7 @@ import com.nolankuza.theultimatealliance.main.scoutplayoff.PlayoffFragment;
 import com.nolankuza.theultimatealliance.room.SettingsDao;
 import com.nolankuza.theultimatealliance.model.Settings;
 import com.nolankuza.theultimatealliance.tasks.BluetoothServerThread;
+import com.nolankuza.theultimatealliance.util.Resources;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
@@ -149,6 +151,8 @@ public class MainActivity extends BaseActivity {
             //endregion
         }).start();
 
+        Log.d("RESOURCE_LOG", Resources.getDimen(MainActivity.this, R.dimen.counter_part_width) + "");
+
         //final ProgressBar progressBar = findViewById(R.id.progressBar);
 
         /*
@@ -179,7 +183,6 @@ public class MainActivity extends BaseActivity {
             getSupportFragmentManager().beginTransaction().remove(fragment).commit();
         }
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if(prefs.getBoolean("is_master_pref", false)) {
             fragment = new MasterFragment();
         } else {

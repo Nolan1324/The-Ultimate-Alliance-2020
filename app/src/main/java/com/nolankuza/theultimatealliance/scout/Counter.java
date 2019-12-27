@@ -8,6 +8,7 @@ import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -87,6 +88,10 @@ public class Counter extends LinearLayout {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void setUp(Context context) {
+        //TODO Swap programmatic layout for inflater
+        //LayoutInflater inflater = LayoutInflater.from(getContext());
+        //inflater.inflate(R.layout.counter, this, false);
+
         setOrientation(HORIZONTAL);
         setZ(2);
 
@@ -148,30 +153,14 @@ public class Counter extends LinearLayout {
 
     public int[] onCreateDrawableState(int extraSpace) {
         final int[] drawableState = super.onCreateDrawableState(extraSpace + 8);
-        if(isNormal) {
-            mergeDrawableStates(drawableState, STATE_NORMAL);
-        }
-        if(isCargo) {
-            mergeDrawableStates(drawableState, STATE_CARGO);
-        }
-        if(isHatch) {
-            mergeDrawableStates(drawableState, STATE_HATCH);
-        }
-        if(isLevel1) {
-            mergeDrawableStates(drawableState, STATE_LEVEL_1);
-        }
-        if(isLevel2) {
-            mergeDrawableStates(drawableState, STATE_LEVEL_2);
-        }
-        if(isLevel3) {
-            mergeDrawableStates(drawableState, STATE_LEVEL_3);
-        }
-        if(isSuccess) {
-            mergeDrawableStates(drawableState, STATE_SUCCESS);
-        }
-        if(isFail) {
-            mergeDrawableStates(drawableState, STATE_FAIL);
-        }
+        if(isNormal) mergeDrawableStates(drawableState, STATE_NORMAL);
+        if(isCargo) mergeDrawableStates(drawableState, STATE_CARGO);
+        if(isHatch) mergeDrawableStates(drawableState, STATE_HATCH);
+        if(isLevel1) mergeDrawableStates(drawableState, STATE_LEVEL_1);
+        if(isLevel2) mergeDrawableStates(drawableState, STATE_LEVEL_2);
+        if(isLevel3) mergeDrawableStates(drawableState, STATE_LEVEL_3);
+        if(isSuccess) mergeDrawableStates(drawableState, STATE_SUCCESS);
+        if(isFail) mergeDrawableStates(drawableState, STATE_FAIL);
         return drawableState;
     }
 

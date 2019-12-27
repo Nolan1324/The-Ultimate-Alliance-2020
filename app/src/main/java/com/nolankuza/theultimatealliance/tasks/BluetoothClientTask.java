@@ -1,5 +1,6 @@
 package com.nolankuza.theultimatealliance.tasks;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -33,6 +34,7 @@ import java.util.List;
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 import static com.nolankuza.theultimatealliance.Constants.BLUETOOTH_UUID;
+import static com.nolankuza.theultimatealliance.Constants.WARNING_COLOR;
 
 public class BluetoothClientTask extends AsyncTask<Void, Void, Boolean> {
     private WeakReference<Context> context;
@@ -57,6 +59,7 @@ public class BluetoothClientTask extends AsyncTask<Void, Void, Boolean> {
         void onTaskCompleted(Boolean allSynced);
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public Boolean doInBackground(Void... voids) {
         byte[] eventKey = database.settingsDao().get().eventKey.getBytes();
@@ -116,17 +119,17 @@ public class BluetoothClientTask extends AsyncTask<Void, Void, Boolean> {
                                     case Sync.GAMEDATA:
                                         List<GameData> gameDataList = Binary.unmarshall(Binary.readBytes(is, lengthWrapped.getInt()), GameData.class, GameData.CREATOR);
                                         database.gameDataDao().insert(gameDataList);
-                                        broadcast(String.format("Synced " + gameDataList.size() + " matches from %s.", device.getName()), Color.GREEN);
+                                        broadcast(String.format("Synced %d matches from %s.", gameDataList.size(), device.getName()), Color.GREEN);
                                         break;
                                     case Sync.PITDATA:
                                         List<PitData> pitDataList = Binary.unmarshall(Binary.readBytes(is, lengthWrapped.getInt()), PitData.class, PitData.CREATOR);
                                         database.pitDataDao().insert(pitDataList);
-                                        broadcast(String.format("Synced " + pitDataList.size() + " teams from %s.", device.getName()), Color.GREEN);
+                                        broadcast(String.format("Synced %d teams from %s.", pitDataList.size(), device.getName()), Color.GREEN);
                                         break;
                                     case Sync.PLAYOFFDATA:
                                         List<PlayoffData> playoffDataList = Binary.unmarshall(Binary.readBytes(is, lengthWrapped.getInt()), PlayoffData.class, PlayoffData.CREATOR);
                                         database.playoffDataDao().insert(playoffDataList);
-                                        broadcast(String.format("Synced " + playoffDataList.size() + " playoff matches from %s.", device.getName()), Color.GREEN);
+                                        broadcast(String.format("Synced %d playoff matches from %s.", playoffDataList.size(), device.getName()), Color.GREEN);
                                         break;
                                 }
                                 //TODO Make way to stop
@@ -162,7 +165,7 @@ public class BluetoothClientTask extends AsyncTask<Void, Void, Boolean> {
                                 prefs.edit().putBoolean(Constants.PREF_PIT_ASSIGN_CHANGED, false).apply();
                                 prefs.edit().putBoolean(Constants.PREF_SCOUT_ASSIGN_CHANGED, false).apply();
                             } else {
-                                broadcast(String.format("Warning: no assignment exists for %s", device.getName()), Color.rgb(127, 127, 0));
+                                broadcast(String.format("Warning: no assignment exists for %s", device.getName()), WARNING_COLOR);
                             }
                         }
                         if(options.students) {

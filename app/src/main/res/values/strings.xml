@@ -99,4 +99,6 @@
     <string name="devices_to_sync">Devices to Sync</string>
     <string name="launch_data_sync">Launch Data Sync</string>
     <string name="export_data_to_csv">Export Data to CSV</string>
+    <string name="left_arrow"><![CDATA[<]]></string>
+    <string name="right_arrow"><![CDATA[>]]></string>
 </resources>

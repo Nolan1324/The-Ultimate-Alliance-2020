@@ -1,5 +1,7 @@
 package com.nolankuza.theultimatealliance;
 
+import android.graphics.Color;
+
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.UUID;
@@ -24,4 +26,6 @@ public class Constants {
     public static final String PREF_SYNCED_SETTINGS = "synced_settings";
     public static final String PREF_NEXT_MATCH = "next_match";
     public static final String PREF_CURRENT_SCOUTING_PAGE = "current_scouting_page";
+
+    public static final int WARNING_COLOR = Color.rgb(127, 127, 0);
 }
