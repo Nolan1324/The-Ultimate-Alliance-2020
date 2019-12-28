@@ -1,3 +1,14 @@
+# Game Dependent Files
+The majority of this application works for any FRC game. However, there are certain files pertaining to the year's specific FRC game that must be changed every season.
+- Match Scouting
+  - [model/gamedata/Data.java](/app/src/main/java/com/nolankuza/theultimatealliance/model/gamedata/Data.java) - contains all of the data points to be collected, and how to convert that data to and from a raw (parcel) form. Easy to edit.
+  - [scout/AutoFragment](/app/src/main/java/com/nolankuza/theultimatealliance/scout/AutoFragment.java) and [layout/fragment_auto.xml](/app/src/main/res/layout/fragment_auto.xml) - backend and frontend for the inital autonomous scouting interface.
+   - [scout/AutoScoreFragment](/app/src/main/java/com/nolankuza/theultimatealliance/scout/AutoScoreFragment.java) and [layout/fragment_auto_score.xml](/app/src/main/res/layout/fragment_auto_score.xml) - backend and frontend for the autonomous scoring scouting interface. Generally the same as the teleop interface, except it saves to different data points
+   - [scout/TeleopFragment](/app/src/main/java/com/nolankuza/theultimatealliance/scout/TeleopFragment.java) and [layout/fragment_teleop.xml](/app/src/main/res/layout/fragment_teleop.xml) - backend and frontend for the teleop scouting interface. The backend is very simple; it just reads and writes from counters. The frontend can be edited visually in Android Studio.
+   - [scout/EndGameFragment](/app/src/main/java/com/nolankuza/theultimatealliance/scout/EndGameFragment.java) and [layout/fragment_end_game.xml](/app/src/main/res/layout/fragment_end_game.xml) - backend and frontend for the end game scouting interface.
+
+I am currently working to minimize the content in these files and reduce the amount of manual effort required to edit these files.
+
 # Data Communication Protocol
 ## Data codes
 Codes to identify the type of data sent
