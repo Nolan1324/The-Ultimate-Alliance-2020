@@ -13,6 +13,7 @@
         <item name="android:textColor">?tabIndicatorColor</item>
         <item name="actionMenuTextColor">@android:color/white</item>
         <item name="android:buttonTint" tools:targetApi="lollipop">@android:color/darker_gray</item>
+        <item name="spinnerTextColorDisabled">#2486AA</item>
     </style>
 
     <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">

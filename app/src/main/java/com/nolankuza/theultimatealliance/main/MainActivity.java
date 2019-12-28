@@ -1,11 +1,8 @@
 package com.nolankuza.theultimatealliance.main;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
@@ -15,10 +12,9 @@ import com.nolankuza.theultimatealliance.main.master.MasterFragment;
 import com.nolankuza.theultimatealliance.main.scoutmatch.ScoutFragment;
 import com.nolankuza.theultimatealliance.main.scoutpit.PitFragment;
 import com.nolankuza.theultimatealliance.main.scoutplayoff.PlayoffFragment;
-import com.nolankuza.theultimatealliance.room.SettingsDao;
 import com.nolankuza.theultimatealliance.model.Settings;
+import com.nolankuza.theultimatealliance.room.SettingsDao;
 import com.nolankuza.theultimatealliance.tasks.BluetoothServerThread;
-import com.nolankuza.theultimatealliance.util.Resources;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
@@ -31,17 +27,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
         super.onCreate(savedInstanceState);
-
-        //Populate settings database if empty
-        new Thread() {
-            @Override
-            public void run() {
-                SettingsDao settingsDao = database.settingsDao();
-                if(settingsDao.get() == null) {
-                    settingsDao.update(new Settings());
-                }
-            }
-        }.start();
 
         new BluetoothServerThread(getApplicationContext(), new BluetoothServerThread.Listener() {
 
