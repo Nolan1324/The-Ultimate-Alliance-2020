@@ -3,3 +3,4 @@
 
 FRC scouting app for the 2019 season developed by Nolan Kuza of FRC Team #33 *Killer Bees*.
 
+[Developer Documentation](/DOCS.md)
