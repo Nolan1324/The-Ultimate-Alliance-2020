@@ -12,11 +12,8 @@ import com.nolankuza.theultimatealliance.main.master.MasterFragment;
 import com.nolankuza.theultimatealliance.main.scoutmatch.ScoutFragment;
 import com.nolankuza.theultimatealliance.main.scoutpit.PitFragment;
 import com.nolankuza.theultimatealliance.main.scoutplayoff.PlayoffFragment;
-import com.nolankuza.theultimatealliance.model.Settings;
-import com.nolankuza.theultimatealliance.room.SettingsDao;
 import com.nolankuza.theultimatealliance.tasks.BluetoothServerThread;
 
-import static com.nolankuza.theultimatealliance.ApplicationState.database;
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 
 public class MainActivity extends BaseActivity {

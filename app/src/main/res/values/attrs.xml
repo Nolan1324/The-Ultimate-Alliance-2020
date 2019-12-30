@@ -25,8 +25,4 @@
         <attr name="state_warn" format="boolean" />
         <attr name="state_done" format="boolean" />
     </declare-styleable>
-
-    <resources>
-        <attr name="spinnerTextColorDisabled" format="color" />
-    </resources>
 </resources>
