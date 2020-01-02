@@ -7,13 +7,13 @@
     android:theme="@style/AppTheme"
     android:orientation="vertical"
     android:gravity="bottom"
-    android:weightSum="10">
+    android:weightSum="11">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="7"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:gravity="center_vertical"
         android:scaleType="fitStart"
         android:src="@mipmap/ic_tua_round"
@@ -25,6 +25,16 @@
         android:layout_weight="2"
         android:gravity="bottom"
         android:text="@string/app_name"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:gravity="bottom"
+        android:text="By Nolan Kuza, FRC Team #33 Killer Bees"
+        android:textSize="14sp"
+        android:textColor="@android:color/white"/>
 
 </LinearLayout>

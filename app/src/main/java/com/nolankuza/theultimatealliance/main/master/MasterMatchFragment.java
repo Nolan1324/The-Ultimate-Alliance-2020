@@ -118,9 +118,15 @@ public class MasterMatchFragment extends Fragment {
                 startActivity(new Intent(getActivity(), DataSyncActivity.class));
             }
         });
+        int scoutCount = 0;
+        try {
+            scoutCount = new GameCountTask().execute().get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
         if(prefs.getBoolean(Constants.PREF_SCOUT_ASSIGN_CHANGED, false)) {
             actionSend.setWarn(true);
-            return;
+            if(scoutCount == 0) return;
         } else {
             actionSend.setDone(true);
         }
@@ -136,12 +142,6 @@ public class MasterMatchFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        int scoutCount = 0;
-        try {
-            scoutCount = new GameCountTask().execute().get();
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
         actionSync.setText(String.format(Locale.US, "%d/%d", scoutCount, matchCount));
         if(scoutCount == 0) {
             actionSync.setWarn(true);

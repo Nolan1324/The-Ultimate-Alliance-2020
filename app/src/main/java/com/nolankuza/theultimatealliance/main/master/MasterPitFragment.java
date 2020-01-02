@@ -115,9 +115,15 @@ public class MasterPitFragment extends Fragment {
                 startActivity(new Intent(getActivity(), DataSyncActivity.class));
             }
         });
+        int pitCount = 0;
+        try {
+            pitCount = new PitCountTask().execute().get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
         if(prefs.getBoolean(Constants.PREF_PIT_ASSIGN_CHANGED, false)) {
             actionSend.setWarn(true);
-            return;
+            if(pitCount == 0) return;
         } else {
             actionSend.setDone(true);
         }
@@ -131,12 +137,6 @@ public class MasterPitFragment extends Fragment {
                 startActivity(new Intent(getActivity(), DataSyncActivity.class));
             }
         });
-        int pitCount = 0;
-        try {
-            pitCount = new PitCountTask().execute().get();
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
         actionSync.setText(String.format(Locale.US, "%d/%d", pitCount, teamCount));
         if(pitCount == 0) {
             actionSync.setWarn(true);
