@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.constraint.Guideline;
 import android.support.v4.app.Fragment;
 import android.support.v7.content.res.AppCompatResources;
 import android.view.LayoutInflater;
@@ -36,15 +37,11 @@ public class AutoFragment extends Fragment {
 
     private ImageView field;
     private List<Button> fieldButtons = new ArrayList<>();
-    private ImageButton hatchButton;
-    private ImageButton cargoButton;
-    private Drawable hatchDrawable;
-    private Drawable hatchOnDrawable;
-    private Drawable cargoDrawable;
-    private Drawable cargoOnDrawable;
+    private List<ImageButton> preloadButtons = new ArrayList<>();
+    private Drawable cellDrawable;
+    private Drawable cellOnDrawable;
     private ToggleButton droveYes;
     private ToggleButton droveNo;
-    private ToggleButton droveStuck;
 
     private ColorStateList offColor = ColorStateList.valueOf(Color.parseColor("#33ffffff"));
     private ColorStateList onColor = ColorStateList.valueOf(Color.parseColor("#99ffffff"));
@@ -78,22 +75,17 @@ public class AutoFragment extends Fragment {
         //region Vars
         activity = ((ScoutBasicActivity) getActivity());
         field = view.findViewById(R.id.field);
-        fieldButtons.add((Button)view.findViewById(R.id.posLeft1));
-        fieldButtons.add((Button)view.findViewById(R.id.posLeft2));
-        fieldButtons.add((Button)view.findViewById(R.id.posLeft3));
-        fieldButtons.add((Button)view.findViewById(R.id.posRight1));
-        fieldButtons.add((Button)view.findViewById(R.id.posRight2));
-        fieldButtons.add((Button)view.findViewById(R.id.posRight3));
+        fieldButtons.add((Button)view.findViewById(R.id.pos1));
+        fieldButtons.add((Button)view.findViewById(R.id.pos2));
+        fieldButtons.add((Button)view.findViewById(R.id.pos3));
         final boolean notReverseButtons = (activity.getGameData().alliance == Alliance.Blue) == prefs.getBoolean("field_reverse_pref", false);
-        hatchButton = view.findViewById(R.id.preloadHatch);
-        cargoButton = view.findViewById(R.id.preloadCargo);
-        hatchDrawable = AppCompatResources.getDrawable(activity, R.drawable.ic_hatch);
-        hatchOnDrawable = AppCompatResources.getDrawable(activity, R.drawable.ic_hatch_on);
-        cargoDrawable = AppCompatResources.getDrawable(activity, R.drawable.ic_cargo);
-        cargoOnDrawable = AppCompatResources.getDrawable(activity, R.drawable.ic_cargo_on);
+        preloadButtons.add((ImageButton)view.findViewById(R.id.preload1));
+        preloadButtons.add((ImageButton)view.findViewById(R.id.preload2));
+        preloadButtons.add((ImageButton)view.findViewById(R.id.preload3));
+        cellDrawable = AppCompatResources.getDrawable(activity, R.drawable.ic_cell);
+        cellOnDrawable = AppCompatResources.getDrawable(activity, R.drawable.ic_cell_on);
         droveYes = view.findViewById(R.id.droveYes);
         droveNo = view.findViewById(R.id.droveNo);
-        droveStuck = view.findViewById(R.id.droveStuck);
         //endregion
 
         view.findViewById(R.id.match_exit_button).setOnClickListener(new View.OnClickListener() {
@@ -104,8 +96,8 @@ public class AutoFragment extends Fragment {
             }
         });
         if(!notReverseButtons) {
-            fieldButtons.get(1).setVisibility(View.INVISIBLE);
-            fieldButtons.get(4).setVisibility(View.VISIBLE);
+            ((Guideline) view.findViewById(R.id.guidelineLeft)).setGuidelinePercent(0.5f);
+            ((Guideline) view.findViewById(R.id.guidelineRight)).setGuidelinePercent(1.0f);
         }
         if(prefs.getBoolean("field_reverse_pref", false)) {
             field.setScaleX(-1);
@@ -135,59 +127,40 @@ public class AutoFragment extends Fragment {
                 activity.data.startLevel = notReverseButtons ? (byte) 1 : 2;
             }
         });
-        fieldButtons.get(3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fieldChoose(view);
-                activity.data.startPosition = notReverseButtons ? (byte) 3 : 1;
-                activity.data.startLevel = notReverseButtons ? (byte) 2 : 1;
-            }
-        });
-        fieldButtons.get(4).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fieldChoose(view);
-                activity.data.startPosition = 2;
-                activity.data.startLevel = 1;
-            }
-        });
-        fieldButtons.get(5).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fieldChoose(view);
-                activity.data.startPosition = notReverseButtons ? (byte) 1 : 3;
-                activity.data.startLevel = notReverseButtons ? (byte) 2 : 1;
-            }
-        });
         if(activity.getGameData().alliance == Alliance.Blue) {
             field.setImageDrawable(getResources().getDrawable(R.drawable.field_blue));
         }
-        hatchButton.setOnClickListener(new View.OnClickListener() {
+        preloadButtons.get(0).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 GameData.Data data = activity.data;
-                if(data.preload == 0 || data.preload == 2) {
-                    data.preload = 1;
-                    hatchButton.setImageDrawable(hatchOnDrawable);
+                if(data.preload == 1) {
+                    setPreloadButtons(0);
                 } else {
-                    data.preload = 0;
-                    hatchButton.setImageDrawable(hatchDrawable);
+                    setPreloadButtons(1);
                 }
-                cargoButton.setImageDrawable(cargoDrawable);
             }
         });
-        cargoButton.setOnClickListener(new View.OnClickListener() {
+        preloadButtons.get(1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 GameData.Data data = activity.data;
-                if(data.preload == 0 || data.preload == 1) {
-                    data.preload = 2;
-                    cargoButton.setImageDrawable(cargoOnDrawable);
+                if(data.preload == 2) {
+                    setPreloadButtons(1);
                 } else {
-                    data.preload = 0;
-                    cargoButton.setImageDrawable(cargoDrawable);
+                    setPreloadButtons(2);
                 }
-                hatchButton.setImageDrawable(hatchDrawable);
+            }
+        });
+        preloadButtons.get(2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GameData.Data data = activity.data;
+                if(data.preload == 3) {
+                    setPreloadButtons(2);
+                } else {
+                    setPreloadButtons(3);
+                }
             }
         });
         droveYes.setOnClickListener(new View.OnClickListener() {
@@ -208,15 +181,6 @@ public class AutoFragment extends Fragment {
                 activity.autoScoring();
             }
         });
-        droveStuck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                droveOffButtonsOff();
-                ((ToggleButton)view).setChecked(true);
-                activity.data.droveOff = -1;
-                activity.autoScoring();
-            }
-        });
         //view.findViewById(R.id.posLeft1).setOnClickListener();
     }
 
@@ -233,10 +197,20 @@ public class AutoFragment extends Fragment {
         view.setBackgroundTintList(onColor);
     }
 
+    private void setPreloadButton(int index, boolean on) {
+        preloadButtons.get(index).setImageDrawable(on ? cellOnDrawable : cellDrawable);
+    }
+
+    private void setPreloadButtons(int value) {
+        activity.data.preload = (byte) value;
+        setPreloadButton(0, value >= 1);
+        setPreloadButton(1, value >= 2);
+        setPreloadButton(2, value >= 3);
+    }
+
     private void droveOffButtonsOff() {
         droveYes.setChecked(false);
         droveNo.setChecked(false);
-        droveStuck.setChecked(false);
     }
 
     @Override
