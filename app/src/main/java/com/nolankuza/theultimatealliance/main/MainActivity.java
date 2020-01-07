@@ -13,8 +13,7 @@ import com.nolankuza.theultimatealliance.main.scoutmatch.ScoutFragment;
 import com.nolankuza.theultimatealliance.main.scoutpit.PitFragment;
 import com.nolankuza.theultimatealliance.main.scoutplayoff.PlayoffFragment;
 import com.nolankuza.theultimatealliance.tasks.BluetoothServerThread;
-
-import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 public class MainActivity extends BaseActivity {
 
@@ -163,15 +162,15 @@ public class MainActivity extends BaseActivity {
             getSupportFragmentManager().beginTransaction().remove(fragment).commit();
         }
 
-        if(prefs.getBoolean("is_master_pref", false)) {
+        if(Prefs.getIsMaster(false)) {
             fragment = new MasterFragment();
         } else {
-            String role = prefs.getString("driver_pref", "6");
+            String role = Prefs.getDriverStation("6");
             if(role.equals("6")){
                 fragment = new PitFragment();
             } else if(role.equals("7"))  {
                 fragment = new AnalysisPlayoffFragment();
-            } else if(prefs.getBoolean("playoffs_pref", false)) {
+            } else if(Prefs.getPlayoffs(false)) {
                 fragment = new PlayoffFragment();
             } else {
                 fragment = new ScoutFragment();
@@ -186,7 +185,7 @@ public class MainActivity extends BaseActivity {
             View view = fragment.getView();
             if(view != null) {
                 //view.findViewById(R.id.show_all).setEnabled(!locked);
-                view.findViewById(R.id.student_spinner).setEnabled(prefs.getBoolean("allow_pref", false) || !locked);
+                view.findViewById(R.id.student_spinner).setEnabled(Prefs.getAllowStudentsToChangeName(true) || !locked);
             }
         }
     }

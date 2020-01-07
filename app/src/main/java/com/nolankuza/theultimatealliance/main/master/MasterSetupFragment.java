@@ -15,12 +15,11 @@ import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.datasync.DataSyncActivity;
 import com.nolankuza.theultimatealliance.settings.SettingsActivity;
 import com.nolankuza.theultimatealliance.students.StudentsActivity;
-import com.nolankuza.theultimatealliance.Constants;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 import java.util.concurrent.ExecutionException;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
-import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 
 public class MasterSetupFragment extends Fragment {
 
@@ -53,7 +52,7 @@ public class MasterSetupFragment extends Fragment {
     }
 
     private void setUpActions(View view) {
-        String teamNumber = prefs.getString("team_pref", null);
+        String teamNumber = Prefs.getTeam(null);
         ActionTextView actionTeamNumber = view.findViewById(R.id.action_team_number);
         ActionImageView actionStudents = view.findViewById(R.id.action_students);
         ActionImageView actionPassword = view.findViewById(R.id.action_password);
@@ -126,7 +125,7 @@ public class MasterSetupFragment extends Fragment {
                 startActivity(new Intent(getActivity(), DataSyncActivity.class));
             }
         });
-        if(!prefs.getBoolean(Constants.PREF_SYNCED_SETTINGS, false)) {
+        if(!Prefs.getSyncedSettings(false)) {
             actionSyncPassword.setImageDrawable(getResources().getDrawable(R.drawable.ic_lock_open));
             actionSyncPassword.setWarn(true);
         } else {

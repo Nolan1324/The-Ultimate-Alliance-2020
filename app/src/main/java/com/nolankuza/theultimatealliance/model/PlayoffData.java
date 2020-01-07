@@ -6,7 +6,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
-import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 @Entity(tableName = "playoffdata", primaryKeys = {"index", "alliance", "driverStation"})
 public class PlayoffData implements Parcelable {
@@ -53,7 +53,7 @@ public class PlayoffData implements Parcelable {
     public static PlayoffData fromMatch(Match match) {
         PlayoffData gameData = new PlayoffData();
         String team = "0000";
-        switch(prefs.getString("driver_pref", "Red1")) {
+        switch(Prefs.getDriverStation("0")) {
             case "0":
                 team = match.red1;
                 gameData.alliance = Alliance.Red;
@@ -86,7 +86,7 @@ public class PlayoffData implements Parcelable {
                 break;
         }
         gameData.teamNumber = Integer.parseInt(team);
-        gameData.scouter = prefs.getString("student_pref", "Anonymous");
+        gameData.scouter = Prefs.getStudent("Anonymous");
         return gameData;
     }
 

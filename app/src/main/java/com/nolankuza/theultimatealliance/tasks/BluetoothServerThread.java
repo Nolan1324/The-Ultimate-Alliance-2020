@@ -8,18 +8,19 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.nolankuza.theultimatealliance.room.MatchDao;
-import com.nolankuza.theultimatealliance.room.SettingsDao;
-import com.nolankuza.theultimatealliance.room.TeamDao;
 import com.nolankuza.theultimatealliance.model.Assignment;
-import com.nolankuza.theultimatealliance.model.gamedata.GameData;
 import com.nolankuza.theultimatealliance.model.Match;
-import com.nolankuza.theultimatealliance.model.pitdata.PitData;
 import com.nolankuza.theultimatealliance.model.PlayoffData;
 import com.nolankuza.theultimatealliance.model.Settings;
 import com.nolankuza.theultimatealliance.model.Student;
 import com.nolankuza.theultimatealliance.model.Team;
+import com.nolankuza.theultimatealliance.model.gamedata.GameData;
+import com.nolankuza.theultimatealliance.model.pitdata.PitData;
+import com.nolankuza.theultimatealliance.room.MatchDao;
+import com.nolankuza.theultimatealliance.room.SettingsDao;
+import com.nolankuza.theultimatealliance.room.TeamDao;
 import com.nolankuza.theultimatealliance.util.Binary;
+import com.nolankuza.theultimatealliance.util.Prefs;
 import com.nolankuza.theultimatealliance.util.Sync;
 
 import java.io.IOException;
@@ -32,7 +33,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
-import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 import static com.nolankuza.theultimatealliance.Constants.BLUETOOTH_UUID;
 
 public class BluetoothServerThread extends Thread {
@@ -154,11 +154,11 @@ public class BluetoothServerThread extends Thread {
                                     break;
                                 case Sync.SETTINGS:
                                     Settings settings = Binary.unmarshall(Binary.readBytes(is, lengthWrapped.getInt()), Settings.class, Settings.CREATOR).get(0);
-                                    boolean allowStudentsToChangeNameChanged = prefs.getBoolean("allow_pref", false) != settings.allowStudentsToChangeName;
-                                    boolean showAllChanged = prefs.getBoolean("show_all_pref", false) != settings.showAll;
-                                    prefs.edit().putBoolean("allow_pref", settings.allowStudentsToChangeName).apply();
-                                    prefs.edit().putBoolean("show_all_pref", settings.showAll).apply();
-                                    prefs.edit().putBoolean("field_reverse_pref", settings.fieldReverse).apply();
+                                    boolean allowStudentsToChangeNameChanged = Prefs.getAllowStudentsToChangeName(true) != settings.allowStudentsToChangeName; //TODO Default to true or false?
+                                    boolean showAllChanged = Prefs.getShowAll(false) != settings.showAll;
+                                    Prefs.setAllowStudentsToChangeName(settings.allowStudentsToChangeName);
+                                    Prefs.setShowAll(settings.showAll);
+                                    Prefs.setFieldReverse(settings.fieldReverse);
                                     SettingsDao settingsDao = database.settingsDao();
                                     settingsDao.update(settings);
                                     listener.onSettingsSynced(allowStudentsToChangeNameChanged, showAllChanged);

@@ -13,8 +13,7 @@ import android.view.ViewGroup;
 
 import com.nolankuza.theultimatealliance.ApplicationState;
 import com.nolankuza.theultimatealliance.R;
-
-import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 public class MasterFragment extends Fragment implements MasterListener {
 
@@ -103,7 +102,7 @@ public class MasterFragment extends Fragment implements MasterListener {
 
             @Override
             public void onPageSelected(int position) {
-                prefs.edit().putInt("master_page", position).apply();
+                Prefs.setMasterPage(position);
             }
 
             @Override
@@ -124,7 +123,7 @@ public class MasterFragment extends Fragment implements MasterListener {
         ApplicationState.masterCount = 3;
         adapter.notifyDataSetChanged();
         if(adapter.getCount() == 3 && !initPage) {
-            pager.setCurrentItem(prefs.getInt("master_page", 0));
+            pager.setCurrentItem(Prefs.getMasterPage(0));
         }
         initPage = true;
         //pager.setCurrentItem(1);

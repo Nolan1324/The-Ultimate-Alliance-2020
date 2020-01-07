@@ -15,13 +15,13 @@ import android.widget.EditText;
 
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.main.SlaveFragment;
-import com.nolankuza.theultimatealliance.playoffs.PlayoffActivity;
 import com.nolankuza.theultimatealliance.model.PlayoffData;
+import com.nolankuza.theultimatealliance.playoffs.PlayoffActivity;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 import java.util.List;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
-import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 
 public class PlayoffFragment extends SlaveFragment {
     PlayoffAdapter playoffAdapter;
@@ -50,7 +50,7 @@ public class PlayoffFragment extends SlaveFragment {
                         if(playoffData.scouted == 0) {
                             Log.d("HELLO", "CLICK");
                             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            builder.setTitle("Team # of " + getResources().getStringArray(R.array.driverStations)[Integer.parseInt(prefs.getString("driver_pref", "0"))]);
+                            builder.setTitle("Team # of " + getResources().getStringArray(R.array.driverStations)[Integer.parseInt(Prefs.getDriverStation("0"))]);
                             final EditText input = new EditText(getActivity());
                             input.setInputType(InputType.TYPE_CLASS_NUMBER);
                             builder.setView(input);

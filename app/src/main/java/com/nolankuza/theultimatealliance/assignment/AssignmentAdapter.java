@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.model.Assignment;
 import com.nolankuza.theultimatealliance.Constants;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -106,9 +107,9 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Vi
             }
             assignment.playoffs = ((CheckBox) (itemView.findViewById(R.id.item_assignment_playoffs))).isChecked();
             if (assignment.role == 6) {
-                prefs.edit().putBoolean(Constants.PREF_PIT_ASSIGN_CHANGED, true).apply();
+                Prefs.setPitAssignChanged(true);
             } else {
-                prefs.edit().putBoolean(Constants.PREF_SCOUT_ASSIGN_CHANGED, true).apply();
+                Prefs.setScoutAssignChanged(true);
             }
             new Thread() {
                 @Override

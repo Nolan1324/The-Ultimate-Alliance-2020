@@ -8,22 +8,4 @@
 
     <item app:state_fail="true"
         android:color="#ffff5555" />
-
-    <item app:state_cargo="true" app:state_level_2="false" app:state_level_3="false"
-        android:color="#33ffa500" />
-
-    <item app:state_cargo="true" app:state_level_2="true"
-        android:color="#88ffa500" />
-
-    <item app:state_cargo="true" app:state_level_3="true"
-        android:color="#ffffa500" />
-
-    <item app:state_hatch="true"
-        android:color="#33ff00ff" app:state_level_2="false" app:state_level_3="false" />
-
-    <item app:state_hatch="true" app:state_level_2="true"
-        android:color="#77ff00ff" />
-
-    <item app:state_hatch="true" app:state_level_3="true"
-        android:color="#ffff00ff" />
 </selector>

@@ -13,14 +13,14 @@ import com.nolankuza.theultimatealliance.MessageLogger;
 import com.nolankuza.theultimatealliance.datasync.SyncOptions;
 import com.nolankuza.theultimatealliance.model.Assignment;
 import com.nolankuza.theultimatealliance.model.DeviceInfo;
-import com.nolankuza.theultimatealliance.model.gamedata.GameData;
 import com.nolankuza.theultimatealliance.model.Match;
-import com.nolankuza.theultimatealliance.model.pitdata.PitData;
 import com.nolankuza.theultimatealliance.model.PlayoffData;
 import com.nolankuza.theultimatealliance.model.Settings;
 import com.nolankuza.theultimatealliance.model.Team;
+import com.nolankuza.theultimatealliance.model.gamedata.GameData;
+import com.nolankuza.theultimatealliance.model.pitdata.PitData;
 import com.nolankuza.theultimatealliance.util.Binary;
-import com.nolankuza.theultimatealliance.Constants;
+import com.nolankuza.theultimatealliance.util.Prefs;
 import com.nolankuza.theultimatealliance.util.Sync;
 
 import java.io.IOException;
@@ -32,7 +32,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
-import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 import static com.nolankuza.theultimatealliance.Constants.BLUETOOTH_UUID;
 import static com.nolankuza.theultimatealliance.Constants.WARNING_COLOR;
 
@@ -162,8 +161,8 @@ public class BluetoothClientTask extends AsyncTask<Void, Void, Boolean> {
                                 currentPitScouter++;
                                 assignments.set(0, assignment);
                                 Binary.writeBytes(os, Binary.createSendData(assignments, options.students, Sync.ASSIGNMENTS));
-                                prefs.edit().putBoolean(Constants.PREF_PIT_ASSIGN_CHANGED, false).apply();
-                                prefs.edit().putBoolean(Constants.PREF_SCOUT_ASSIGN_CHANGED, false).apply();
+                                Prefs.setPitAssignChanged(false);
+                                Prefs.setScoutAssignChanged(false);
                             } else {
                                 broadcast(String.format("Warning: no assignment exists for %s", device.getName()), WARNING_COLOR);
                             }

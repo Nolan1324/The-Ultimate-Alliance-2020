@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.constraint.ConstraintLayout;
 import android.support.constraint.Guideline;
 import android.support.v4.app.Fragment;
 import android.support.v7.content.res.AppCompatResources;
@@ -23,13 +24,11 @@ import android.widget.ToggleButton;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.model.Alliance;
 import com.nolankuza.theultimatealliance.model.gamedata.GameData;
-import com.nolankuza.theultimatealliance.Constants;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 
 public class AutoFragment extends Fragment {
     private GameDataListener listener;
@@ -78,7 +77,7 @@ public class AutoFragment extends Fragment {
         fieldButtons.add((Button)view.findViewById(R.id.pos1));
         fieldButtons.add((Button)view.findViewById(R.id.pos2));
         fieldButtons.add((Button)view.findViewById(R.id.pos3));
-        final boolean notReverseButtons = (activity.getGameData().alliance == Alliance.Blue) == prefs.getBoolean("field_reverse_pref", false);
+        final boolean reverseButtons = (activity.getGameData().alliance == Alliance.Blue) != Prefs.getFieldReverse(false);
         preloadButtons.add((ImageButton)view.findViewById(R.id.preload1));
         preloadButtons.add((ImageButton)view.findViewById(R.id.preload2));
         preloadButtons.add((ImageButton)view.findViewById(R.id.preload3));
@@ -91,15 +90,22 @@ public class AutoFragment extends Fragment {
         view.findViewById(R.id.match_exit_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                prefs.edit().putInt(Constants.PREF_CURRENT_SCOUTING_PAGE, -1).apply();
+                Prefs.setCurrentScoutingPage(-1);
                 Objects.requireNonNull(getActivity()).finish();
             }
         });
-        if(!notReverseButtons) {
-            ((Guideline) view.findViewById(R.id.guidelineLeft)).setGuidelinePercent(0.5f);
-            ((Guideline) view.findViewById(R.id.guidelineRight)).setGuidelinePercent(1.0f);
+        if(reverseButtons) {
+            setGuidelinePercent(view, R.id.guidelineLeft, 0.52f);
+            setGuidelinePercent(view, R.id.guidelineRight, 0.92f);
+
+            Guideline guidelineUpper = view.findViewById(R.id.guidelineUpper);
+            Guideline guidelineLower = view.findViewById(R.id.guidelineLower);
+            float guidelineUpperPercent = getGuidelinePercent(guidelineUpper);
+            float guidelineLowerPercent = getGuidelinePercent(guidelineLower);
+            guidelineUpper.setGuidelinePercent(1 - guidelineLowerPercent);
+            guidelineLower.setGuidelinePercent(1 - guidelineUpperPercent);
         }
-        if(prefs.getBoolean("field_reverse_pref", false)) {
+        if(Prefs.getFieldReverse(false)) {
             field.setScaleX(-1);
         }
         fieldOff();
@@ -107,8 +113,7 @@ public class AutoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 fieldChoose(view);
-                activity.data.startPosition = notReverseButtons ? (byte) 3 : 1;
-                activity.data.startLevel = notReverseButtons ? (byte) 1 : 2;
+                activity.data.startPosition = reverseButtons ? (byte) 3 : 1;
             }
         });
         fieldButtons.get(1).setOnClickListener(new View.OnClickListener() {
@@ -116,15 +121,13 @@ public class AutoFragment extends Fragment {
             public void onClick(View view) {
                 fieldChoose(view);
                 activity.data.startPosition = 2;
-                activity.data.startLevel = 1;
             }
         });
         fieldButtons.get(2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fieldChoose(view);
-                activity.data.startPosition = notReverseButtons ? (byte) 1 : 3;
-                activity.data.startLevel = notReverseButtons ? (byte) 1 : 2;
+                activity.data.startPosition = reverseButtons ? (byte) 1 : 3;
             }
         });
         if(activity.getGameData().alliance == Alliance.Blue) {
@@ -211,6 +214,14 @@ public class AutoFragment extends Fragment {
     private void droveOffButtonsOff() {
         droveYes.setChecked(false);
         droveNo.setChecked(false);
+    }
+
+    private static void setGuidelinePercent(View view, int guidelineId, float percent) {
+        ((Guideline) view.findViewById(guidelineId)).setGuidelinePercent(percent);
+    }
+
+    private static float getGuidelinePercent(Guideline guideline) {
+        return ((ConstraintLayout.LayoutParams) guideline.getLayoutParams()).guidePercent;
     }
 
     @Override

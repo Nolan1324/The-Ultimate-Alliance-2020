@@ -16,7 +16,7 @@ import com.nolankuza.theultimatealliance.assignment.AssignmentActivity;
 import com.nolankuza.theultimatealliance.datasync.DataSyncActivity;
 import com.nolankuza.theultimatealliance.eventimport.EventImportActivity;
 import com.nolankuza.theultimatealliance.room.GameDataDao;
-import com.nolankuza.theultimatealliance.Constants;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,6 @@ import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
-import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 
 public class MasterMatchFragment extends Fragment {
     public MasterMatchFragment() {
@@ -124,7 +123,7 @@ public class MasterMatchFragment extends Fragment {
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
-        if(prefs.getBoolean(Constants.PREF_SCOUT_ASSIGN_CHANGED, false)) {
+        if(Prefs.getScoutAssignChanged(false)) {
             actionSend.setWarn(true);
             if(scoutCount == 0) return;
         } else {

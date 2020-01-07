@@ -92,6 +92,7 @@ public class Counter extends LinearLayout {
         LayoutInflater inflater = LayoutInflater.from(context);
         inflater.inflate(R.layout.counter, this, true);
 
+        setElevation(2);
         setBackground(getResources().getDrawable(R.drawable.rounded));
 
         plus = getRootView().findViewById(R.id.plus);

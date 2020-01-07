@@ -6,11 +6,10 @@ import android.widget.RadioGroup;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.scout.Counter;
 import com.nolankuza.theultimatealliance.model.Alliance;
 import com.nolankuza.theultimatealliance.model.PlayoffData;
-
-import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
+import com.nolankuza.theultimatealliance.scout.Counter;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 public class PlayoffActivity extends BaseActivity {
 
@@ -30,7 +29,7 @@ public class PlayoffActivity extends BaseActivity {
                 data = playoffData.data;
             }
         }
-        switch(prefs.getString("driver_pref", "0")) {
+        switch(Prefs.getDriverStation("0")) {
             case "0":
                 playoffData.alliance = Alliance.Red;
                 playoffData.driverStation = 1;
@@ -56,7 +55,7 @@ public class PlayoffActivity extends BaseActivity {
                 playoffData.driverStation = 3;
                 break;
         }
-        playoffData.scouter = prefs.getString("student_pref", "Anonymous");
+        playoffData.scouter = Prefs.getStudent("Anonymous");
 
         actionBar.setTitle("Pit Scouting");
         actionBar.setSubtitle(playoffData.scouter + " scouting #" + playoffData.teamNumber);

@@ -9,46 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView61"
-            android:layout_width="114dp"
-            android:layout_height="0dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Success"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/list_text"
-            app:layout_constraintStart_toStartOf="@+id/textView60"
-            app:layout_constraintTop_toBottomOf="@+id/textView60" />
-
-        <TextView
-            android:id="@+id/textView62"
-            android:layout_width="116dp"
-            android:layout_height="0dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Fail"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/list_text"
-            app:layout_constraintEnd_toEndOf="@+id/textView60"
-            app:layout_constraintTop_toBottomOf="@+id/textView60" />
-
-        <com.nolankuza.theultimatealliance.scout.Counter
-            android:id="@+id/hatch_ship_s"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/textView61"
-            app:layout_constraintTop_toBottomOf="@+id/textView61"
-            app:state_success="true" />
-
-        <com.nolankuza.theultimatealliance.scout.Counter
-            android:id="@+id/hatch_ship_f"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/textView62"
-            app:layout_constraintTop_toBottomOf="@+id/textView62"
-            app:state_fail="true" />
-
         <android.support.constraint.ConstraintLayout
             android:id="@+id/rocket_cargo"
             android:layout_width="wrap_content"
@@ -198,7 +158,7 @@
                 android:layout_height="0dp"
                 android:layout_marginEnd="8dp"
                 android:gravity="center_vertical"
-                android:text="3"
+                android:text="6"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/list_text"
                 app:layout_constraintBottom_toBottomOf="@+id/hatch_rocket_3_s"
@@ -233,7 +193,8 @@
                 android:id="@+id/hatch_rocket_2_f"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@+id/hatch_rocket_3_f"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@+id/hatch_rocket_2_s"
                 app:layout_constraintTop_toTopOf="@+id/hatch_rocket_2_s"
                 app:state_fail="true" />
 
@@ -263,7 +224,7 @@
                 android:layout_height="0dp"
                 android:layout_marginEnd="8dp"
                 android:gravity="center_vertical"
-                android:text="1"
+                android:text="2"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/list_text"
                 app:layout_constraintBottom_toBottomOf="@+id/hatch_rocket_1_s"
@@ -276,7 +237,7 @@
                 android:layout_height="0dp"
                 android:layout_marginEnd="8dp"
                 android:gravity="center_vertical"
-                android:text="2"
+                android:text="4"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/list_text"
                 app:layout_constraintBottom_toBottomOf="@+id/hatch_rocket_2_s"
@@ -287,8 +248,9 @@
                 android:id="@+id/textView22"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="Rocket Hatch"
+                android:text="Power Cell Socring"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/list_text"
                 app:layout_constraintEnd_toEndOf="@+id/textView21"
@@ -303,18 +265,10 @@
                 android:text="Fail"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/list_text"
-                app:layout_constraintEnd_toEndOf="@+id/hatch_rocket_3_f"
-                app:layout_constraintStart_toStartOf="@+id/hatch_rocket_3_f"
+                app:layout_constraintEnd_toEndOf="@+id/hatch_rocket_2_f"
+                app:layout_constraintStart_toEndOf="@+id/textView15"
                 app:layout_constraintTop_toTopOf="@+id/textView15" />
 
-            <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/hatch_rocket_3_f"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toEndOf="@+id/hatch_rocket_3_s"
-                app:layout_constraintTop_toTopOf="@+id/hatch_rocket_3_s"
-                app:state_fail="true" />
         </android.support.constraint.ConstraintLayout>
 
         <com.nolankuza.theultimatealliance.scout.Counter
@@ -331,10 +285,10 @@
             android:id="@+id/fumble_hatch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/hatch_ship_f"
-            app:layout_constraintTop_toBottomOf="@+id/hatch_ship_f"
+            android:layout_marginStart="120dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:state_fail="true" />
 
         <TextView
@@ -467,20 +421,6 @@
                 app:layout_constraintTop_toTopOf="@+id/hatch_floor" />
 
         </android.support.constraint.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/textView60"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Ship Hatch"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/list_text"
-            app:layout_constraintEnd_toEndOf="@+id/rocket_hatch"
-            app:layout_constraintStart_toStartOf="@+id/rocket_hatch"
-            app:layout_constraintTop_toBottomOf="@+id/rocket_hatch" />
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/cargo_pickups"

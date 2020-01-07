@@ -27,6 +27,7 @@ import com.nolankuza.theultimatealliance.model.Event;
 import com.nolankuza.theultimatealliance.model.Match;
 import com.nolankuza.theultimatealliance.model.Team;
 import com.nolankuza.theultimatealliance.util.CSVReader;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -55,8 +56,7 @@ public class EventImportActivity extends BaseActivity {
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.INTERNET}, 0);
         }
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if(prefs.getString("team_pref", "NA").equals("NA")) {
+        if(Prefs.getTeam(null) == null) {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("Error");
             alertDialog.setMessage("Please configure your team number in the settings");
@@ -72,7 +72,7 @@ public class EventImportActivity extends BaseActivity {
         }
 
         showProgressBar();
-        new EventsTask(Integer.parseInt(prefs.getString("team_pref", "33")), Integer.parseInt(prefs.getString("year_pref", Integer.toString(Calendar.getInstance().get(Calendar.YEAR)))), new EventsTask.Listener() {
+        new EventsTask(Integer.parseInt(Prefs.getTeam("33")), Integer.parseInt(Prefs.getYear(Integer.toString(Calendar.getInstance().get(Calendar.YEAR)))), new EventsTask.Listener() {
             @Override
             public void onTaskCompleted(List<Event> events) {
                 hideProgressBar();

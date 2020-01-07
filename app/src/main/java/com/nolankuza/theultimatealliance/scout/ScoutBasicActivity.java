@@ -9,12 +9,11 @@ import android.support.v4.view.ViewPager;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
-import com.nolankuza.theultimatealliance.model.gamedata.GameData;
 import com.nolankuza.theultimatealliance.model.Match;
-import com.nolankuza.theultimatealliance.Constants;
+import com.nolankuza.theultimatealliance.model.gamedata.GameData;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
-import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 
 public class ScoutBasicActivity extends BaseActivity implements GameDataListener {
 
@@ -116,11 +115,11 @@ public class ScoutBasicActivity extends BaseActivity implements GameDataListener
             @Override
             public void onPageSelected(int position) {
                 actionBar.setTitle(adapter.getPageTitle(position));
-                if(position == 1 && !startedAutoScoreTimer) {
+                if(position == 1 && !startedAutoScoreTimer && autoScoreFragment != null) {
                     autoScoreFragment.startTimer();
                     startedAutoScoreTimer = true;
                 }
-                prefs.edit().putInt(Constants.PREF_CURRENT_SCOUTING_PAGE, position).apply();
+                Prefs.setCurrentScoutingPage(position);
             }
 
             @Override
@@ -137,8 +136,8 @@ public class ScoutBasicActivity extends BaseActivity implements GameDataListener
         */
         //TabLayout tabs = findViewById(R.id.tabs);
         //tabs.setupWithViewPager(pager);
-        prefs.edit().putInt(Constants.PREF_CURRENT_SCOUTING_PAGE, pager.getCurrentItem()).apply();
-        prefs.edit().putString(Constants.PREF_NEXT_MATCH, gameData.matchKey).apply();
+        Prefs.setCurrentScoutingPage(pager.getCurrentItem());
+        Prefs.setNextMatch(gameData.matchKey);
     }
 
     GameData getGameData() {
@@ -173,7 +172,7 @@ public class ScoutBasicActivity extends BaseActivity implements GameDataListener
                 gameData.data = data;
                 gameData.scouted = 1;
                 //prefs.edit().putInt(Constants.PREF_NEXT_MATCH, gameData.matchNumber + 1).apply();
-                prefs.edit().putInt(Constants.PREF_CURRENT_SCOUTING_PAGE, -1).apply();
+                Prefs.setCurrentScoutingPage(-1);
                 new SaveScoutingDataThread(gameData, new SaveScoutingDataThread.Listener() {
                     @Override
                     public void onTaskComplete() {

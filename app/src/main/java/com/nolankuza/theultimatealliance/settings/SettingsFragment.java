@@ -11,6 +11,7 @@ import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.dialogs.NewPasswordDialogFragment;
 import com.nolankuza.theultimatealliance.model.Settings;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
@@ -43,7 +44,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         findPreference("field_reverse_pref").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                prefs.edit().putBoolean("field_reverse_pref", !prefs.getBoolean("field_reverse_pref", false)).apply();
+                Prefs.setFieldReverse(!Prefs.getFieldReverse(false));
                 setPreferenceScreen(null);
                 onCreate(savedInstanceState);
                 return false;
@@ -52,7 +53,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     }
 
     private void updateField() {
-        findPreference("field_reverse_pref").setLayoutResource(prefs.getBoolean("field_reverse_pref", false) ? R.layout.fragment_field_setting_blue : R.layout.fragment_field_setting_red);
+        findPreference("field_reverse_pref").setLayoutResource(Prefs.getFieldReverse(false) ? R.layout.fragment_field_setting_blue : R.layout.fragment_field_setting_red);
     }
 
     @Override

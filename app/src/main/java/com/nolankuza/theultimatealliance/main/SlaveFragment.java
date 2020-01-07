@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 
 import com.nolankuza.theultimatealliance.R;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 import java.util.List;
 
@@ -72,7 +73,7 @@ public abstract class SlaveFragment extends Fragment {
                     studentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            prefs.edit().putString("student_pref", studentSpinner.getSelectedItem().toString()).apply();
+                            Prefs.setStudent(studentSpinner.getSelectedItem().toString());
                         }
 
                         @Override
@@ -83,7 +84,7 @@ public abstract class SlaveFragment extends Fragment {
             }).execute();
         }
         if(showAllChanged && context != null) {
-            showAll.setChecked(prefs.getBoolean("show_all_pref", false));
+            showAll.setChecked(Prefs.getShowAll(false));
             loadData(context, view); //Call abstract method
         }
     }

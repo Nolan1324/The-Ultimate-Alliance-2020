@@ -12,6 +12,7 @@ import com.nolankuza.theultimatealliance.BaseActivity;
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.model.pitdata.PitData;
 import com.nolankuza.theultimatealliance.util.DataUtil;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 public class PitActivity extends BaseActivity {
 
@@ -31,8 +32,7 @@ public class PitActivity extends BaseActivity {
                 data = pitData.data;
             }
         }
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        pitData.scouter = prefs.getString("student_pref", "Anonymous");
+        pitData.scouter = Prefs.getStudent("Anonymous");
 
         actionBar.setTitle("Pit Scouting");
         actionBar.setSubtitle(pitData.scouter + " scouting #" + pitData.teamNumber + " " + pitData.teamName);

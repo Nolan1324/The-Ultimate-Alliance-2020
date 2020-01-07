@@ -14,14 +14,13 @@ import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.assignment.AssignmentActivity;
 import com.nolankuza.theultimatealliance.datasync.DataSyncActivity;
 import com.nolankuza.theultimatealliance.eventimport.EventImportActivity;
-import com.nolankuza.theultimatealliance.Constants;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
-import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 
 public class MasterPitFragment extends Fragment {
 
@@ -121,7 +120,7 @@ public class MasterPitFragment extends Fragment {
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
-        if(prefs.getBoolean(Constants.PREF_PIT_ASSIGN_CHANGED, false)) {
+        if(Prefs.getPitAssignChanged(false)) {
             actionSend.setWarn(true);
             if(pitCount == 0) return;
         } else {

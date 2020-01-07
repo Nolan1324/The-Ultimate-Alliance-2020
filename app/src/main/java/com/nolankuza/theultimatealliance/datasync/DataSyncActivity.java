@@ -2,11 +2,9 @@ package com.nolankuza.theultimatealliance.datasync;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,13 +22,11 @@ import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.databinding.ActivityDataSyncBinding;
 import com.nolankuza.theultimatealliance.model.DeviceInfo;
 import com.nolankuza.theultimatealliance.tasks.BluetoothClientTask;
-import com.nolankuza.theultimatealliance.Constants;
+import com.nolankuza.theultimatealliance.util.Prefs;
 import com.nolankuza.theultimatealliance.util.Resources;
 import com.nolankuza.theultimatealliance.util.Sync;
 
 import java.util.List;
-
-import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 
 public class DataSyncActivity extends BaseActivity implements MessageLogger {
 
@@ -43,8 +39,7 @@ public class DataSyncActivity extends BaseActivity implements MessageLogger {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean isMaster = prefs.getBoolean("is_master_pref", false);
+        boolean isMaster = Prefs.getIsMaster(false);
 
         setToolBarMenu(isMaster ? R.menu.toolbar_sync : R.menu.toolbar_sync_slave);
         ActivityDataSyncBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_data_sync);
@@ -109,7 +104,7 @@ public class DataSyncActivity extends BaseActivity implements MessageLogger {
                                 ((GroupToggle) findViewById(R.id.devices_to_sync)).setChecked(true);
                             }
                             if(options.settings) {
-                                prefs.edit().putBoolean(Constants.PREF_SYNCED_SETTINGS, true).apply();
+                                Prefs.setSyncedSettings(true);
                             }
                             syncingState = 0;
                             if(options.game || options.pit) {

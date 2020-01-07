@@ -8,8 +8,7 @@ import android.support.annotation.NonNull;
 
 import com.nolankuza.theultimatealliance.model.Alliance;
 import com.nolankuza.theultimatealliance.model.Match;
-
-import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
 @Entity(tableName = "gamedata", primaryKeys = {"matchKey", "alliance", "driverStation"})
 public class GameData implements Parcelable {
@@ -48,7 +47,7 @@ public class GameData implements Parcelable {
         gameData.matchKey = match.key;
         gameData.matchNumber = match.matchNumber;
         String team = "0000";
-        switch(prefs.getString("driver_pref", "0")) {
+        switch(Prefs.getDriverStation("0")) {
             case "0":
                 team = match.red1;
                 gameData.alliance = Alliance.Red;
@@ -81,7 +80,7 @@ public class GameData implements Parcelable {
                 break;
         }
         gameData.teamNumber = Integer.parseInt(team);
-        gameData.scouter = prefs.getString("student_pref", "Anonymous");
+        gameData.scouter = Prefs.getStudent("Anonymous");
         return gameData;
     }
 
