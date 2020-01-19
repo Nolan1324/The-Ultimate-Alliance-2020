@@ -76,9 +76,11 @@ public class BluetoothClientTask extends AsyncTask<Void, Void, Boolean> {
                 BluetoothDevice device = devices.get(i);
 
                 List<Assignment> assignments = database.assignmentDao().getByName(device.getName());
-                if(assignments.get(0).role == 7 && options.playoffs) {
-                    analysisDevices.add(device);
-                    continue;
+                if(assignments != null && assignments.size() != 0 ) {
+                    if (assignments.get(0).role == 7 && options.playoffs) {
+                        analysisDevices.add(device);
+                        continue;
+                    }
                 }
 
                 try {

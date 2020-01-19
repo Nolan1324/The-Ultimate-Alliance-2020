@@ -4,20 +4,18 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
 
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.main.SlaveFragment;
-import com.nolankuza.theultimatealliance.main.scoutmatch.ScoutAdapter;
-import com.nolankuza.theultimatealliance.scout.ScoutBasicActivity;
-import com.nolankuza.theultimatealliance.model.gamedata.GameData;
 import com.nolankuza.theultimatealliance.model.Match;
+import com.nolankuza.theultimatealliance.model.gamedata.GameData;
+import com.nolankuza.theultimatealliance.scout.ScoutBasicActivity;
 import com.nolankuza.theultimatealliance.tasks.MatchQueryTask;
 
 import java.util.List;
@@ -35,6 +33,7 @@ public class ScoutFragment extends SlaveFragment {
     public void loadData(final Context context, final View view) {
         final RecyclerView matchImportRecycler = view.findViewById(R.id.match_import_recycler);
         new MatchQueryTask(isShowingAll(), new MatchQueryTask.Listener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onTaskCompleted(List<Match> matches) {
                 //progressBar.setVisibility(View.GONE);

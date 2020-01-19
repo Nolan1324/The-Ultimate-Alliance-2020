@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/list_text"
         android:textAlignment="center"
+        android:textColor="?android:textColorPrimary"
         android:layout_gravity="center"
         android:layout_weight="2" />
 

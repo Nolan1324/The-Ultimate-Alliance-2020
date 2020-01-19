@@ -2,9 +2,11 @@ package com.nolankuza.theultimatealliance.scout;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.content.res.AppCompatResources;
 import android.view.LayoutInflater;
@@ -72,6 +74,7 @@ public class EndGameFragment extends Fragment {
     }
 
     @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -79,6 +82,7 @@ public class EndGameFragment extends Fragment {
     }
 
     @Override
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -89,8 +93,8 @@ public class EndGameFragment extends Fragment {
         defenseButtons.add((ImageButton)view.findViewById(R.id.star_3));
         defenseButtons.add((ImageButton)view.findViewById(R.id.star_4));
         defenseButtons.add((ImageButton)view.findViewById(R.id.star_5));
-        starDrawable = AppCompatResources.getDrawable(activity, R.drawable.ic_star_border);
-        starOnDrawable = AppCompatResources.getDrawable(activity, R.drawable.ic_star);
+        starDrawable = getResources().getDrawable(R.drawable.ic_star_border, view.getContext().getTheme());
+        starOnDrawable = getResources().getDrawable(R.drawable.ic_star, view.getContext().getTheme());
         new CounterListHandler(defenseButtons, starDrawable, starOnDrawable, new CounterListHandler.Listener() {
             @Override
             public void onValueChange(int newValue) {

@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:theme="@style/AppTheme"
 	tools:context=".students.StudentsActivity">
 
     <android.support.design.widget.CoordinatorLayout
@@ -33,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_column="0"
                 android:layout_row="0"
-                android:background="@android:color/holo_blue_light"
+                android:background="?headerColor"
                 android:padding="5dp"
                 android:elevation="2dp"
                 android:weightSum="10"
@@ -45,6 +44,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/list_text"
                     android:textAlignment="center"
+                    android:textColor="?android:textColorPrimary"
                     android:layout_gravity="center"
                     android:layout_weight="4" />
 
@@ -54,6 +54,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/list_text"
                     android:textAlignment="center"
+                    android:textColor="?android:textColorPrimary"
                     android:layout_gravity="center"
                     android:layout_weight="4" />
 
@@ -63,6 +64,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/list_text"
                     android:textAlignment="center"
+                    android:textColor="?android:textColorPrimary"
                     android:layout_gravity="center"
                     android:layout_weight="2" />
 
@@ -86,6 +88,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        app:itemTextColor="@color/text_color_primary"
+        app:itemIconTint="@color/text_color_primary"
         app:menu="@menu/drawer_view"
         app:headerLayout="@layout/nav_header" />
 

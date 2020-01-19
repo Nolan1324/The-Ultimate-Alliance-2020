@@ -13,6 +13,7 @@
         <item name="android:textColor">?tabIndicatorColor</item>
         <item name="actionMenuTextColor">@android:color/white</item>
         <item name="android:buttonTint" tools:targetApi="lollipop">@android:color/darker_gray</item>
+        <item name="headerColor">@android:color/holo_blue_light</item>
     </style>
 
     <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">
@@ -28,6 +29,7 @@
         <item name="actionMenuTextColor">@android:color/white</item>
         <item name="android:buttonTint" tools:targetApi="lollipop">@android:color/darker_gray</item>
         <item name="android:windowBackground">@color/backgroundDark</item>
+        <item name="headerColor">#183F38</item>
     </style>
 
     <style name="ToolBar" parent="Widget.AppCompat.ActionBar">

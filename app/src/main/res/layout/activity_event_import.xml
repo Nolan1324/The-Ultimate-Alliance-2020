@@ -10,8 +10,7 @@
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:theme="@style/AppTheme">
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -32,7 +31,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/holo_blue_light"
+                android:background="?headerColor"
                 android:padding="5dp"
                 android:elevation="2dp"
                 android:weightSum="10"
@@ -79,6 +78,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        app:itemTextColor="@color/text_color_primary"
+        app:itemIconTint="@color/text_color_primary"
         app:menu="@menu/drawer_view"
         app:headerLayout="@layout/nav_header" />
 
