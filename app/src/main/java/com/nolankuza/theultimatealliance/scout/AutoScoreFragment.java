@@ -51,30 +51,8 @@ public class AutoScoreFragment extends Fragment {
 
         activity = (ScoutBasicActivity) getActivity();
         if(activity != null) {
-            Log.d("HELLO", activity.isScouted() + " YE");
             if(activity.isScouted()) {
-                 ((Counter)view.findViewById(R.id.hatch_loading)).setValue(activity.data.autoHatchLoading);
-                 ((Counter)view.findViewById(R.id.hatch_floor)).setValue(activity.data.autoHatchFloor);
-                 ((Counter)view.findViewById(R.id.cargo_loading)).setValue(activity.data.autoCargoLoading);
-                 ((Counter)view.findViewById(R.id.cargo_floor)).setValue(activity.data.autoCargoFloor);
-                 ((Counter)view.findViewById(R.id.hatch_rocket_3_s)).setValue(activity.data.autoHatchRocket3S);
-                 ((Counter)view.findViewById(R.id.hatch_rocket_2_s)).setValue(activity.data.autoHatchRocket2S);
-                 ((Counter)view.findViewById(R.id.hatch_rocket_1_s)).setValue(activity.data.autoHatchRocket1S);
-                 ((Counter)view.findViewById(R.id.hatch_rocket_3_f)).setValue(activity.data.autoHatchRocket3F);
-                 ((Counter)view.findViewById(R.id.hatch_rocket_2_f)).setValue(activity.data.autoHatchRocket2F);
-                 ((Counter)view.findViewById(R.id.hatch_rocket_1_f)).setValue(activity.data.autoHatchRocket1F);
-                 ((Counter)view.findViewById(R.id.cargo_rocket_3_s)).setValue(activity.data.autoCargoRocket3S);
-                 ((Counter)view.findViewById(R.id.cargo_rocket_2_s)).setValue(activity.data.autoCargoRocket2S);
-                 ((Counter)view.findViewById(R.id.cargo_rocket_1_s)).setValue(activity.data.autoCargoRocket1S);
-                 ((Counter)view.findViewById(R.id.cargo_rocket_3_f)).setValue(activity.data.autoCargoRocket3F);
-                 ((Counter)view.findViewById(R.id.cargo_rocket_2_f)).setValue(activity.data.autoCargoRocket2F);
-                 ((Counter)view.findViewById(R.id.cargo_rocket_1_f)).setValue(activity.data.autoCargoRocket1F);
-                 ((Counter)view.findViewById(R.id.fumble_hatch)).setValue(activity.data.autoHatchFumble);
-                 ((Counter)view.findViewById(R.id.fumble_cargo)).setValue(activity.data.autoCargoFumble);
-                 ((Counter)view.findViewById(R.id.hatch_ship_s)).setValue(activity.data.autoHatchShipS);
-                 ((Counter)view.findViewById(R.id.hatch_ship_f)).setValue(activity.data.autoHatchShipF);
-                 ((Counter)view.findViewById(R.id.cargo_ship_s)).setValue(activity.data.autoCargoShipS);
-                 ((Counter)view.findViewById(R.id.cargo_ship_f)).setValue(activity.data.autoCargoShipF);
+                //Load
             }
         }
     }
@@ -83,7 +61,6 @@ public class AutoScoreFragment extends Fragment {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Log.d("HELLO", activity.data.autoCargoLoading + "");
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -103,28 +80,7 @@ public class AutoScoreFragment extends Fragment {
     public void save() {
         View fragmentView = getView();
         if(fragmentView != null) {
-            activity.data.autoHatchLoading = ((Counter)fragmentView.findViewById(R.id.hatch_loading)).getValue();
-            activity.data.autoHatchFloor = ((Counter)fragmentView.findViewById(R.id.hatch_floor)).getValue();
-            activity.data.autoCargoLoading = ((Counter)fragmentView.findViewById(R.id.cargo_loading)).getValue();
-            activity.data.autoCargoFloor = ((Counter)fragmentView.findViewById(R.id.cargo_floor)).getValue();
-            activity.data.autoHatchRocket3S = ((Counter)fragmentView.findViewById(R.id.hatch_rocket_3_s)).getValue();
-            activity.data.autoHatchRocket2S = ((Counter)fragmentView.findViewById(R.id.hatch_rocket_2_s)).getValue();
-            activity.data.autoHatchRocket1S = ((Counter)fragmentView.findViewById(R.id.hatch_rocket_1_s)).getValue();
-            activity.data.autoHatchRocket3F = ((Counter)fragmentView.findViewById(R.id.hatch_rocket_3_f)).getValue();
-            activity.data.autoHatchRocket2F = ((Counter)fragmentView.findViewById(R.id.hatch_rocket_2_f)).getValue();
-            activity.data.autoHatchRocket1F = ((Counter)fragmentView.findViewById(R.id.hatch_rocket_1_f)).getValue();
-            activity.data.autoCargoRocket3S = ((Counter)fragmentView.findViewById(R.id.cargo_rocket_3_s)).getValue();
-            activity.data.autoCargoRocket2S = ((Counter)fragmentView.findViewById(R.id.cargo_rocket_2_s)).getValue();
-            activity.data.autoCargoRocket1S = ((Counter)fragmentView.findViewById(R.id.cargo_rocket_1_s)).getValue();
-            activity.data.autoCargoRocket3F = ((Counter)fragmentView.findViewById(R.id.cargo_rocket_3_f)).getValue();
-            activity.data.autoCargoRocket2F = ((Counter)fragmentView.findViewById(R.id.cargo_rocket_2_f)).getValue();
-            activity.data.autoCargoRocket1F = ((Counter)fragmentView.findViewById(R.id.cargo_rocket_1_f)).getValue();
-            activity.data.autoHatchFumble = ((Counter)fragmentView.findViewById(R.id.fumble_hatch)).getValue();
-            activity.data.autoCargoFumble = ((Counter)fragmentView.findViewById(R.id.fumble_cargo)).getValue();
-            activity.data.autoHatchShipS = ((Counter)fragmentView.findViewById(R.id.hatch_ship_s)).getValue();
-            activity.data.autoHatchShipF = ((Counter)fragmentView.findViewById(R.id.hatch_ship_f)).getValue();
-            activity.data.autoCargoShipS = ((Counter)fragmentView.findViewById(R.id.cargo_ship_s)).getValue();
-            activity.data.autoCargoShipF = ((Counter)fragmentView.findViewById(R.id.cargo_ship_f)).getValue();
+           //Save
         }
     }
 

@@ -8,189 +8,345 @@
         android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#2a33b5e5">
-
-        <TextView
-            android:id="@+id/textView61"
-            android:layout_width="114dp"
-            android:layout_height="0dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Success"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="@dimen/list_text"
-            app:layout_constraintStart_toStartOf="@+id/textView60"
-            app:layout_constraintTop_toBottomOf="@+id/textView60" />
-
-        <TextView
-            android:id="@+id/textView62"
-            android:layout_width="116dp"
-            android:layout_height="0dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Fail"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="@dimen/list_text"
-            app:layout_constraintEnd_toEndOf="@+id/textView60"
-            app:layout_constraintTop_toBottomOf="@+id/textView60" />
-
-        <com.nolankuza.theultimatealliance.scout.Counter
-            android:id="@+id/hatch_ship_s"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/textView61"
-            app:layout_constraintTop_toBottomOf="@+id/textView61"
-            app:state_success="true" />
-
-        <com.nolankuza.theultimatealliance.scout.Counter
-            android:id="@+id/hatch_ship_f"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/textView62"
-            app:layout_constraintTop_toBottomOf="@+id/textView62"
-            app:state_fail="true" />
+        android:theme="@style/AppThemeDark"
+        android:background="?android:windowBackground">
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/rocket_cargo"
+            android:id="@+id/defense"
+            android:layout_width="431dp"
+            android:layout_height="194dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.nolankuza.theultimatealliance.scout.TimerButton
+                android:id="@+id/defense_timer_3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/defense_timer_2"
+                app:layout_constraintEnd_toEndOf="@+id/team_3"
+                app:layout_constraintStart_toStartOf="@+id/team_3"
+                app:layout_constraintTop_toTopOf="@+id/defense_timer_2"
+                app:text="DEFENDED" />
+
+            <com.nolankuza.theultimatealliance.scout.TimerButton
+                android:id="@+id/defense_timer_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/defense_timer_1"
+                app:layout_constraintEnd_toEndOf="@+id/team_2"
+                app:layout_constraintStart_toStartOf="@+id/team_2"
+                app:layout_constraintTop_toTopOf="@+id/defense_timer_1"
+                app:text="DEFENDED" />
+
+            <TextView
+                android:id="@+id/team_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Team 3"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/team_2" />
+
+            <TextView
+                android:id="@+id/team_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Team 2"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/team_1" />
+
+            <TextView
+                android:id="@+id/team_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Team 1"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView732" />
+
+            <TextView
+                android:id="@+id/textView732"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Defense"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/title_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.nolankuza.theultimatealliance.scout.TimerButton
+                android:id="@+id/defense_timer_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/team_1"
+                app:layout_constraintStart_toStartOf="@+id/team_1"
+                app:layout_constraintTop_toBottomOf="@+id/team_1"
+                app:text="DEFENDED" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.33" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.67" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/control_panel"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ToggleButton
+                android:id="@+id/toggleButtonFixer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/toggle_color"
+                android:visibility="gone" />
+
+            <ToggleButton
+                android:id="@+id/position_control_f"
+                style="@style/tabletButton"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:enabled="true"
+                android:textOff="Failure"
+                android:textOn="Failure"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/position_control_s"
+                app:layout_constraintStart_toEndOf="@+id/position_control_s"
+                app:layout_constraintTop_toTopOf="@+id/position_control_s" />
+
+            <ToggleButton
+                android:id="@+id/position_control_s"
+                style="@style/tabletButton"
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:layout_marginTop="8dp"
+                android:enabled="true"
+                android:textOff="Success"
+                android:textOn="Success"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/rotation_control_s"
+                app:layout_constraintTop_toBottomOf="@+id/rotation_control_s" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center_vertical"
+                android:text="Position Control"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintBottom_toBottomOf="@+id/position_control_s"
+                app:layout_constraintEnd_toEndOf="@+id/textView91"
+                app:layout_constraintTop_toTopOf="@+id/position_control_s" />
+
+            <ToggleButton
+                android:id="@+id/rotation_control_f"
+                style="@style/tabletButton"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:enabled="true"
+                android:textOff="Failure"
+                android:textOn="Failure"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/rotation_control_s"
+                app:layout_constraintStart_toEndOf="@+id/rotation_control_s"
+                app:layout_constraintTop_toTopOf="@+id/rotation_control_s" />
+
+            <ToggleButton
+                android:id="@+id/rotation_control_s"
+                style="@style/tabletButton"
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:enabled="true"
+                android:textOff="Success"
+                android:textOn="Success"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/textView91"
+                app:layout_constraintTop_toBottomOf="@+id/textView731" />
+
+            <TextView
+                android:id="@+id/textView731"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Control Panel (WoF)"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/title_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView91"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center_vertical"
+                android:text="Rotation Control"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintBottom_toBottomOf="@+id/rotation_control_s"
+                app:layout_constraintStart_toStartOf="@+id/textView731"
+                app:layout_constraintTop_toTopOf="@+id/rotation_control_s" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/pickups"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/auto_cells">
+
+            <TextView
+                android:id="@+id/textView73"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Power Cell Pickup"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView9"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView68"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_vertical"
+                android:text="Fumble"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_fumble"
+                app:layout_constraintEnd_toStartOf="@+id/cell_fumble"
+                app:layout_constraintTop_toTopOf="@+id/cell_fumble" />
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/cell_floor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_column="1"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@+id/cell_loading"
+                app:layout_constraintTop_toBottomOf="@+id/cell_loading"
+                app:state_normal="true">
+
+            </com.nolankuza.theultimatealliance.scout.Counter>
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center_vertical"
+                android:text="Loading Bay"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_loading"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cell_loading" />
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/cell_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_column="1"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toEndOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/textView73"
+                app:state_normal="true" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_vertical"
+                android:text="Floor"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintBottom_toBottomOf="@+id/cell_floor"
+                app:layout_constraintEnd_toStartOf="@+id/cell_floor"
+                app:layout_constraintTop_toTopOf="@+id/cell_floor" />
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/cell_fumble"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@+id/cell_floor"
+                app:layout_constraintTop_toBottomOf="@+id/cell_floor"
+                app:state_normal="true" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/auto_cells"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/cargo_rocket_2_s"
+                android:id="@+id/cell_2_s"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/cargo_rocket_3_s"
-                app:layout_constraintTop_toBottomOf="@+id/cargo_rocket_3_s"
-                app:state_success="true" />
-
-            <TextView
-                android:id="@+id/textView152"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="Success"
-                android:textColor="?android:textColorPrimary"
-                android:textSize="@dimen/list_text"
-                app:layout_constraintEnd_toEndOf="@+id/cargo_rocket_3_s"
-                app:layout_constraintStart_toStartOf="@+id/cargo_rocket_3_s"
-                app:layout_constraintTop_toBottomOf="@+id/textView222" />
-
-            <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/cargo_rocket_1_s"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/cargo_rocket_2_s"
-                app:layout_constraintTop_toBottomOf="@+id/cargo_rocket_2_s"
-                app:state_success="true">
-
-            </com.nolankuza.theultimatealliance.scout.Counter>
-
-            <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/cargo_rocket_2_f"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@+id/cargo_rocket_3_f"
-                app:layout_constraintTop_toTopOf="@+id/cargo_rocket_2_s"
-                app:state_fail="true" />
-
-            <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/cargo_rocket_1_f"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@+id/cargo_rocket_2_f"
-                app:layout_constraintTop_toTopOf="@+id/cargo_rocket_1_s"
-                app:state_fail="true">
-
-            </com.nolankuza.theultimatealliance.scout.Counter>
-
-            <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/cargo_rocket_3_s"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView152"
-                app:state_success="true" />
-
-            <TextView
-                android:id="@+id/textView222"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="Rocket Cargo"
-                android:textColor="?android:textColorPrimary"
-                android:textSize="@dimen/list_text"
-                app:layout_constraintEnd_toEndOf="@+id/textView212"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView212"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="Fail"
-                android:textColor="?android:textColorPrimary"
-                android:textSize="@dimen/list_text"
-                app:layout_constraintEnd_toEndOf="@+id/cargo_rocket_3_f"
-                app:layout_constraintStart_toStartOf="@+id/cargo_rocket_3_f"
-                app:layout_constraintTop_toTopOf="@+id/textView152" />
-
-            <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/cargo_rocket_3_f"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toEndOf="@+id/cargo_rocket_3_s"
-                app:layout_constraintTop_toTopOf="@+id/cargo_rocket_3_s"
-                app:state_fail="true" />
-        </android.support.constraint.ConstraintLayout>
-
-        <com.nolankuza.theultimatealliance.scout.Counter
-            android:id="@+id/cargo_ship_s"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/textView113"
-            app:layout_constraintTop_toBottomOf="@+id/textView113"
-            app:state_success="true" />
-
-        <TextView
-            android:id="@+id/textView103"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Ship Cargo"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="@dimen/list_text"
-            app:layout_constraintEnd_toEndOf="@+id/rocket_cargo"
-            app:layout_constraintStart_toStartOf="@+id/rocket_cargo"
-            app:layout_constraintTop_toBottomOf="@+id/rocket_cargo" />
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/rocket_hatch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/hatch_rocket_2_s"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/hatch_rocket_3_s"
-                app:layout_constraintTop_toBottomOf="@+id/hatch_rocket_3_s"
+                app:layout_constraintEnd_toEndOf="@+id/cell_3_s"
+                app:layout_constraintTop_toBottomOf="@+id/cell_3_s"
                 app:state_success="true" />
 
             <TextView
@@ -202,9 +358,9 @@
                 android:text="3"
                 android:textColor="?android:textColorPrimary"
                 android:textSize="@dimen/list_text"
-                app:layout_constraintBottom_toBottomOf="@+id/hatch_rocket_3_s"
-                app:layout_constraintEnd_toStartOf="@+id/hatch_rocket_3_s"
-                app:layout_constraintTop_toTopOf="@+id/hatch_rocket_3_s" />
+                app:layout_constraintBottom_toBottomOf="@+id/cell_3_s"
+                app:layout_constraintEnd_toStartOf="@+id/cell_3_s"
+                app:layout_constraintTop_toTopOf="@+id/cell_3_s" />
 
             <TextView
                 android:id="@+id/textView15"
@@ -215,41 +371,42 @@
                 android:text="Success"
                 android:textColor="?android:textColorPrimary"
                 android:textSize="@dimen/list_text"
-                app:layout_constraintEnd_toEndOf="@+id/hatch_rocket_3_s"
-                app:layout_constraintStart_toStartOf="@+id/hatch_rocket_3_s"
+                app:layout_constraintEnd_toEndOf="@+id/cell_3_s"
+                app:layout_constraintStart_toStartOf="@+id/cell_3_s"
                 app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
             <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/hatch_rocket_1_s"
+                android:id="@+id/cell_1_s"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/hatch_rocket_2_s"
-                app:layout_constraintTop_toBottomOf="@+id/hatch_rocket_2_s"
+                app:layout_constraintEnd_toEndOf="@+id/cell_2_s"
+                app:layout_constraintTop_toBottomOf="@+id/cell_2_s"
                 app:state_success="true">
 
             </com.nolankuza.theultimatealliance.scout.Counter>
 
             <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/hatch_rocket_2_f"
+                android:id="@+id/cell_2_f"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@+id/hatch_rocket_3_f"
-                app:layout_constraintTop_toTopOf="@+id/hatch_rocket_2_s"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@+id/cell_2_s"
+                app:layout_constraintTop_toTopOf="@+id/cell_2_s"
                 app:state_fail="true" />
 
             <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/hatch_rocket_1_f"
+                android:id="@+id/cell_1_f"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@+id/hatch_rocket_2_f"
-                app:layout_constraintTop_toTopOf="@+id/hatch_rocket_1_s"
+                app:layout_constraintStart_toStartOf="@+id/cell_2_f"
+                app:layout_constraintTop_toTopOf="@+id/cell_1_s"
                 app:state_fail="true">
 
             </com.nolankuza.theultimatealliance.scout.Counter>
 
             <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/hatch_rocket_3_s"
+                android:id="@+id/cell_3_s"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -267,9 +424,9 @@
                 android:text="1"
                 android:textColor="?android:textColorPrimary"
                 android:textSize="@dimen/list_text"
-                app:layout_constraintBottom_toBottomOf="@+id/hatch_rocket_1_s"
-                app:layout_constraintEnd_toStartOf="@+id/hatch_rocket_1_s"
-                app:layout_constraintTop_toTopOf="@+id/hatch_rocket_1_s" />
+                app:layout_constraintBottom_toBottomOf="@+id/cell_1_s"
+                app:layout_constraintEnd_toStartOf="@+id/cell_1_s"
+                app:layout_constraintTop_toTopOf="@+id/cell_1_s" />
 
             <TextView
                 android:id="@+id/textView13"
@@ -280,16 +437,16 @@
                 android:text="2"
                 android:textColor="?android:textColorPrimary"
                 android:textSize="@dimen/list_text"
-                app:layout_constraintBottom_toBottomOf="@+id/hatch_rocket_2_s"
-                app:layout_constraintEnd_toStartOf="@+id/hatch_rocket_2_s"
-                app:layout_constraintTop_toTopOf="@+id/hatch_rocket_2_s" />
+                app:layout_constraintBottom_toBottomOf="@+id/cell_2_s"
+                app:layout_constraintEnd_toStartOf="@+id/cell_2_s"
+                app:layout_constraintTop_toTopOf="@+id/cell_2_s" />
 
             <TextView
                 android:id="@+id/textView22"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="Rocket Hatch"
+                android:text="Power Cell Scoring"
                 android:textColor="?android:textColorPrimary"
                 android:textSize="@dimen/list_text"
                 app:layout_constraintEnd_toEndOf="@+id/textView21"
@@ -304,255 +461,9 @@
                 android:text="Fail"
                 android:textColor="?android:textColorPrimary"
                 android:textSize="@dimen/list_text"
-                app:layout_constraintEnd_toEndOf="@+id/hatch_rocket_3_f"
-                app:layout_constraintStart_toStartOf="@+id/hatch_rocket_3_f"
+                app:layout_constraintEnd_toEndOf="@+id/cell_2_f"
+                app:layout_constraintStart_toStartOf="@+id/cell_2_f"
                 app:layout_constraintTop_toTopOf="@+id/textView15" />
-
-            <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/hatch_rocket_3_f"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toEndOf="@+id/hatch_rocket_3_s"
-                app:layout_constraintTop_toTopOf="@+id/hatch_rocket_3_s"
-                app:state_fail="true" />
-        </android.support.constraint.ConstraintLayout>
-
-        <com.nolankuza.theultimatealliance.scout.Counter
-            android:id="@+id/fumble_cargo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/cargo_ship_f"
-            app:layout_constraintTop_toBottomOf="@+id/cargo_ship_f"
-            app:state_fail="true" />
-
-        <com.nolankuza.theultimatealliance.scout.Counter
-            android:id="@+id/fumble_hatch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/hatch_ship_f"
-            app:layout_constraintTop_toBottomOf="@+id/hatch_ship_f"
-            app:state_fail="true" />
-
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:gravity="center_vertical"
-            android:text="Fumble\nCargo"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="@dimen/list_text"
-            app:layout_constraintBottom_toBottomOf="@+id/fumble_cargo"
-            app:layout_constraintEnd_toStartOf="@+id/fumble_cargo"
-            app:layout_constraintTop_toTopOf="@+id/fumble_cargo" />
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:gravity="center_vertical"
-            android:text="Fumble\nHatch"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="@dimen/list_text"
-            app:layout_constraintBottom_toBottomOf="@+id/fumble_hatch"
-            app:layout_constraintEnd_toStartOf="@+id/fumble_hatch"
-            app:layout_constraintTop_toTopOf="@+id/fumble_hatch" />
-
-        <TextView
-            android:id="@+id/textView113"
-            android:layout_width="114dp"
-            android:layout_height="0dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Success"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="@dimen/list_text"
-            app:layout_constraintStart_toStartOf="@+id/textView103"
-            app:layout_constraintTop_toBottomOf="@+id/textView103" />
-
-        <TextView
-            android:id="@+id/textView233"
-            android:layout_width="116dp"
-            android:layout_height="0dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Fail"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="@dimen/list_text"
-            app:layout_constraintEnd_toEndOf="@+id/textView103"
-            app:layout_constraintTop_toBottomOf="@+id/textView103" />
-
-        <com.nolankuza.theultimatealliance.scout.Counter
-            android:id="@+id/cargo_ship_f"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/textView233"
-            app:layout_constraintTop_toBottomOf="@+id/textView233"
-            app:state_fail="true" />
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/pickups"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="88dp"
-            app:layout_constraintEnd_toStartOf="@+id/cargo_pickups"
-            app:layout_constraintStart_toEndOf="@+id/rocket_hatch"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/hatch_floor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="2"
-                android:layout_column="1"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/hatch_loading"
-                app:layout_constraintTop_toBottomOf="@+id/hatch_loading"
-                app:state_hatch="true">
-
-            </com.nolankuza.theultimatealliance.scout.Counter>
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Hatch Pickup"
-                android:textColor="?android:textColorPrimary"
-                android:textSize="@dimen/title_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="16dp"
-                android:gravity="center_vertical"
-                android:text="Station"
-                android:textColor="?android:textColorPrimary"
-                android:textSize="@dimen/list_text"
-                app:layout_constraintBottom_toBottomOf="@+id/hatch_loading"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/hatch_loading" />
-
-            <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/hatch_loading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="2"
-                android:layout_column="1"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
-                app:layout_constraintStart_toEndOf="@+id/textView9"
-                app:layout_constraintTop_toBottomOf="@+id/textView7"
-                app:state_hatch="true" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginEnd="8dp"
-                android:gravity="center_vertical"
-                android:text="Floor"
-                android:textColor="?android:textColorPrimary"
-                android:textSize="@dimen/list_text"
-                app:layout_constraintBottom_toBottomOf="@+id/hatch_floor"
-                app:layout_constraintEnd_toStartOf="@+id/hatch_floor"
-                app:layout_constraintTop_toTopOf="@+id/hatch_floor" />
-
-        </android.support.constraint.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/textView60"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Ship Hatch"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="@dimen/list_text"
-            app:layout_constraintEnd_toEndOf="@+id/rocket_hatch"
-            app:layout_constraintStart_toStartOf="@+id/rocket_hatch"
-            app:layout_constraintTop_toBottomOf="@+id/rocket_hatch" />
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/cargo_pickups"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="@+id/rocket_cargo"
-            app:layout_constraintStart_toEndOf="@+id/pickups"
-            app:layout_constraintTop_toTopOf="@+id/pickups">
-
-            <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/cargo_floor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="2"
-                android:layout_column="1"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/cargo_loading"
-                app:layout_constraintTop_toBottomOf="@+id/cargo_loading"
-                app:state_cargo="true">
-
-            </com.nolankuza.theultimatealliance.scout.Counter>
-
-            <TextView
-                android:id="@+id/textView711"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Cargo Pickup"
-                android:textColor="?android:textColorPrimary"
-                android:textSize="@dimen/title_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView911"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="16dp"
-                android:gravity="center_vertical"
-                android:text="Station"
-                android:textColor="?android:textColorPrimary"
-                android:textSize="@dimen/list_text"
-                app:layout_constraintBottom_toBottomOf="@+id/cargo_loading"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/cargo_loading" />
-
-            <com.nolankuza.theultimatealliance.scout.Counter
-                android:id="@+id/cargo_loading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="2"
-                android:layout_column="1"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
-                app:layout_constraintStart_toEndOf="@+id/textView911"
-                app:layout_constraintTop_toBottomOf="@+id/textView711"
-                app:state_cargo="true" />
-
-            <TextView
-                android:id="@+id/textView611"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginEnd="8dp"
-                android:gravity="center_vertical"
-                android:text="Floor"
-                android:textColor="?android:textColorPrimary"
-                android:textSize="@dimen/list_text"
-                app:layout_constraintBottom_toBottomOf="@+id/cargo_floor"
-                app:layout_constraintEnd_toStartOf="@+id/cargo_floor"
-                app:layout_constraintTop_toTopOf="@+id/cargo_floor" />
 
         </android.support.constraint.ConstraintLayout>
 

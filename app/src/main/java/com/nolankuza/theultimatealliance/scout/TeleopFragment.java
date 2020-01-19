@@ -8,12 +8,23 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.nolankuza.theultimatealliance.R;
+import com.nolankuza.theultimatealliance.model.Alliance;
 
-public class TeleopFragment extends Fragment {
+public class TeleopFragment extends Fragment implements TimerButton.Listener {
     private GameDataListener listener;
     private ScoutBasicActivity activity;
+
+    String team1 = "";
+    String team2 = "";
+    String team3 = "";
+
+    TimerButton defenseTimer1;
+    TimerButton defenseTimer2;
+    TimerButton defenseTimer3;
 
     public TeleopFragment() {
 
@@ -42,29 +53,51 @@ public class TeleopFragment extends Fragment {
 
         activity = (ScoutBasicActivity) getActivity();
         if(activity != null) {
+            if (activity.gameData.alliance == Alliance.Red) {
+                team1 = activity.match.blue1;
+                team2 = activity.match.blue2;
+                team3 = activity.match.blue3;
+            } else {
+                team1 = activity.match.red1;
+                team2 = activity.match.red2;
+                team3 = activity.match.red3;
+            }
+            /*((TimerButton)view.findViewById(R.id.defense_timer_1)).setText(team1);
+            ((TimerButton)view.findViewById(R.id.defense_timer_2)).setText(team2);
+            ((TimerButton)view.findViewById(R.id.defense_timer_3)).setText(team3);*/
+
+            defenseTimer1 = view.findViewById(R.id.defense_timer_1);
+            defenseTimer2 = view.findViewById(R.id.defense_timer_2);
+            defenseTimer3 = view.findViewById(R.id.defense_timer_3);
+
+            defenseTimer1.setListener(this);
+            defenseTimer2.setListener(this);
+            defenseTimer3.setListener(this);
+
+            ((TextView)view.findViewById(R.id.team_1)).setText(team1);
+            ((TextView)view.findViewById(R.id.team_2)).setText(team2);
+            ((TextView)view.findViewById(R.id.team_3)).setText(team3);
+
             if(activity.isScouted()) {
-                ((Counter)view.findViewById(R.id.hatch_loading)).setValue(activity.data.hatchLoading);
-                ((Counter)view.findViewById(R.id.hatch_floor)).setValue(activity.data.hatchFloor);
-                ((Counter)view.findViewById(R.id.cargo_loading)).setValue(activity.data.cargoLoading);
-                ((Counter)view.findViewById(R.id.cargo_floor)).setValue(activity.data.cargoFloor);
-                ((Counter)view.findViewById(R.id.hatch_rocket_3_s)).setValue(activity.data.hatchRocket3S);
-                ((Counter)view.findViewById(R.id.hatch_rocket_2_s)).setValue(activity.data.hatchRocket2S);
-                ((Counter)view.findViewById(R.id.hatch_rocket_1_s)).setValue(activity.data.hatchRocket1S);
-                ((Counter)view.findViewById(R.id.hatch_rocket_3_f)).setValue(activity.data.hatchRocket3F);
-                ((Counter)view.findViewById(R.id.hatch_rocket_2_f)).setValue(activity.data.hatchRocket2F);
-                ((Counter)view.findViewById(R.id.hatch_rocket_1_f)).setValue(activity.data.hatchRocket1F);
-                ((Counter)view.findViewById(R.id.cargo_rocket_3_s)).setValue(activity.data.cargoRocket3S);
-                ((Counter)view.findViewById(R.id.cargo_rocket_2_s)).setValue(activity.data.cargoRocket2S);
-                ((Counter)view.findViewById(R.id.cargo_rocket_1_s)).setValue(activity.data.cargoRocket1S);
-                ((Counter)view.findViewById(R.id.cargo_rocket_3_f)).setValue(activity.data.cargoRocket3F);
-                ((Counter)view.findViewById(R.id.cargo_rocket_2_f)).setValue(activity.data.cargoRocket2F);
-                ((Counter)view.findViewById(R.id.cargo_rocket_1_f)).setValue(activity.data.cargoRocket1F);
-                ((Counter)view.findViewById(R.id.fumble_hatch)).setValue(activity.data.hatchFumble);
-                ((Counter)view.findViewById(R.id.fumble_cargo)).setValue(activity.data.cargoFumble);
-                ((Counter)view.findViewById(R.id.hatch_ship_s)).setValue(activity.data.hatchShipS);
-                ((Counter)view.findViewById(R.id.hatch_ship_f)).setValue(activity.data.hatchShipF);
-                ((Counter)view.findViewById(R.id.cargo_ship_s)).setValue(activity.data.cargoShipS);
-                ((Counter)view.findViewById(R.id.cargo_ship_f)).setValue(activity.data.cargoShipF);
+                //Load
+                ((Counter)view.findViewById(R.id.cell_1_s)).setValue(activity.data.cell1S);
+                ((Counter)view.findViewById(R.id.cell_1_f)).setValue(activity.data.cell1F);
+                ((Counter)view.findViewById(R.id.cell_2_s)).setValue(activity.data.cell2S);
+                ((Counter)view.findViewById(R.id.cell_2_f)).setValue(activity.data.cell2F);
+                ((Counter)view.findViewById(R.id.cell_3_s)).setValue(activity.data.cell3S);
+
+                ((Counter)view.findViewById(R.id.cell_loading)).setValue(activity.data.cellLoading);
+                ((Counter)view.findViewById(R.id.cell_floor)).setValue(activity.data.cellFloor);
+                ((Counter)view.findViewById(R.id.cell_fumble)).setValue(activity.data.cellFumble);
+
+                ((ToggleButton)view.findViewById(R.id.rotation_control_s)).setChecked(activity.data.rotationControlS);
+                ((ToggleButton)view.findViewById(R.id.rotation_control_f)).setChecked(activity.data.rotationControlF);
+                ((ToggleButton)view.findViewById(R.id.position_control_s)).setChecked(activity.data.positionControlS);
+                ((ToggleButton)view.findViewById(R.id.position_control_f)).setChecked(activity.data.positionControlF);
+
+                defenseTimer1.setSeconds(activity.data.defendedTime1);
+                defenseTimer2.setSeconds(activity.data.defendedTime2);
+                defenseTimer3.setSeconds(activity.data.defendedTime3);
             }
         }
     }
@@ -72,28 +105,34 @@ public class TeleopFragment extends Fragment {
     public void save() {
         View fragmentView = getView();
         if(fragmentView != null) {
-            activity.data.hatchLoading = ((Counter)fragmentView.findViewById(R.id.hatch_loading)).getValue();
-            activity.data.hatchFloor = ((Counter)fragmentView.findViewById(R.id.hatch_floor)).getValue();
-            activity.data.cargoLoading = ((Counter)fragmentView.findViewById(R.id.cargo_loading)).getValue();
-            activity.data.cargoFloor = ((Counter)fragmentView.findViewById(R.id.cargo_floor)).getValue();
-            activity.data.hatchRocket3S = ((Counter)fragmentView.findViewById(R.id.hatch_rocket_3_s)).getValue();
-            activity.data.hatchRocket2S = ((Counter)fragmentView.findViewById(R.id.hatch_rocket_2_s)).getValue();
-            activity.data.hatchRocket1S = ((Counter)fragmentView.findViewById(R.id.hatch_rocket_1_s)).getValue();
-            activity.data.hatchRocket3F = ((Counter)fragmentView.findViewById(R.id.hatch_rocket_3_f)).getValue();
-            activity.data.hatchRocket2F = ((Counter)fragmentView.findViewById(R.id.hatch_rocket_2_f)).getValue();
-            activity.data.hatchRocket1F = ((Counter)fragmentView.findViewById(R.id.hatch_rocket_1_f)).getValue();
-            activity.data.cargoRocket3S = ((Counter)fragmentView.findViewById(R.id.cargo_rocket_3_s)).getValue();
-            activity.data.cargoRocket2S = ((Counter)fragmentView.findViewById(R.id.cargo_rocket_2_s)).getValue();
-            activity.data.cargoRocket1S = ((Counter)fragmentView.findViewById(R.id.cargo_rocket_1_s)).getValue();
-            activity.data.cargoRocket3F = ((Counter)fragmentView.findViewById(R.id.cargo_rocket_3_f)).getValue();
-            activity.data.cargoRocket2F = ((Counter)fragmentView.findViewById(R.id.cargo_rocket_2_f)).getValue();
-            activity.data.cargoRocket1F = ((Counter)fragmentView.findViewById(R.id.cargo_rocket_1_f)).getValue();
-            activity.data.hatchFumble = ((Counter)fragmentView.findViewById(R.id.fumble_hatch)).getValue();
-            activity.data.cargoFumble = ((Counter)fragmentView.findViewById(R.id.fumble_cargo)).getValue();
-            activity.data.hatchShipS = ((Counter)fragmentView.findViewById(R.id.hatch_ship_s)).getValue();
-            activity.data.hatchShipF = ((Counter)fragmentView.findViewById(R.id.hatch_ship_f)).getValue();
-            activity.data.cargoShipS = ((Counter)fragmentView.findViewById(R.id.cargo_ship_s)).getValue();
-            activity.data.cargoShipF = ((Counter)fragmentView.findViewById(R.id.cargo_ship_f)).getValue();
+            //Save
+            activity.data.cell1S = ((Counter)fragmentView.findViewById(R.id.cell_1_s)).getValue();
+            activity.data.cell1F = ((Counter)fragmentView.findViewById(R.id.cell_1_f)).getValue();
+            activity.data.cell2S = ((Counter)fragmentView.findViewById(R.id.cell_2_s)).getValue();
+            activity.data.cell2F = ((Counter)fragmentView.findViewById(R.id.cell_2_f)).getValue();
+            activity.data.cell3S = ((Counter)fragmentView.findViewById(R.id.cell_3_s)).getValue();
+
+            activity.data.cellLoading = ((Counter)fragmentView.findViewById(R.id.cell_loading)).getValue();
+            activity.data.cellFloor = ((Counter)fragmentView.findViewById(R.id.cell_floor)).getValue();
+            activity.data.cellFumble = ((Counter)fragmentView.findViewById(R.id.cell_fumble)).getValue();
+
+            activity.data.rotationControlS = ((ToggleButton)fragmentView.findViewById(R.id.rotation_control_s)).isChecked();
+            activity.data.rotationControlF = ((ToggleButton)fragmentView.findViewById(R.id.rotation_control_f)).isChecked();
+            activity.data.positionControlS = ((ToggleButton)fragmentView.findViewById(R.id.position_control_s)).isChecked();
+            activity.data.positionControlF = ((ToggleButton)fragmentView.findViewById(R.id.position_control_f)).isChecked();
+
+            if(defenseTimer1.hasRan()) {
+                activity.data.defendedTeam1 = team1;
+                activity.data.defendedTime1 = defenseTimer1.getSeconds();
+            }
+            if(defenseTimer2.hasRan()) {
+                activity.data.defendedTeam2 = team2;
+                activity.data.defendedTime2 = defenseTimer2.getSeconds();
+            }
+            if(defenseTimer3.hasRan()) {
+                activity.data.defendedTeam3 = team3;
+                activity.data.defendedTime3 = defenseTimer3.getSeconds();
+            }
         }
     }
 
@@ -112,5 +151,20 @@ public class TeleopFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         listener = null;
+    }
+
+    @Override
+    public void enableScrolling(boolean enable) {
+        if(listener != null) listener.enableScrolling(enable);
+    }
+
+    @Override
+    public void onPlay() {
+        listener.displayDefense(true);
+    }
+
+    @Override
+    public void onReset() {
+        listener.displayDefense(false);
     }
 }

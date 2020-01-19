@@ -133,7 +133,7 @@ public class DataSyncActivity extends BaseActivity implements MessageLogger {
                 return true;
 
             case R.id.delete_data_button:
-                if(!(options.event || options.teams || options.assignments || options.settings || options.game || options.pit || options.playoffs)) {
+                if(!(options.event || options.teams || options.assignments || options.students || options.settings || options.game || options.pit || options.playoffs)) {
                     broadcast("Please select at least one type of data to delete", Color.RED);
                     return true;
                 }

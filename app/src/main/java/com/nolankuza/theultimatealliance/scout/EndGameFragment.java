@@ -1,6 +1,7 @@
 package com.nolankuza.theultimatealliance.scout;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,58 +12,50 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.util.DataUtil;
 
-import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EndGameFragment extends Fragment {
     private GameDataListener listener;
     private ScoutBasicActivity activity;
 
-    private Timer timer = new Timer();
-    private long climbTime = 0;
-    private boolean timerRunning;
+    private Drawable starDrawable;
+    private Drawable starOnDrawable;
 
-    private RadioGroup level1Group;
-    private RadioGroup level2Group;
-    private RadioGroup level3Group;
-    private RadioButton endLevel1S;
-    private RadioButton endLevel1F;
-    private RadioButton endLevel2S;
-    private RadioButton endLevel2F;
-    private RadioButton endLevel2Assisted1;
-    private RadioButton endLevel2Assisted2;
-    private RadioButton endLevel2WasAssisted;
-    private RadioButton endLevel3S;
-    private RadioButton endLevel3F;
-    private RadioButton endLevel3Assisted1;
-    private RadioButton endLevel3Assisted2;
-    private RadioButton endLevel3WasAssisted;
-    private CheckBox endLevel3FromLevel2;
-    private CheckBox endLevel3SharedPlatform;
-    private CheckBox endNoHabAttempt;
+    private List<ImageButton> defenseButtons = new ArrayList<>();
+    private TextView defenseRatingTextView;
+    private View defenseRatingView;
+    private boolean displayDefense;
 
-    RadioGroup level2Extra;
-    RadioGroup level3Extra;
+    private CheckBox endOnPlatform;
+    private TimerButton hangTimer;
+    private CheckBox endHangF;
 
-    private ImageButton playButton;
-    private TextView timeText;
-    private ImageButton resetButton;
+    private int lastHangAssistSelected;
+    private RadioGroup hangAssist;
+    private RadioButton endHangAssist1;
+    private RadioButton endHangAssist2;
+    private RadioButton endHangWasAssisted;
+
+    private CheckBox endHangLevel;
+    private ToggleButton endHangSharedRung0;
+    private ToggleButton endHangSharedRung1;
+    private ToggleButton endHangSharedRung2;
+
+    private CheckBox endNoRendezvousAttempt;
 
     private Button matchSaveButton;
-
-    private int lastLevel2ExtraSelected;
-    private int lastLevel3ExtraSelected;
 
     public EndGameFragment() {
 
@@ -91,97 +84,96 @@ public class EndGameFragment extends Fragment {
 
         activity = (ScoutBasicActivity) getActivity();
 
-        level1Group = view.findViewById(R.id.level_1);
-        level2Group = view.findViewById(R.id.level_2);
-        level3Group = view.findViewById(R.id.level_3);
-
-        endLevel1S = view.findViewById(R.id.end_level_1_s);
-        endLevel1F = view.findViewById(R.id.end_level_1_f);
-        endLevel2S = view.findViewById(R.id.end_level_2_s);
-        endLevel2F = view.findViewById(R.id.end_level_2_f);
-        endLevel2Assisted1 = view.findViewById(R.id.end_level_2_assist_1);
-        endLevel2Assisted2 = view.findViewById(R.id.end_level_2_assist_2);
-        endLevel2WasAssisted = view.findViewById(R.id.end_level_2_was_assisted);
-        endLevel3S = view.findViewById(R.id.end_level_3_s);
-        endLevel3F = view.findViewById(R.id.end_level_3_f);
-        endLevel3Assisted1 = view.findViewById(R.id.end_level_3_assist_1);
-        endLevel3Assisted2 = view.findViewById(R.id.end_level_3_assist_2);
-        endLevel3WasAssisted = view.findViewById(R.id.end_level_3_was_assisted);
-        endLevel3FromLevel2 = view.findViewById(R.id.end_level_3_from_level_2);
-        endLevel3SharedPlatform = view.findViewById(R.id.end_level_3_shared_platform);
-        endNoHabAttempt = view.findViewById(R.id.end_no_hab_attempt);
-
-        level2Extra = view.findViewById(R.id.level_2_assist);
-        level3Extra = view.findViewById(R.id.level_3_assist);
-
-        endLevel1S.setOnClickListener(new Level1Listener());
-        endLevel1F.setOnClickListener(new Level1Listener());
-        endLevel2S.setOnClickListener(new Level2Listener());
-        endLevel2F.setOnClickListener(new Level2Listener());
-        endLevel3S.setOnClickListener(new Level3Listener());
-        endLevel3F.setOnClickListener(new Level3Listener());
-
-        endLevel2Assisted1.setOnClickListener(new Level2ExtraListener());
-        endLevel2Assisted2.setOnClickListener(new Level2ExtraListener());
-        endLevel2WasAssisted.setOnClickListener(new Level2ExtraListener());
-        endLevel3Assisted1.setOnClickListener(new Level3ExtraListener());
-        endLevel3Assisted2.setOnClickListener(new Level3ExtraListener());
-        endLevel3WasAssisted.setOnClickListener(new Level3ExtraListener());
-
-        endNoHabAttempt.setOnClickListener(new View.OnClickListener() {
+        defenseButtons.add((ImageButton)view.findViewById(R.id.star_1));
+        defenseButtons.add((ImageButton)view.findViewById(R.id.star_2));
+        defenseButtons.add((ImageButton)view.findViewById(R.id.star_3));
+        defenseButtons.add((ImageButton)view.findViewById(R.id.star_4));
+        defenseButtons.add((ImageButton)view.findViewById(R.id.star_5));
+        starDrawable = AppCompatResources.getDrawable(activity, R.drawable.ic_star_border);
+        starOnDrawable = AppCompatResources.getDrawable(activity, R.drawable.ic_star);
+        new CounterListHandler(defenseButtons, starDrawable, starOnDrawable, new CounterListHandler.Listener() {
             @Override
-            public void onClick(View view) {
-                if(endNoHabAttempt.isChecked()) {
-                    clearLevel1();
-                    clearLevel2();
-                    clearLevel3();
-                }
-                matchSaveButton.setEnabled(endNoHabAttempt.isChecked());
+            public void onValueChange(int newValue) {
+                activity.data.defenseAbility = newValue;
             }
         });
 
-        playButton = view.findViewById(R.id.playButton);
-        timeText = view.findViewById(R.id.time);
-        resetButton = view.findViewById(R.id.resetButton);
+        defenseRatingTextView = view.findViewById(R.id.defense_rating_text);
+        defenseRatingView = view.findViewById(R.id.defense_rating);
+        displayDefense(false);
 
-        timer.scheduleAtFixedRate(new TimerTask() {
+        endOnPlatform = view.findViewById(R.id.end_on_platform);
+        hangTimer = view.findViewById(R.id.hang_timer);
+        endHangF = view.findViewById(R.id.end_hang_f);
+
+        hangAssist = view.findViewById(R.id.hang_assist);
+        endHangAssist1 = view.findViewById(R.id.end_hang_assist_1);
+        endHangAssist2 = view.findViewById(R.id.end_hang_assist_2);
+        endHangWasAssisted = view.findViewById(R.id.end_hang_was_assisted);
+        endHangLevel = view.findViewById(R.id.end_hang_level);
+        endNoRendezvousAttempt = view.findViewById(R.id.end_no_rendezvous_attempt);
+
+        endHangLevel = view.findViewById(R.id.end_hang_level);
+        endHangSharedRung0 = view.findViewById(R.id.end_hang_shared_rung_0);
+        endHangSharedRung1 = view.findViewById(R.id.end_hang_shared_rung_1);
+        endHangSharedRung2 = view.findViewById(R.id.end_hang_shared_rung_2);
+
+        HangAssistListener hangAssistListener = new HangAssistListener();
+        endHangAssist1.setOnClickListener(hangAssistListener);
+        endHangAssist2.setOnClickListener(hangAssistListener);
+        endHangWasAssisted.setOnClickListener(hangAssistListener);
+
+        endOnPlatform.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void run() {
-                final String timeString = String.format(Locale.US, "%01d:%02d.%02d",
-                        TimeUnit.MILLISECONDS.toMinutes(climbTime) % TimeUnit.HOURS.toMinutes(1),
-                        TimeUnit.MILLISECONDS.toSeconds(climbTime) % TimeUnit.MINUTES.toSeconds(1),
-                        (int) (((climbTime / 1000f) - Math.floor(climbTime / 1000f)) * 100));
-                activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        timeText.setText(timeString);
-                    }
-                });
-                if(timerRunning) {
-                    climbTime += 10;
-                }
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                enableHanging(isChecked);
             }
-        }, 0, 10);
+        });
 
-        playButton.setOnClickListener(new View.OnClickListener() {
+        endNoRendezvousAttempt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!timerRunning) {
-                    playButton.setImageDrawable(AppCompatResources.getDrawable(activity, R.drawable.ic_pause));
-                    timerRunning = true;
+                if(endNoRendezvousAttempt.isChecked()) {
+                    endOnPlatform.setChecked(false);
+                    hangTimer.resetTimer();
+                    endHangF.setChecked(false);
+                    endHangAssist1.setChecked(false);
+                    endHangAssist2.setChecked(false);
+                    endHangWasAssisted.setChecked(false);
+                    endHangLevel.setChecked(false);
+                    sharedRungButtonsOff();
+                    endHangSharedRung0.setChecked(true);
+                    endOnPlatform.setEnabled(false);
+                    enableHanging(false);
                 } else {
-                    playButton.setImageDrawable(AppCompatResources.getDrawable(activity, R.drawable.ic_play));
-                    timerRunning = false;
+                    endOnPlatform.setEnabled(true);
                 }
+                matchSaveButton.setEnabled(endNoRendezvousAttempt.isChecked());
             }
         });
-        resetButton.setOnClickListener(new View.OnClickListener() {
+
+        endHangSharedRung0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                timerRunning = false;
-                climbTime = 0;
-                timeText.setText("0:00.00");
-                playButton.setImageDrawable(AppCompatResources.getDrawable(activity, R.drawable.ic_play));
+                sharedRungButtonsOff();
+                ((ToggleButton)view).setChecked(true);
+                activity.data.endHangSharedRung = 0;
+            }
+        });
+        endHangSharedRung1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sharedRungButtonsOff();
+                ((ToggleButton)view).setChecked(true);
+                activity.data.endHangSharedRung = 1;
+            }
+        });
+        endHangSharedRung2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sharedRungButtonsOff();
+                ((ToggleButton)view).setChecked(true);
+                activity.data.endHangSharedRung = 2;
             }
         });
 
@@ -192,21 +184,12 @@ public class EndGameFragment extends Fragment {
                 View fragmentView = getView();
                 if(fragmentView != null) {
                     if(!activity.isScouted()) {
-                        activity.data.endLevel1S = endLevel1S.isChecked();
-                        activity.data.endLevel1F = endLevel1F.isChecked();
-                        activity.data.endLevel2S = endLevel2S.isChecked();
-                        activity.data.endLevel2F = endLevel2F.isChecked();
-                        activity.data.endLevel2Assisted = endLevel2Assisted1.isChecked() ? 1 : (endLevel2Assisted2.isChecked() ? 2 : 0);
-                        activity.data.endLevel2WasAssisted = endLevel2WasAssisted.isChecked();
-                        activity.data.endLevel3S = endLevel3S.isChecked();
-                        activity.data.endLevel3F = endLevel3F.isChecked();
-                        activity.data.endLevel3Assisted = endLevel3Assisted1.isChecked() ? 1 : (endLevel3Assisted2.isChecked() ? 2 : 0);
-                        activity.data.endLevel3WasAssisted = endLevel3WasAssisted.isChecked();
-                        activity.data.endLevel3FromLevel2 = endLevel3FromLevel2.isChecked();
-                        activity.data.endLevel3SharedPlatform = endLevel3SharedPlatform.isChecked();
-                        activity.data.endNoHabAttempt = endNoHabAttempt.isChecked();
+                        activity.data.endPark = endOnPlatform.isChecked() && !hangTimer.hasRan();
+                        activity.data.endHangF = endHangF.isChecked();
+                        activity.data.endHangAssisted = endHangAssist1.isChecked() ? 1 : (endHangAssist2.isChecked() ? 2 : 0);
+                        activity.data.endHangWasAssisted = endHangWasAssisted.isChecked();
+                        activity.data.endHangLevel = endHangLevel.isChecked();
 
-                        activity.data.climbTime = climbTime / 1000f;
                         activity.data.totallyWorking = ((RadioButton) fragmentView.findViewById(R.id.totally_working)).isChecked();
                         activity.data.partiallyWorking = ((RadioButton) fragmentView.findViewById(R.id.partially_working)).isChecked();
                         activity.data.noShow = ((RadioButton) fragmentView.findViewById(R.id.no_show)).isChecked();
@@ -214,7 +197,6 @@ public class EndGameFragment extends Fragment {
                         activity.data.selfDied = ((RadioButton) fragmentView.findViewById(R.id.self_died)).isChecked();
                         activity.data.fellOver = ((RadioButton) fragmentView.findViewById(R.id.fell_over)).isChecked();
                         activity.data.pushedOver = ((RadioButton) fragmentView.findViewById(R.id.pushed_over)).isChecked();
-                        activity.data.playedDefense = ((CheckBox) fragmentView.findViewById(R.id.played_defense)).isChecked();
                         activity.data.comments = DataUtil.clean(((EditText) fragmentView.findViewById(R.id.comments)).getText().toString());
                     }
                     listener.onSave();
@@ -223,98 +205,43 @@ public class EndGameFragment extends Fragment {
         });
     }
 
-    private class Level1Listener implements RadioButton.OnClickListener {
-        @Override
-        public void onClick(View view) {
-            clearLevel2();
-            clearLevel3();
-            endNoHabAttempt.setChecked(false);
-            matchSaveButton.setEnabled(true);
-        }
+    public void displayDefense(boolean display) {
+        int visibility = display ? View.VISIBLE : View.GONE;
+        if(defenseRatingTextView != null) defenseRatingTextView.setVisibility(visibility);
+        if(defenseRatingView != null) defenseRatingView.setVisibility(visibility);
+        displayDefense = display;
     }
 
-    private class Level2Listener implements RadioButton.OnClickListener {
-        @Override
-        public void onClick(View view) {
-            clearLevel1();
-            clearLevel3();
-            setLevel2ExtraEnabled(true);
-            endNoHabAttempt.setChecked(false);
-            matchSaveButton.setEnabled(true);
-        }
+    private void enableHanging(boolean enable) {
+        hangTimer.setEnabled(enable);
+        endHangF.setEnabled(enable);
+        endHangAssist1.setEnabled(enable);
+        endHangAssist2.setEnabled(enable);
+        endHangWasAssisted.setEnabled(enable);
+        endHangLevel.setEnabled(enable);
+        endHangSharedRung0.setEnabled(enable);
+        endHangSharedRung1.setEnabled(enable);
+        endHangSharedRung2.setEnabled(enable);
     }
 
-    private class Level3Listener implements RadioButton.OnClickListener {
-        @Override
-        public void onClick(View view) {
-            clearLevel1();
-            clearLevel2();
-            setLevel3ExtraEnabled(true);
-            endNoHabAttempt.setChecked(false);
-            matchSaveButton.setEnabled(true);
-        }
+    private void sharedRungButtonsOff() {
+        endHangSharedRung0.setChecked(false);
+        endHangSharedRung1.setChecked(false);
+        endHangSharedRung2.setChecked(false);
     }
 
-    private class Level2ExtraListener implements View.OnClickListener {
+    private class HangAssistListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            int i = level2Extra.getCheckedRadioButtonId();
-            if(lastLevel2ExtraSelected == i) {
-                level2Extra.clearCheck();
-                lastLevel2ExtraSelected = -1;
+            int i = hangAssist.getCheckedRadioButtonId();
+            if(lastHangAssistSelected == i) {
+                hangAssist.clearCheck();
+                lastHangAssistSelected = -1;
             } else {
-                lastLevel2ExtraSelected = i;
+                lastHangAssistSelected = i;
                 matchSaveButton.setEnabled(true);
             }
         }
-    }
-
-    private class Level3ExtraListener implements View.OnClickListener {
-        @Override
-        public void onClick(View view) {
-            int i = level3Extra.getCheckedRadioButtonId();
-            if(lastLevel3ExtraSelected == i) {
-                level3Extra.clearCheck();
-                lastLevel3ExtraSelected = -1;
-            } else {
-                lastLevel3ExtraSelected = i;
-                matchSaveButton.setEnabled(true);
-            }
-        }
-    }
-
-    private void clearLevel1() {
-        endLevel1S.setChecked(false);
-        endLevel1F.setChecked(false);
-        level1Group.clearCheck();
-    }
-
-    private void clearLevel2() {
-        endLevel2S.setChecked(false);
-        endLevel2F.setChecked(false);
-        endLevel2WasAssisted.setChecked(false);
-        setLevel2ExtraEnabled(false);
-        level2Group.clearCheck();
-    }
-
-    private void clearLevel3() {
-        endLevel3S.setChecked(false);
-        endLevel3F.setChecked(false);
-        endLevel3WasAssisted.setChecked(false);
-        endLevel3FromLevel2.setChecked(false);
-        endLevel3SharedPlatform.setChecked(false);
-        setLevel3ExtraEnabled(false);
-        level3Group.clearCheck();
-    }
-
-    private void setLevel2ExtraEnabled(boolean enabled) {
-        endLevel2WasAssisted.setEnabled(enabled);
-    }
-
-    private void setLevel3ExtraEnabled(boolean enabled) {
-        endLevel3WasAssisted.setEnabled(enabled);
-        endLevel3FromLevel2.setEnabled(enabled);
-        endLevel3SharedPlatform.setEnabled(enabled);
     }
 
     @Override

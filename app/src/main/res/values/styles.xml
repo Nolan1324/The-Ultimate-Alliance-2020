@@ -17,9 +17,9 @@
 
     <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">#004d40</item> <!-- Light: #39796b Dark: #00251a-->
         <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-        <item name="colorAccent">@android:color/holo_blue_light</item>
+        <item name="colorAccent">#b1bfca<!--@android:color/holo_blue_light--></item>
         <item name="colorControlNormal">@android:color/white</item>
         <item name="iconTint">@android:color/white</item>
         <item name="android:textColorPrimary">@android:color/white</item>
@@ -27,6 +27,7 @@
         <item name="android:textColor">?tabIndicatorColor</item>
         <item name="actionMenuTextColor">@android:color/white</item>
         <item name="android:buttonTint" tools:targetApi="lollipop">@android:color/darker_gray</item>
+        <item name="android:windowBackground">@color/backgroundDark</item>
     </style>
 
     <style name="ToolBar" parent="Widget.AppCompat.ActionBar">

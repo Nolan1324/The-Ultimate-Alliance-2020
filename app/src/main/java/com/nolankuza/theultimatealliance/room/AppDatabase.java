@@ -13,7 +13,7 @@ import com.nolankuza.theultimatealliance.model.Settings;
 import com.nolankuza.theultimatealliance.model.Student;
 import com.nolankuza.theultimatealliance.model.Team;
 
-@Database(entities = {Match.class, Student.class, Assignment.class, Team.class, Settings.class, GameData.class, PitData.class, PlayoffData.class}, version = 37, exportSchema = true)
+@Database(entities = {Match.class, Student.class, Assignment.class, Team.class, Settings.class, GameData.class, PitData.class, PlayoffData.class}, version = 38, exportSchema = true)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     public abstract MatchDao matchDao();

@@ -5,6 +5,10 @@
     <color name="colorAccent">#FF4081</color>
     <!--<color name="disabled">#EEEEEE</color>-->
 
-    <color name="toggleOff">@android:color/black</color>
+    <color name="toggleOff">?android:textColorPrimary</color>
     <color name="toggleOn">@android:color/holo_blue_bright</color>
+
+    <color name="defaultButtonColor">?colorButtonNormal</color>
+
+    <color name="backgroundDark">#303030</color>
 </resources>

@@ -4,258 +4,190 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".scout.EndGameFragment">
+    tools:context=".scout.EndGameFragment"
+    android:theme="@style/AppThemeDark"
+    android:background="?android:windowBackground">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout3"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="32dp"
             app:layout_constraintBottom_toTopOf="@+id/match_save_button"
             app:layout_constraintEnd_toStartOf="@+id/textView4"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <ToggleButton
+                android:id="@+id/toggleButtonFixer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/toggle_color"
+                android:visibility="gone" />
+
+            <ToggleButton
+                android:id="@+id/end_hang_shared_rung_0"
+                style="@style/tabletButton"
+                android:layout_width="58dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="12dp"
+                android:checked="true"
+                android:enabled="false"
+                android:textOff="0"
+                android:textOn="0"
+                android:textSize="30sp"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <ToggleButton
+                android:id="@+id/end_hang_shared_rung_2"
+                style="@style/tabletButton"
+                android:layout_width="58dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:enabled="false"
+                android:textOff="2"
+                android:textOn="2"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="@+id/end_hang_shared_rung_1"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintStart_toEndOf="@+id/end_hang_shared_rung_1"
+                app:layout_constraintTop_toTopOf="@+id/end_hang_shared_rung_1" />
+
+            <ToggleButton
+                android:id="@+id/end_hang_shared_rung_1"
+                style="@style/tabletButton"
+                android:layout_width="58dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:enabled="false"
+                android:textOff="1"
+                android:textOn="1"
+                android:textSize="30sp"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintStart_toEndOf="@+id/end_hang_shared_rung_0"
+                app:layout_constraintTop_toTopOf="@+id/end_hang_shared_rung_0" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shared Rung With"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.319"
+                app:layout_constraintStart_toEndOf="@+id/guideline8"
+                app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+            <CheckBox
+                android:id="@+id/end_hang_f"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:enabled="false"
+                android:text="Fail"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintBottom_toBottomOf="@+id/hang_timer"
+                app:layout_constraintStart_toEndOf="@+id/hang_timer"
+                app:layout_constraintTop_toTopOf="@+id/hang_timer" />
+
+            <CheckBox
+                android:id="@+id/end_on_platform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="On Platform"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintStart_toStartOf="@+id/textView10"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+            <TextView
+                android:id="@+id/defense_rating_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Defense Rating"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/title_text"
+                app:layout_constraintBottom_toTopOf="@+id/defense_rating"
+                app:layout_constraintStart_toStartOf="@+id/defense_rating" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Level 1"
-                android:textColor="@android:color/black"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="On Platform"
+                android:textColor="?android:textColorPrimary"
                 android:textSize="@dimen/title_text"
                 app:layout_constraintEnd_toStartOf="@+id/guideline6"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView23"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Level 3"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/title_text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.28"
-                app:layout_constraintStart_toEndOf="@+id/guideline8"
-                app:layout_constraintTop_toTopOf="@+id/textView11" />
-
-            <TextView
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Level 2"
-                android:textColor="@android:color/black"
+                android:text="Hanging"
+                android:textColor="?android:textColorPrimary"
                 android:textSize="@dimen/title_text"
                 app:layout_constraintEnd_toStartOf="@+id/guideline8"
-                app:layout_constraintHorizontal_bias="0.3"
+                app:layout_constraintHorizontal_bias="0.406"
                 app:layout_constraintStart_toEndOf="@+id/guideline6"
                 app:layout_constraintTop_toTopOf="@+id/textView10" />
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/constraintLayout2"
-                android:layout_width="307dp"
-                android:layout_height="68dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <ImageButton
-                    android:id="@+id/playButton"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintDimensionRatio="h,1:1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_play" />
-
-                <TextView
-                    android:id="@+id/time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="68dp"
-                    android:text="0:00.00"
-                    android:textAlignment="center"
-                    android:textSize="50sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/resetButton"
-                    app:layout_constraintStart_toEndOf="@+id/playButton"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/resetButton"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintDimensionRatio="h,1:1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_skip_previous" />
-
-            </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.25" />
+                app:layout_constraintGuide_percent="0.28" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.60" />
+                app:layout_constraintGuide_percent="0.65" />
 
             <RadioGroup
-                android:id="@+id/level_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@+id/textView10"
-                app:layout_constraintTop_toBottomOf="@+id/textView10">
-
-                <RadioButton
-                    android:id="@+id/end_level_1_s"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Success"
-                    android:textSize="@dimen/list_text" />
-
-                <RadioButton
-                    android:id="@+id/end_level_1_f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Fail"
-                    android:textSize="@dimen/list_text" />
-
-            </RadioGroup>
-
-            <RadioGroup
-                android:id="@+id/level_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:layout_constraintStart_toStartOf="@+id/textView11"
-                app:layout_constraintTop_toTopOf="@+id/level_1">
-
-                <RadioButton
-                    android:id="@+id/end_level_2_s"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Success"
-                    android:textSize="@dimen/list_text" />
-
-                <RadioButton
-                    android:id="@+id/end_level_2_f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Fail"
-                    android:textSize="@dimen/list_text" />
-
-            </RadioGroup>
-
-            <RadioGroup
-                android:id="@+id/level_2_assist"
+                android:id="@+id/hang_assist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
-                app:layout_constraintStart_toStartOf="@+id/level_2"
-                app:layout_constraintTop_toBottomOf="@+id/level_2">
+                app:layout_constraintStart_toStartOf="@+id/hang_timer"
+                app:layout_constraintTop_toBottomOf="@+id/hang_timer">
 
                 <RadioButton
-                    android:id="@+id/end_level_2_assist_1"
+                    android:id="@+id/end_hang_assist_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Assisted 1"
-                    android:textSize="@dimen/list_text" />
-
-                <RadioButton
-                    android:id="@+id/end_level_2_assist_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Assisted 2"
-                    android:textSize="@dimen/list_text" />
-
-                <RadioButton
-                    android:id="@+id/end_level_2_was_assisted"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="1"
                     android:enabled="false"
-                    android:text="Was assisted"
-                    android:textSize="@dimen/list_text" />
-
-            </RadioGroup>
-
-            <RadioGroup
-                android:id="@+id/level_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:layout_constraintStart_toStartOf="@+id/textView23"
-                app:layout_constraintTop_toTopOf="@+id/level_2">
-
-                <RadioButton
-                    android:id="@+id/end_level_3_s"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Success"
-                    android:textSize="@dimen/list_text" />
-
-                <RadioButton
-                    android:id="@+id/end_level_3_f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Fail"
-                    android:textSize="@dimen/list_text" />
-
-            </RadioGroup>
-
-            <RadioGroup
-                android:id="@+id/level_3_assist"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_weight="1"
-                app:layout_constraintStart_toStartOf="@+id/level_3"
-                app:layout_constraintTop_toBottomOf="@+id/level_3">
-
-                <RadioButton
-                    android:id="@+id/end_level_3_assist_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:text="Assisted 1"
                     android:textSize="@dimen/list_text" />
 
                 <RadioButton
-                    android:id="@+id/end_level_3_assist_2"
+                    android:id="@+id/end_hang_assist_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:enabled="false"
                     android:text="Assisted 2"
                     android:textSize="@dimen/list_text" />
 
                 <RadioButton
-                    android:id="@+id/end_level_3_was_assisted"
+                    android:id="@+id/end_hang_was_assisted"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -267,51 +199,118 @@
             </RadioGroup>
 
             <CheckBox
-                android:id="@+id/end_level_3_from_level_2"
+                android:id="@+id/end_hang_level"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:checked="false"
                 android:enabled="false"
-                android:text="From level 2"
+                android:text="Hung Level"
                 android:textSize="@dimen/list_text"
-                app:layout_constraintStart_toStartOf="@+id/level_3_assist"
-                app:layout_constraintTop_toBottomOf="@+id/level_3_assist" />
+                app:layout_constraintStart_toStartOf="@+id/end_hang_shared_rung_0"
+                app:layout_constraintTop_toBottomOf="@+id/end_hang_shared_rung_1" />
 
             <CheckBox
-                android:id="@+id/played_defense"
+                android:id="@+id/end_no_rendezvous_attempt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginBottom="50dp"
-                android:checked="false"
-                android:text="Played Defense"
+                android:layout_marginStart="100dp"
+                android:layout_marginBottom="14dp"
+                android:text="No rendezvous attempt"
                 android:textSize="@dimen/list_text"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <CheckBox
-                android:id="@+id/end_level_3_shared_platform"
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/defense_rating"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:enabled="false"
-                android:text="Shared platform"
-                android:textSize="@dimen/list_text"
-                app:layout_constraintStart_toStartOf="@+id/level_3_assist"
-                app:layout_constraintTop_toBottomOf="@+id/end_level_3_from_level_2" />
+                android:layout_height="49dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-            <CheckBox
-                android:id="@+id/end_no_hab_attempt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="64dp"
-                android:text="No hab attempt"
-                android:textSize="@dimen/list_text"
-                app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
-                app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
-                app:layout_constraintTop_toTopOf="@+id/constraintLayout2"
-                app:layout_constraintVertical_bias="0.86" />
+                <ImageButton
+                    android:id="@+id/star_5"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="w,1:1"
+                    app:layout_constraintStart_toEndOf="@+id/star_4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ic_star_border" />
+
+                <ImageButton
+                    android:id="@+id/star_4"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="w,1:1"
+                    app:layout_constraintStart_toEndOf="@+id/star_3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:srcCompat="@drawable/ic_star_border" />
+
+                <ImageButton
+                    android:id="@+id/star_3"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="w,1:1"
+                    app:layout_constraintStart_toEndOf="@+id/star_2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ic_star_border" />
+
+                <ImageButton
+                    android:id="@+id/star_1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="w,1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_star_border" />
+
+                <ImageButton
+                    android:id="@+id/star_2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="w,1:1"
+                    app:layout_constraintStart_toEndOf="@+id/star_1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ic_star_border" />
+            </android.support.constraint.ConstraintLayout>
+
+            <com.nolankuza.theultimatealliance.scout.TimerButton
+                android:id="@+id/hang_timer"
+                android:layout_width="110dp"
+                android:layout_height="83dp"
+                android:layout_marginTop="16dp"
+                app:enabled="false"
+                app:layout_constraintStart_toStartOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/textView11"
+                app:text="TRYING TO HANG" />
 
         </android.support.constraint.ConstraintLayout>
 
@@ -424,8 +423,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginBottom="2dp"
-            android:text="Save"
             android:enabled="false"
+            android:text="Save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

@@ -5,11 +5,326 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".scout.AutoFragment"
-    android:theme="@style/AppTheme">
+    android:theme="@style/AppThemeDark"
+    android:background="?android:windowBackground">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView91"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center_vertical"
+            android:text="Fumble"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="@dimen/list_text"
+            app:layout_constraintBottom_toBottomOf="@+id/auto_cell_fumble"
+            app:layout_constraintEnd_toStartOf="@+id/auto_cell_fumble"
+            app:layout_constraintTop_toTopOf="@+id/auto_cell_fumble" />
+
+        <com.nolankuza.theultimatealliance.scout.Counter
+            android:id="@+id/auto_cell_fumble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="52dp"
+            app:layout_constraintBottom_toBottomOf="@+id/pickups"
+            app:layout_constraintEnd_toStartOf="@+id/pickups"
+            app:state_normal="true" />
+
+        <Button
+            android:id="@+id/match_exit_button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="8dp"
+            android:text="Exit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+            app:layout_constraintStart_toStartOf="@+id/relativeLayout" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/pickups"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/auto_cells">
+
+            <TextView
+                android:id="@+id/textView73"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Power Cell Pickup"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintEnd_toEndOf="@+id/textView69"
+                app:layout_constraintStart_toStartOf="@+id/textView7"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView69"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Far"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintEnd_toEndOf="@+id/auto_cell_boundary_far"
+                app:layout_constraintStart_toStartOf="@+id/auto_cell_boundary_far"
+                app:layout_constraintTop_toTopOf="@+id/textView7" />
+
+            <TextView
+                android:id="@+id/textView68"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_vertical"
+                android:text="Opponent Trench"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintBottom_toBottomOf="@+id/auto_cell_opponent_trench_close"
+                app:layout_constraintEnd_toStartOf="@+id/auto_cell_opponent_trench_close"
+                app:layout_constraintTop_toTopOf="@+id/auto_cell_opponent_trench_close" />
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/auto_cell_trench_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_column="1"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/auto_cell_boundary_close"
+                app:layout_constraintTop_toBottomOf="@+id/auto_cell_boundary_close"
+                app:state_normal="true">
+
+            </com.nolankuza.theultimatealliance.scout.Counter>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Close"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintEnd_toEndOf="@+id/auto_cell_boundary_close"
+                app:layout_constraintHorizontal_bias="0.642"
+                app:layout_constraintStart_toStartOf="@+id/auto_cell_boundary_close"
+                app:layout_constraintTop_toBottomOf="@+id/textView73" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="80dp"
+                android:gravity="center_vertical"
+                android:text="Boundary"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintBottom_toBottomOf="@+id/auto_cell_boundary_close"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/auto_cell_boundary_close" />
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/auto_cell_boundary_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_column="1"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toEndOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/textView7"
+                app:state_normal="true" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_vertical"
+                android:text="Trench"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintBottom_toBottomOf="@+id/auto_cell_trench_close"
+                app:layout_constraintEnd_toStartOf="@+id/auto_cell_trench_close"
+                app:layout_constraintTop_toTopOf="@+id/auto_cell_trench_close" />
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/auto_cell_boundary_far"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@+id/auto_cell_boundary_close"
+                app:layout_constraintTop_toTopOf="@+id/auto_cell_boundary_close"
+                app:state_normal="true" />
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/auto_cell_trench_far"
+                android:layout_width="wrap_content"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@+id/auto_cell_boundary_far"
+                app:layout_constraintTop_toBottomOf="@+id/auto_cell_boundary_far"
+                app:state_normal="true" />
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/auto_cell_opponent_trench_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/auto_cell_trench_close"
+                app:layout_constraintStart_toStartOf="@+id/auto_cell_trench_close"
+                app:layout_constraintTop_toBottomOf="@+id/auto_cell_trench_close"
+                app:state_normal="true" />
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/auto_cell_opponent_trench_far"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/auto_cell_trench_far"
+                app:layout_constraintTop_toTopOf="@+id/auto_cell_opponent_trench_close"
+                app:state_normal="true" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/auto_cells"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/pickups"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/auto_cell_4_s"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/auto_cell_6_s"
+                app:layout_constraintTop_toBottomOf="@+id/auto_cell_6_s"
+                app:state_success="true" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_vertical"
+                android:text="6"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintBottom_toBottomOf="@+id/auto_cell_6_s"
+                app:layout_constraintEnd_toStartOf="@+id/auto_cell_6_s"
+                app:layout_constraintTop_toTopOf="@+id/auto_cell_6_s" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Success"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintEnd_toEndOf="@+id/auto_cell_6_s"
+                app:layout_constraintStart_toStartOf="@+id/auto_cell_6_s"
+                app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/auto_cell_2_s"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/auto_cell_4_s"
+                app:layout_constraintTop_toBottomOf="@+id/auto_cell_4_s"
+                app:state_success="true">
+
+            </com.nolankuza.theultimatealliance.scout.Counter>
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/auto_cell_4_f"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@+id/auto_cell_4_s"
+                app:layout_constraintTop_toTopOf="@+id/auto_cell_4_s"
+                app:state_fail="true" />
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/auto_cell_2_f"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/auto_cell_4_f"
+                app:layout_constraintTop_toTopOf="@+id/auto_cell_2_s"
+                app:state_fail="true">
+
+            </com.nolankuza.theultimatealliance.scout.Counter>
+
+            <com.nolankuza.theultimatealliance.scout.Counter
+                android:id="@+id/auto_cell_6_s"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView15"
+                app:state_success="true"
+                tools:layout_editor_absoluteX="24dp" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_vertical"
+                android:text="2"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintBottom_toBottomOf="@+id/auto_cell_2_s"
+                app:layout_constraintEnd_toStartOf="@+id/auto_cell_2_s"
+                app:layout_constraintTop_toTopOf="@+id/auto_cell_2_s" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_vertical"
+                android:text="4"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintBottom_toBottomOf="@+id/auto_cell_4_s"
+                app:layout_constraintEnd_toStartOf="@+id/auto_cell_4_s"
+                app:layout_constraintTop_toTopOf="@+id/auto_cell_4_s" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Power Cell Scoring"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintEnd_toEndOf="@+id/textView21"
+                app:layout_constraintStart_toStartOf="@+id/textView15"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Fail"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="@dimen/list_text"
+                app:layout_constraintEnd_toEndOf="@+id/auto_cell_4_f"
+                app:layout_constraintStart_toStartOf="@+id/auto_cell_4_f"
+                app:layout_constraintTop_toTopOf="@+id/textView15" />
+
+        </android.support.constraint.ConstraintLayout>
 
         <TextView
             android:id="@+id/textView2"
@@ -18,6 +333,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Starting Position"
+            android:textColor="?android:textColorPrimary"
             android:textSize="@dimen/list_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,6 +345,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:text="Preload"
+            android:textColor="?android:textColorPrimary"
             android:textSize="@dimen/list_text"
             app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toTopOf="parent" />
@@ -89,14 +406,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.75" />
+                    app:layout_constraintGuide_percent="0.67" />
 
                 <android.support.constraint.Guideline
                     android:id="@+id/guidelineUpper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.53" />
+                    app:layout_constraintGuide_percent="0.33" />
 
                 <Button
                     android:id="@+id/pos3"
@@ -145,8 +462,6 @@
                 android:layout_marginEnd="4dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_cell"
-                android:textOff=""
-                android:textOn=""
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="w,1:1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -160,8 +475,6 @@
                 android:layout_marginStart="4dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_cell"
-                android:textOff=""
-                android:textOn=""
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="w,1:1"
                 app:layout_constraintStart_toEndOf="@id/preload1"
@@ -174,8 +487,6 @@
                 android:layout_marginStart="4dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_cell"
-                android:textOff=""
-                android:textOn=""
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="w,1:1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -183,6 +494,14 @@
                 app:layout_constraintVertical_bias="0.495" />
 
         </android.support.constraint.ConstraintLayout>
+
+        <!-- TODO Find out why this is needed to fix the colors -->
+        <ToggleButton
+            android:id="@+id/toggleButtonFixer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/toggle_color"
+            android:visibility="gone" />
 
         <ToggleButton
             android:id="@+id/droveYes"
@@ -210,12 +529,5 @@
             app:layout_constraintTop_toTopOf="@+id/droveYes" />
 
     </android.support.constraint.ConstraintLayout>
-
-    <Button
-        android:id="@+id/match_exit_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="Exit" />
 
 </FrameLayout>

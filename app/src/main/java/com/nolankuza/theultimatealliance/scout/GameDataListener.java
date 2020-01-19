@@ -6,4 +6,8 @@ public interface GameDataListener {
     void onDataUpdated(GameData.Data data);
 
     void onSave();
+
+    void enableScrolling(boolean enable);
+
+    void displayDefense(boolean display);
 }

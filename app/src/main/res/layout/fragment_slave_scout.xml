@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".main.MainActivity">
+    tools:context=".main.MainActivity"
+    android:theme="@style/AppThemeDark"
+    android:background="?android:windowBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,6 +51,7 @@
 
             <TextView
                 android:text="@string/number"
+                android:textColor="?android:textColorPrimary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/list_text"
@@ -58,6 +61,7 @@
 
             <TextView
                 android:text="@string/time"
+                android:textColor="?android:textColorPrimary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/list_text"
@@ -67,6 +71,7 @@
 
             <TextView
                 android:text="@string/red_alliance"
+                android:textColor="?android:textColorPrimary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/list_text"
@@ -76,6 +81,7 @@
 
             <TextView
                 android:text="@string/blue_alliance"
+                android:textColor="?android:textColorPrimary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/list_text"

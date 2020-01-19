@@ -25,4 +25,10 @@
         <attr name="state_warn" format="boolean" />
         <attr name="state_done" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="TimerButton">
+        <attr name="text" format="string" />
+        <attr name="enabled" format="boolean" />
+        <attr name="index" format="integer" />
+    </declare-styleable>
 </resources>

@@ -23,7 +23,6 @@ import android.widget.ToggleButton;
 
 import com.nolankuza.theultimatealliance.R;
 import com.nolankuza.theultimatealliance.model.Alliance;
-import com.nolankuza.theultimatealliance.model.gamedata.GameData;
 import com.nolankuza.theultimatealliance.util.Prefs;
 
 import java.util.ArrayList;
@@ -81,8 +80,8 @@ public class AutoFragment extends Fragment {
         preloadButtons.add((ImageButton)view.findViewById(R.id.preload1));
         preloadButtons.add((ImageButton)view.findViewById(R.id.preload2));
         preloadButtons.add((ImageButton)view.findViewById(R.id.preload3));
-        cellDrawable = AppCompatResources.getDrawable(activity, R.drawable.ic_cell);
-        cellOnDrawable = AppCompatResources.getDrawable(activity, R.drawable.ic_cell_on);
+        cellDrawable = getResources().getDrawable(R.drawable.ic_cell, view.getContext().getTheme());
+        cellOnDrawable = getResources().getDrawable(R.drawable.ic_cell_on, view.getContext().getTheme());
         droveYes = view.findViewById(R.id.droveYes);
         droveNo = view.findViewById(R.id.droveNo);
         //endregion
@@ -94,7 +93,10 @@ public class AutoFragment extends Fragment {
                 Objects.requireNonNull(getActivity()).finish();
             }
         });
-        if(reverseButtons) {
+        if(activity.getGameData().alliance == Alliance.Blue) {
+            field.setImageDrawable(AppCompatResources.getDrawable(activity, R.drawable.field_blue));
+        }
+        if(!reverseButtons) {
             setGuidelinePercent(view, R.id.guidelineLeft, 0.52f);
             setGuidelinePercent(view, R.id.guidelineRight, 0.92f);
 
@@ -105,8 +107,9 @@ public class AutoFragment extends Fragment {
             guidelineUpper.setGuidelinePercent(1 - guidelineLowerPercent);
             guidelineLower.setGuidelinePercent(1 - guidelineUpperPercent);
         }
-        if(Prefs.getFieldReverse(false)) {
+        if(!Prefs.getFieldReverse(false)) {
             field.setScaleX(-1);
+            field.setScaleY(-1);
         }
         fieldOff();
         fieldButtons.get(0).setOnClickListener(new View.OnClickListener() {
@@ -133,37 +136,10 @@ public class AutoFragment extends Fragment {
         if(activity.getGameData().alliance == Alliance.Blue) {
             field.setImageDrawable(getResources().getDrawable(R.drawable.field_blue));
         }
-        preloadButtons.get(0).setOnClickListener(new View.OnClickListener() {
+        new CounterListHandler(preloadButtons, cellDrawable, cellOnDrawable, new CounterListHandler.Listener() {
             @Override
-            public void onClick(View view) {
-                GameData.Data data = activity.data;
-                if(data.preload == 1) {
-                    setPreloadButtons(0);
-                } else {
-                    setPreloadButtons(1);
-                }
-            }
-        });
-        preloadButtons.get(1).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GameData.Data data = activity.data;
-                if(data.preload == 2) {
-                    setPreloadButtons(1);
-                } else {
-                    setPreloadButtons(2);
-                }
-            }
-        });
-        preloadButtons.get(2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GameData.Data data = activity.data;
-                if(data.preload == 3) {
-                    setPreloadButtons(2);
-                } else {
-                    setPreloadButtons(3);
-                }
+            public void onValueChange(int newValue) {
+                activity.data.preload = (byte) newValue;
             }
         });
         droveYes.setOnClickListener(new View.OnClickListener() {
@@ -171,8 +147,7 @@ public class AutoFragment extends Fragment {
             public void onClick(View view) {
                 droveOffButtonsOff();
                 ((ToggleButton)view).setChecked(true);
-                activity.data.droveOff = 1;
-                activity.autoScoring();
+                activity.data.crossInitiationLine = true;
             }
         });
         droveNo.setOnClickListener(new View.OnClickListener() {
@@ -180,11 +155,40 @@ public class AutoFragment extends Fragment {
             public void onClick(View view) {
                 droveOffButtonsOff();
                 ((ToggleButton)view).setChecked(true);
-                activity.data.droveOff = 0;
-                activity.autoScoring();
+                activity.data.crossInitiationLine = false;
             }
         });
-        //view.findViewById(R.id.posLeft1).setOnClickListener();
+
+        ((Counter) view.findViewById(R.id.auto_cell_2_s)).setValue(activity.data.autoCell2S);
+        ((Counter) view.findViewById(R.id.auto_cell_2_f)).setValue(activity.data.autoCell2F);
+        ((Counter) view.findViewById(R.id.auto_cell_4_s)).setValue(activity.data.autoCell4S);
+        ((Counter) view.findViewById(R.id.auto_cell_4_f)).setValue(activity.data.autoCell4F);
+        ((Counter) view.findViewById(R.id.auto_cell_6_s)).setValue(activity.data.autoCell6S);
+        ((Counter) view.findViewById(R.id.auto_cell_boundary_close)).setValue(activity.data.autoCellBoundaryClose);
+        ((Counter) view.findViewById(R.id.auto_cell_boundary_far)).setValue(activity.data.autoCellBoundaryFar);
+        ((Counter) view.findViewById(R.id.auto_cell_trench_close)).setValue(activity.data.autoCellTrenchClose);
+        ((Counter) view.findViewById(R.id.auto_cell_trench_far)).setValue(activity.data.autoCellTrenchFar);
+        ((Counter) view.findViewById(R.id.auto_cell_opponent_trench_close)).setValue(activity.data.autoCellOpponentTrenchClose);
+        ((Counter) view.findViewById(R.id.auto_cell_opponent_trench_far)).setValue(activity.data.autoCellOpponentTrenchFar);
+        ((Counter) view.findViewById(R.id.auto_cell_fumble)).setValue(activity.data.autoCellFumble);
+    }
+
+    public void save() {
+        View fragmentView = getView();
+        if(fragmentView != null) {
+            activity.data.autoCell2S = ((Counter) fragmentView.findViewById(R.id.auto_cell_2_s)).getValue();
+            activity.data.autoCell2F = ((Counter) fragmentView.findViewById(R.id.auto_cell_2_f)).getValue();
+            activity.data.autoCell4S = ((Counter) fragmentView.findViewById(R.id.auto_cell_4_s)).getValue();
+            activity.data.autoCell4F = ((Counter) fragmentView.findViewById(R.id.auto_cell_4_f)).getValue();
+            activity.data.autoCell6S = ((Counter) fragmentView.findViewById(R.id.auto_cell_6_s)).getValue();
+            activity.data.autoCellBoundaryClose = ((Counter) fragmentView.findViewById(R.id.auto_cell_boundary_close)).getValue();
+            activity.data.autoCellBoundaryFar = ((Counter) fragmentView.findViewById(R.id.auto_cell_boundary_far)).getValue();
+            activity.data.autoCellTrenchClose = ((Counter) fragmentView.findViewById(R.id.auto_cell_trench_close)).getValue();
+            activity.data.autoCellTrenchFar = ((Counter) fragmentView.findViewById(R.id.auto_cell_trench_far)).getValue();
+            activity.data.autoCellOpponentTrenchClose = ((Counter) fragmentView.findViewById(R.id.auto_cell_opponent_trench_close)).getValue();
+            activity.data.autoCellOpponentTrenchFar = ((Counter) fragmentView.findViewById(R.id.auto_cell_opponent_trench_far)).getValue();
+            activity.data.autoCellFumble = ((Counter) fragmentView.findViewById(R.id.auto_cell_fumble)).getValue();
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -198,17 +202,6 @@ public class AutoFragment extends Fragment {
     private void fieldChoose(View view) {
         fieldOff();
         view.setBackgroundTintList(onColor);
-    }
-
-    private void setPreloadButton(int index, boolean on) {
-        preloadButtons.get(index).setImageDrawable(on ? cellOnDrawable : cellDrawable);
-    }
-
-    private void setPreloadButtons(int value) {
-        activity.data.preload = (byte) value;
-        setPreloadButton(0, value >= 1);
-        setPreloadButton(1, value >= 2);
-        setPreloadButton(2, value >= 3);
     }
 
     private void droveOffButtonsOff() {

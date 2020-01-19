@@ -68,13 +68,13 @@ public class ScoutBasicActivity extends BaseActivity implements GameDataListener
                     case 0:
                         autoFragment = AutoFragment.newInstance();
                         return autoFragment;
-                    case 1:
+                    /*case 1:
                         autoScoreFragment = AutoScoreFragment.newInstance();
-                        return autoScoreFragment;
-                    case 2:
+                        return autoScoreFragment;*/
+                    case 1:
                         teleopFragment = TeleopFragment.newInstance();
                         return teleopFragment;
-                    case 3:
+                    case 2:
                         endGameFragment = EndGameFragment.newInstance();
                         return endGameFragment;
                     default:
@@ -85,7 +85,7 @@ public class ScoutBasicActivity extends BaseActivity implements GameDataListener
 
             @Override
             public int getCount() {
-                return 4;
+                return 3/*4*/;
             }
 
             @Override
@@ -93,18 +93,18 @@ public class ScoutBasicActivity extends BaseActivity implements GameDataListener
                 switch(position) {
                     case 0:
                         return "Auto";
+                    /*case 1:
+                        return "Auto";*/
                     case 1:
-                        return "Auto";
-                    case 2:
                         return "TeleOp";
-                    case 3:
+                    case 2:
                         return "End Game";
                     default:
                         return "Auto";
                 }
             }
         };
-        pager.setOffscreenPageLimit(3);
+        pager.setOffscreenPageLimit(2/*3*/);
         pager.setAdapter(adapter);
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -115,10 +115,10 @@ public class ScoutBasicActivity extends BaseActivity implements GameDataListener
             @Override
             public void onPageSelected(int position) {
                 actionBar.setTitle(adapter.getPageTitle(position));
-                if(position == 1 && !startedAutoScoreTimer && autoScoreFragment != null) {
+                /*if(position == 1 && !startedAutoScoreTimer && autoScoreFragment != null) {
                     autoScoreFragment.startTimer();
                     startedAutoScoreTimer = true;
-                }
+                }*/
                 Prefs.setCurrentScoutingPage(position);
             }
 
@@ -183,6 +183,16 @@ public class ScoutBasicActivity extends BaseActivity implements GameDataListener
         });
         builder.setNegativeButton("NO", null);
         builder.create().show();
+    }
+
+    @Override
+    public void enableScrolling(boolean enable) {
+        pager.requestDisallowInterceptTouchEvent(!enable);
+    }
+
+    @Override
+    public void displayDefense(boolean display) {
+        endGameFragment.displayDefense(display);
     }
 
     @Override
