@@ -6,7 +6,7 @@
     <!--<color name="disabled">#EEEEEE</color>-->
 
     <color name="toggleOff">?android:textColorPrimary</color>
-    <color name="toggleOn">@android:color/holo_blue_bright</color>
+    <color name="toggleOn">?activatedColor</color>
 
     <color name="defaultButtonColor">?colorButtonNormal</color>
 

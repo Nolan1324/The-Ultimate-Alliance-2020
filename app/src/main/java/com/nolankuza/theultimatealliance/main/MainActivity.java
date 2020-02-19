@@ -1,8 +1,10 @@
 package com.nolankuza.theultimatealliance.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 
 import com.nolankuza.theultimatealliance.BaseActivity;
@@ -15,12 +17,16 @@ import com.nolankuza.theultimatealliance.main.scoutplayoff.PlayoffFragment;
 import com.nolankuza.theultimatealliance.tasks.BluetoothServerThread;
 import com.nolankuza.theultimatealliance.util.Prefs;
 
+import static com.nolankuza.theultimatealliance.ApplicationState.masterThemeChanged;
+
 public class MainActivity extends BaseActivity {
 
     Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        updateTheme();
+        setTheme(R.style.AppThemeDark);
         setContentView(R.layout.activity_main);
         super.onCreate(savedInstanceState);
 
@@ -153,8 +159,17 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onPostResume() {
         super.onPostResume();
-
         loadFragment();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(masterThemeChanged) {
+            Log.d("THEME_CHANGE", true + "");
+            masterThemeChanged = false;
+            updateTheme();
+        }
     }
 
     public void loadFragment() {

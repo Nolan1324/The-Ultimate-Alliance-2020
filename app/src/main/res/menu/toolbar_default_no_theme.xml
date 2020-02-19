@@ -3,13 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/theme_button"
-        android:icon="@drawable/ic_light"
-        android:iconTint="?iconTint"
-        android:title="@string/change_theme"
-        app:showAsAction="always"/>
-
-    <item
         android:id="@+id/lock_button"
         android:icon="@drawable/ic_lock_closed"
         android:iconTint="?iconTint"

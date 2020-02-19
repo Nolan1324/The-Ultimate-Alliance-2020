@@ -131,6 +131,7 @@ public class EndGameFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 enableHanging(isChecked);
+                matchSaveButton.setEnabled(isChecked);
             }
         });
 
@@ -188,7 +189,11 @@ public class EndGameFragment extends Fragment {
                 View fragmentView = getView();
                 if(fragmentView != null) {
                     if(!activity.isScouted()) {
-                        activity.data.endPark = endOnPlatform.isChecked() && !hangTimer.hasRan();
+                        activity.data.endPark = endOnPlatform.isChecked();
+                        if(hangTimer.hasRan()) {
+                            activity.data.hangTime = hangTimer.getSeconds();
+                        }
+                        activity.data.endHangS = hangTimer.hasRan() && !endHangF.isChecked();
                         activity.data.endHangF = endHangF.isChecked();
                         activity.data.endHangAssisted = endHangAssist1.isChecked() ? 1 : (endHangAssist2.isChecked() ? 2 : 0);
                         activity.data.endHangWasAssisted = endHangWasAssisted.isChecked();

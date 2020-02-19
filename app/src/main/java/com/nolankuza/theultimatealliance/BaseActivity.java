@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -29,8 +30,11 @@ import com.nolankuza.theultimatealliance.settings.SettingsActivity;
 import com.nolankuza.theultimatealliance.model.Settings;
 import com.nolankuza.theultimatealliance.students.StudentsActivity;
 import com.nolankuza.theultimatealliance.tasks.SettingsQueryTask;
+import com.nolankuza.theultimatealliance.util.Prefs;
 
+import static com.nolankuza.theultimatealliance.ApplicationState.changeTheme;
 import static com.nolankuza.theultimatealliance.ApplicationState.locked;
+import static com.nolankuza.theultimatealliance.ApplicationState.masterThemeChanged;
 import static com.nolankuza.theultimatealliance.Constants.lockedItems;
 import static com.nolankuza.theultimatealliance.Constants.masterItems;
 
@@ -39,11 +43,14 @@ public abstract class BaseActivity extends AppCompatActivity implements Password
 
     private DrawerLayout drawerLayout;
     private MenuItem lockItem;
+    private MenuItem themeItem;
     public ActionBar actionBar;
 
     private ProgressBar progressBar;
 
     private int toolBarMenu = R.menu.toolbar_default;
+
+    private boolean overrideLock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,6 +130,9 @@ public abstract class BaseActivity extends AppCompatActivity implements Password
     @Override
     public final boolean onPrepareOptionsMenu(Menu menu) {
         lockItem = menu.findItem(R.id.lock_button);
+        themeItem = menu.findItem(R.id.theme_button);
+        if(themeItem != null) themeItem.setIcon(getResources().getDrawable((Prefs.getTheme(R.style.AppTheme)) == R.style.AppTheme ?
+            R.drawable.ic_light : R.drawable.ic_dark));
         updateMenuLock(lockItem, locked);
         updateIsMaster();
         return true;
@@ -158,6 +168,21 @@ public abstract class BaseActivity extends AppCompatActivity implements Password
                     updateMenuLock(item, true);
                 }
                 return true;
+            case R.id.theme_button:
+                int newTheme;
+                int newIcon;
+                if(Prefs.getTheme(R.style.AppTheme) == R.style.AppTheme) {
+                    newTheme = R.style.AppThemeDark;
+                    newIcon = R.drawable.ic_dark;
+                } else {
+                    newTheme = R.style.AppTheme;
+                    newIcon = R.drawable.ic_light;
+                }
+                Prefs.setTheme(newTheme);
+                setTheme(newTheme);
+                masterThemeChanged = true;
+                themeItem.setIcon(getResources().getDrawable(newIcon));
+                recreate();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -184,6 +209,17 @@ public abstract class BaseActivity extends AppCompatActivity implements Password
         super.onPostResume();
     }
 
+    @Override
+    public Resources.Theme getTheme() {
+        Resources.Theme theme = super.getTheme();
+        if(changeTheme){
+            theme.applyStyle(Prefs.getTheme(R.style.AppTheme), true);
+            changeTheme = false;
+        }
+        // you could also use a switch if you have many themes that could apply
+        return theme;
+    }
+
     private void updateMenuLock(MenuItem lockItem, boolean newLocked) {
         if(newLocked) {
             lockItem.setIcon(getResources().getDrawable(R.drawable.ic_lock_closed));
@@ -193,10 +229,18 @@ public abstract class BaseActivity extends AppCompatActivity implements Password
         NavigationView navigationView = findViewById(R.id.nav_view);
         for(int itemId : lockedItems) {
             MenuItem item = navigationView.getMenu().findItem(itemId);
-            item.setEnabled(!newLocked);
+            item.setEnabled(!newLocked && !overrideLock);
         }
         locked = newLocked;
         onMenuLockChanged(locked);
+    }
+
+    public final void overrideLock() {
+        overrideLock = true;
+    }
+
+    public final void updateTheme() {
+        setTheme(Prefs.getTheme(R.style.AppTheme));
     }
 
     public final void updateIsMaster() {

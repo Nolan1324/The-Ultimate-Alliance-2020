@@ -16,6 +16,9 @@ public class ApplicationState extends Application {
     public static SharedPreferences prefs;
     public static int masterCount = 1;
 
+    public static boolean changeTheme = true;
+    public static boolean masterThemeChanged;
+
     @Override
     public void onCreate() {
         super.onCreate();

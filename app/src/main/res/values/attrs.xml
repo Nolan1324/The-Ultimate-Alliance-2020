@@ -32,7 +32,8 @@
         <attr name="index" format="integer" />
     </declare-styleable>
 
-    <declare-styleable name="VerticalView">
+    <declare-styleable name="View">
         <attr name="headerColor" format="color" />
+        <attr name="activatedColor" format="color" />
     </declare-styleable>
 </resources>

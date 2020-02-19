@@ -24,6 +24,7 @@ public class StudentsActivity extends BaseActivity implements StudentAddDialogFr
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        updateTheme();
         setToolBarMenu(R.menu.toolbar_students);
         setContentView(R.layout.activity_students);
         super.onCreate(savedInstanceState);

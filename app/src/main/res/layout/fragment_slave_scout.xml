@@ -6,7 +6,6 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".main.MainActivity"
-    android:theme="@style/AppThemeDark"
     android:background="?android:windowBackground">
 
     <ToggleButton

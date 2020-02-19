@@ -29,9 +29,17 @@ public class ScoutAdapter extends RecyclerView.Adapter<ScoutAdapter.ViewHolder> 
     private ItemClickListener clickListener;
 
     public ScoutAdapter(Context context, List<Match> matches, boolean showAll) {
+        final int cancelId = R.drawable.ic_cancel;
+        final int checkId = R.drawable.ic_check;
+
         this.inflater = LayoutInflater.from(context);
-        this.cancelDrawable = context.getResources().getDrawable(R.drawable.ic_cancel);
-        this.checkDrawable = context.getResources().getDrawable(R.drawable.ic_check);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            this.cancelDrawable = context.getResources().getDrawable(cancelId, context.getTheme());
+            this.checkDrawable = context.getResources().getDrawable(checkId, context.getTheme());
+        } else {
+            this.cancelDrawable = context.getResources().getDrawable(cancelId);
+            this.checkDrawable = context.getResources().getDrawable(checkId);
+        }
         this.matches = matches;
         this.showAll = showAll;
     }

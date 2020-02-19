@@ -9,6 +9,8 @@ public class SettingsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        updateTheme();
+        setToolBarMenu(R.menu.toolbar_default_no_theme);
         SettingsFragment settingsFragment = new SettingsFragment();
 
         getFragmentManager().beginTransaction().replace(R.id.settings_fragment, settingsFragment).commit();

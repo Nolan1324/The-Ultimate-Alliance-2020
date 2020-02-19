@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
         <item name="colorControlNormal">@android:color/white</item>
         <item name="iconTint">@android:color/white</item>
         <item name="android:textColorPrimary">@android:color/black</item>
@@ -14,6 +14,7 @@
         <item name="actionMenuTextColor">@android:color/white</item>
         <item name="android:buttonTint" tools:targetApi="lollipop">@android:color/darker_gray</item>
         <item name="headerColor">@android:color/holo_blue_light</item>
+        <item name="activatedColor">@android:color/holo_blue_light</item>
     </style>
 
     <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">
@@ -30,6 +31,13 @@
         <item name="android:buttonTint" tools:targetApi="lollipop">@android:color/darker_gray</item>
         <item name="android:windowBackground">@color/backgroundDark</item>
         <item name="headerColor">#183F38</item>
+        <item name="activatedColor">@android:color/holo_orange_light</item>
+    </style>
+
+    <style name="AppThemeDark.Launcher">
+        <item name="android:windowBackground">@mipmap/ic_tua</item>
+    <!-- Optional, on Android 5+ you can modify the colorPrimaryDark color to match the windowBackground color for further branding-->
+    <!-- <item name="colorPrimaryDark">@android:color/white</item> -->
     </style>
 
     <style name="ToolBar" parent="Widget.AppCompat.ActionBar">

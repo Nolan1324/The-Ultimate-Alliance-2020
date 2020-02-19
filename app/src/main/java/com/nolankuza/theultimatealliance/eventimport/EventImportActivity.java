@@ -43,6 +43,7 @@ public class EventImportActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        updateTheme();
         setContentView(R.layout.activity_event_import);
         super.onCreate(savedInstanceState);
 

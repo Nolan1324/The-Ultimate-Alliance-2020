@@ -31,6 +31,7 @@ public class EventContentImportActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        updateTheme();
         setToolBarMenu(R.menu.toolbar_match_import);
         setContentView(R.layout.activity_event_content_import);
         super.onCreate(savedInstanceState);

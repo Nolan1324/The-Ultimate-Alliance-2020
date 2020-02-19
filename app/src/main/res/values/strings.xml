@@ -101,4 +101,5 @@
     <string name="export_data_to_csv">Export Data to CSV</string>
     <string name="left_arrow"><![CDATA[<]]></string>
     <string name="right_arrow"><![CDATA[>]]></string>
+    <string name="change_theme">Change theme</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.nolankuza.theultimatealliance.util;
 
+import static com.nolankuza.theultimatealliance.ApplicationState.changeTheme;
 import static com.nolankuza.theultimatealliance.ApplicationState.prefs;
 import static com.nolankuza.theultimatealliance.Constants.PREF_CURRENT_SCOUTING_PAGE;
 import static com.nolankuza.theultimatealliance.Constants.PREF_NEXT_MATCH;
@@ -68,6 +69,10 @@ public class Prefs {
     public static int getMasterPage(int defValue) {
         return prefs.getInt("master_page", defValue);
     }
+
+    public static int getTheme(int defValue) {
+        return prefs.getInt("app_theme", defValue);
+    }
     //endregion
 
     //region Getters
@@ -129,6 +134,11 @@ public class Prefs {
 
     public static void setMasterPage(int value) {
         prefs.edit().putInt("master_page", value).apply();
+    }
+
+    public static void setTheme(int value) {
+        prefs.edit().putInt("app_theme", value).apply();
+        changeTheme = true;
     }
     //endregion
 }

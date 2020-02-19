@@ -21,6 +21,13 @@
             android:elevation="4dp"
             tools:targetApi="lollipop" />
 
+        <ToggleButton
+            android:id="@+id/toggleButtonFixer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color_primary"
+            android:visibility="gone" />
+
         <FrameLayout android:id="@+id/main_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -32,6 +32,9 @@ public class ScoutBasicActivity extends BaseActivity implements GameDataListener
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        updateTheme();
+        overrideLock();
+        setToolBarMenu(R.menu.toolbar_default_no_theme);
         setContentView(R.layout.activity_scout_basic);
         super.onCreate(savedInstanceState);
 
@@ -160,8 +163,7 @@ public class ScoutBasicActivity extends BaseActivity implements GameDataListener
 
     @Override
     public void onSave() {
-        //TODO autoFragment.save();
-        autoScoreFragment.save();
+        autoFragment.save();
         teleopFragment.save();
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("WARNING");

@@ -41,6 +41,7 @@ public class DataSyncActivity extends BaseActivity implements MessageLogger {
     protected void onCreate(Bundle savedInstanceState) {
         boolean isMaster = Prefs.getIsMaster(false);
 
+        updateTheme();
         setToolBarMenu(isMaster ? R.menu.toolbar_sync : R.menu.toolbar_sync_slave);
         ActivityDataSyncBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_data_sync);
         super.onCreate(savedInstanceState);

@@ -23,7 +23,7 @@ import java.util.List;
 import static com.nolankuza.theultimatealliance.ApplicationState.database;
 
 public class ScoutFragment extends SlaveFragment {
-    ScoutAdapter matchImportAdapter;
+    ScoutAdapter scoutAdapter;
 
     public ScoutFragment() {
         setLayout(R.layout.fragment_slave_scout);
@@ -31,21 +31,21 @@ public class ScoutFragment extends SlaveFragment {
 
     @Override
     public void loadData(final Context context, final View view) {
-        final RecyclerView matchImportRecycler = view.findViewById(R.id.match_import_recycler);
+        final RecyclerView scoutRecycler = view.findViewById(R.id.match_import_recycler);
         new MatchQueryTask(isShowingAll(), new MatchQueryTask.Listener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onTaskCompleted(List<Match> matches) {
                 //progressBar.setVisibility(View.GONE);
-                matchImportRecycler.setLayoutManager(new LinearLayoutManager(context));
-                matchImportRecycler.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
-                matchImportAdapter = new ScoutAdapter(context.getApplicationContext(), matches, isShowingAll());
+                scoutRecycler.setLayoutManager(new LinearLayoutManager(context));
+                scoutRecycler.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
+                scoutAdapter = new ScoutAdapter(context, matches, isShowingAll());
 
                 //TODO Use list animation?
                 //LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_fall_down);
-                //matchImportRecycler.setLayoutAnimation(animation);
+                //scoutRecycler.setLayoutAnimation(animation);
 
-                matchImportAdapter.setClickListener(new ScoutAdapter.ItemClickListener() {
+                scoutAdapter.setClickListener(new ScoutAdapter.ItemClickListener() {
                     @Override
                     public void onItemClick(View view, Match match) {
                         Intent intent = new Intent(context.getApplicationContext(), ScoutBasicActivity.class);
@@ -101,7 +101,7 @@ public class ScoutFragment extends SlaveFragment {
                         dialog.show();
                     }
                 });
-                matchImportRecycler.setAdapter(matchImportAdapter);
+                scoutRecycler.setAdapter(scoutAdapter);
             }
         }).execute();
     }
@@ -111,9 +111,9 @@ public class ScoutFragment extends SlaveFragment {
         new MatchQueryTask(isShowingAll(), new MatchQueryTask.Listener() {
             @Override
             public void onTaskCompleted(List<Match> matches) {
-            if(matchImportAdapter != null) {
-                matchImportAdapter.showAll = isShowingAll();
-                matchImportAdapter.setData(matches);
+            if(scoutAdapter != null) {
+                scoutAdapter.showAll = isShowingAll();
+                scoutAdapter.setData(matches);
             }
             }
         }).execute();

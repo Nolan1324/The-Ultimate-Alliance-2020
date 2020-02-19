@@ -192,7 +192,7 @@ public class TimerButton extends LinearLayout implements View.OnTouchListener {
     }
 
     public float getSeconds() {
-        return TimeUnit.MILLISECONDS.toSeconds(runTime);
+        return runTime / 1000f;
     }
 
     public void setSeconds(float seconds) {
